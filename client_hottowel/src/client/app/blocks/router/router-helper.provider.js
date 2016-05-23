@@ -27,9 +27,9 @@
     };
 
     this.$get = RouterHelper;
-    RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger'];
+    RouterHelper.$inject = ['$location', '$rootScope', '$state', '$q', '$auth', 'logger'];
     /* @ngInject */
-    function RouterHelper($location, $rootScope, $state, logger) {
+    function RouterHelper($location, $rootScope, $state, $q, $auth, logger) {
       var handlingStateChangeError = false;
       var hasOtherwise = false;
       var stateCounts = {
@@ -53,12 +53,42 @@
         states.forEach(function(state) {
           state.config.resolve =
             angular.extend(state.config.resolve || {}, config.resolveAlways);
+          if (!!state.config.skipIfLoggedIn) {
+            state.config.resolve =
+              angular.extend(state.config.resolve, {skipIfLoggedIn: skipIfLoggedIn});
+          }
+          if (!!state.config.loginRequired) {
+            state.config.resolve =
+              angular.extend(state.config.resolve, {loginRequired: loginRequired});
+          }
+
           $stateProvider.state(state.state, state.config);
         });
         if (otherwisePath && !hasOtherwise) {
           hasOtherwise = true;
           $urlRouterProvider.otherwise(otherwisePath);
         }
+      }
+
+      function skipIfLoggedIn() {
+        var deferred = $q.defer();
+        if ($auth.isAuthenticated()) {
+          deferred.reject();
+        } else {
+          deferred.resolve();
+        }
+        return deferred.promise;
+      }
+
+      function loginRequired() {
+        console.log('login req');
+        var deferred = $q.defer();
+        if ($auth.isAuthenticated()) {
+          deferred.resolve();
+        } else {
+          $location.path('/login');
+        }
+        return deferred.promise;
       }
 
       function handleRoutingErrors() {
