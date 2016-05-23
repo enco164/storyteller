@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use Firebase\JWT\JWT;
 use Hash;
 use Config;
 use Validator;
@@ -52,6 +53,7 @@ class AuthController extends Controller {
             'email' => 'required|email|unique:users,email',
             'password' => 'required'
         ]);
+
         if ($validator->fails()) {
             return response()->json(['message' => $validator->messages()], 400);
         }

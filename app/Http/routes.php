@@ -11,10 +11,12 @@
 |
 */
 
+Route::post('auth/login', 'AuthController@login');
+Route::post('auth/signup', 'AuthController@signup');
+
 // API Routes.
 Route::get('api/me', ['middleware' => 'auth', 'uses' => 'UserController@getUser']);
 Route::put('api/me', ['middleware' => 'auth', 'uses' => 'UserController@updateUser']);
-Route::get('/api/hopa', 'HomeController@hopa');
 
 // If there is not requested route return index.html and let Angular display 404 page
 Route::get('{all}', function () {

@@ -2,29 +2,81 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
 use Illuminate\Support\Facades\Auth;
+
+use Firebase\JWT\JWT;
+use Closure;
+use Illuminate\Contracts\Auth\Guard;
+use Config;
 
 class Authenticate
 {
+    /**
+     * The Guard implementation.
+     *
+     * @var Guard
+     */
+    protected $auth;
+    /**
+     * Create a new filter instance.
+     *
+     * @param  Guard  $auth
+     * @return void
+     */
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+    }
     /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
-        if (Auth::guard($guard)->guest()) {
-            if ($request->ajax() || $request->wantsJson()) {
-                return response('Unauthorized.', 401);
-            } else {
-                return redirect()->guest('login');
-            }
-        }
+        if ($request->header('Authorization'))
+        {
+            $token = explode(' ', $request->header('Authorization'))[1];
+            $payload = (array) JWT::decode($token, Config::get('app.token_secret'), array('HS256'));
 
-        return $next($request);
+            if ($payload['exp'] < time())
+            {
+                return response()->json(['message' => 'Token has expired']);
+            }
+            $request['user'] = $payload;
+            return $next($request);
+        }
+        else
+        {
+            return response()->json(['message' => 'Please make sure your request has an Authorization header'], 401);
+        }
     }
+
+
+
+            /**
+     * Old generated code
+     */
+//    /**
+//     * Handle an incoming request.
+//     *
+//     * @param  \Illuminate\Http\Request  $request
+//     * @param  \Closure  $next
+//     * @param  string|null  $guard
+//     * @return mixed
+//     */
+//    public function handle($request, Closure $next, $guard = null)
+//    {
+//        if (Auth::guard($guard)->guest()) {
+//            if ($request->ajax() || $request->wantsJson()) {
+//                return response('Unauthorized.', 401);
+//            } else {
+//                return redirect()->guest('login');
+//            }
+//        }
+//
+//        return $next($request);
+//    }
 }
