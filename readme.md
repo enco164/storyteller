@@ -9,9 +9,10 @@ Tehnologije: Laravel i AngularJS
 2. (Samo za Linux) Posle instalacije Node.js pogledati:
 >Refer to these [instructions on how to not require sudo](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)
 kako bi se zaobišli mogući problemi oko privilegija na sistemu kada se neki paket instalira globalno
-3. Pokrenuti sledeće komande:
+3. Pokrenuti sledeće komande (pretpostavka da su username i password za mysql root-root):
 ```shell
 $ composer install
+$ php artisan migrate
 $ cd client_hottowel
 $ npm install -g bower
 $ npm install 
