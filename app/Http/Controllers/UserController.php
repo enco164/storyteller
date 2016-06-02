@@ -46,6 +46,10 @@ class UserController extends Controller
 
         $user->save();
         return $user;
+
+        /*
+         * milan test1
+         * */
     }
 
 }
