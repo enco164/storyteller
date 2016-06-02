@@ -36,16 +36,11 @@ class UserController extends Controller
     public function updateUser(Request $request)
     {
         $user = User::find($request['user']['sub']);
-
-        if($request->input('firstName')) {
-            $user->firstName = $request->input('firstName');
-        }
-        if($request->input('firstName')) {
-            $user->lastName = $request->input('lastName');
-        }
-
+        $user->displayName = $request->input('displayName');
+        $user->email = $request->input('email');
         $user->save();
-        return $user;
+        $token = $this->createToken($user);
+        return response()->json(['token' => $token]);
     }
 
 }
