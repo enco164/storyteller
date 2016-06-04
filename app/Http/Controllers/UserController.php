@@ -37,19 +37,15 @@ class UserController extends Controller
     {
         $user = User::find($request['user']['sub']);
 
-        if($request->input('firstName')) {
+        if ($request->input('firstName')) {
             $user->firstName = $request->input('firstName');
         }
-        if($request->input('firstName')) {
+        if ($request->input('lastName')) {
             $user->lastName = $request->input('lastName');
         }
 
         $user->save();
         return $user;
-
-        /*
-         * milan test1
-         * */
     }
 
 }

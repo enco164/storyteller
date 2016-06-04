@@ -501,7 +501,7 @@ function startBrowserSync(isDev, specRunner) {
   }
 
   var options = {
-    proxy: 'localhost:' + port,
+    proxy: 'localhost' + port,
     port: 3000,
     files: isDev ? [
       config.client + '**/*.*',

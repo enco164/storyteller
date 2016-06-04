@@ -1,11 +1,11 @@
 <div ng-controller="ShellController as vm">
-  <header class="clearfix">
+  <header class="main-header" class="clearfix">
     <ht-top-nav navline="vm.navline"></ht-top-nav>
   </header>
-  <section id="content" class="content">
+  <section id="content" >
     <div ng-include="'app/layout/sidebar.html'"></div>
 
-    <div ui-view class="shuffle-animation"></div>
+    <div ui-view class="content-wrapper"></div>
 
     <div ngplus-overlay ngplus-overlay-delay-in="50" ngplus-overlay-delay-out="700" ngplus-overlay-animation="dissolve-animation">
       <img src="images/busy.gif" />
