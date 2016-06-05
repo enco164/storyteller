@@ -10,6 +10,9 @@
   <div class="navbar-collapse collapse" uib-collapse="isCollapsed">
     <div class="pull-right navbar-logo">
       <ul class="nav navbar-nav pull-right">
+        <li ng-if="vm.isAuthenticated">
+          <a ng-click="vm.logout()">Log out</a>
+        </li>
         <!--<li>-->
           <!--<a ng-href="{{vm.navline.link}}" target="_blank">-->
                         <!--{{vm.navline.text}}-->

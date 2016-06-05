@@ -11,6 +11,8 @@
     var vm = this;
     vm.title = 'Login';
 
+    vm.user = null;
+
     vm.signup = signup;
 
     activate();

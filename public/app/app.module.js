@@ -5,6 +5,7 @@
     'app.core',
     'app.widgets',
     'app.admin',
+    'app.kid',
     'app.auth',
     'app.dashboard',
     'app.layout'
