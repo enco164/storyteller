@@ -78,7 +78,12 @@ class KidsController extends ApiController
 
     public function destroy($id)
     {
-        //
+        $kid = Kid::find($id);
+        if ( ! $kid)
+        {
+            return $this->respondWithError("Kid does not exist.");
+        }
+        $kid->delete();
     }
 
 }

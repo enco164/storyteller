@@ -11,7 +11,7 @@
     var vm = this;
     vm.title = 'Kid';
 
-    vm.delete = deleteKid;
+    vm.deleteKid = deleteKid;
     vm.onCreate = onCreate;
 
     activate();
@@ -38,7 +38,6 @@
     }
 
     function onCreate(){
-      console.log('onCreate');
 
       var modalInstance = $uibModal.open({
         templateUrl: 'app/kid/newKidModal.html',
@@ -49,7 +48,7 @@
       modalInstance.result.then(function (selectedItem) {
         $scope.selected = selectedItem;
       }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
+        logger.info('Modal dismissed at: ' + new Date());
       });
 
     }

@@ -8,26 +8,32 @@
         .module('app.kid')
         .controller('NewKidController', NewKidController);
 
-    NewKidController.$inject = ['Kid', 'logger'];
+    NewKidController.$inject = ['Kid', 'logger', '$uibModalInstance'];
 
-    function NewKidController(Kid, logger) {
+    function NewKidController(Kid, logger, $uibModalInstance) {
         var vm = this;
 
         vm.ok = ok;
         vm.cancel = cancel;
 
         function ok(){
-            console.log('on ok');
             var kid = new Kid(vm.kid);
             kid.$save(function(){
                 logger.info('Kid saved');
             }, function(error){
                 logger.error('Error');
             });
+
+            vm.kid = undefined;
+            // vm.kid.firstName = '';
+            // vm.kid.lastName = '';
+            // vm.kid.yearOfBirth = '';
+            // vm.kid.cityOfBirth = '';
+            // vm.kid.gender = '';
         }
 
         function cancel() {
-
+            $uibModalInstance.dismiss('cancel');
         }
     }
 })();

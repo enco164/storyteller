@@ -27,6 +27,17 @@
           },
           loginRequired: true
         }
+      },
+      {
+        state: 'kidDetails',
+        config: {
+          url: '/kid/details/:kidId',
+          templateUrl: 'app/kid/kidDetails.html',
+          controller: 'KidDetailsController',
+          controllerAs: 'vm',
+          title: 'Kid details',
+          loginRequired: true
+        }
       }
     ];
   }
