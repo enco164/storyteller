@@ -66,9 +66,8 @@ class KidsController extends ApiController
         {
             return $this->respondNotFound('Kid does not exist.');
         }
-        return $this->respond()-json(
-            $this->kidTransformer->transform($kid)
-        );
+
+        return response()->json($kid);
     }
 
     public function update(Request $request, $id)
@@ -84,6 +83,7 @@ class KidsController extends ApiController
             return $this->respondWithError("Kid does not exist.");
         }
         $kid->delete();
+        return $this->response()->json(["message" => 'Kid successfully deleted.']);
     }
 
 }

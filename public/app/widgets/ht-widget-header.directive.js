@@ -20,6 +20,7 @@
         'rightText': '@',
         'allowCollapse': '@'
       },
+      transclude: true,
       templateUrl: 'app/widgets/widget-header.html',
       restrict: 'EA',
       link: link

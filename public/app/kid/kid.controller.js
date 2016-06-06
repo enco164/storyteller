@@ -3,22 +3,43 @@
 
   angular
       .module('app.kid')
-      .controller('KidController', KidController);
+      .controller('KidsController', KidsController);
 
-  KidController.$inject = ['logger', 'Kid', '$uibModal'];
+  KidsController.$inject = ['$state', '$stateParams','logger', 'Kid', '$uibModal'];
   /* @ngInject */
-  function KidController(logger, Kid, $uibModal) {
+  function KidsController($state, $stateParams, logger, Kid, $uibModal) {
     var vm = this;
-    vm.title = 'Kid';
+    vm.title = 'Kids';
 
     vm.deleteKid = deleteKid;
+    vm.editKid = editKid;
     vm.onCreate = onCreate;
+    vm.selectKid = selectKid;
 
     activate();
 
     function activate() {
       logger.info('Activated Kid View');
 
+      if ($stateParams.id) {
+        Kid.get({id: $stateParams.id}, function (kid) {
+          vm.currentKid = kid;
+        });
+      } else {
+        vm.currentKid = undefined;
+      }
+
+      reloadKids();
+
+    }
+
+    function selectKid(kid) {
+      //notify:false je da ne reloaduje stranu
+      $state.go($state.current, {id: kid.id}, {notify: false});
+      vm.currentKid = kid;
+    }
+
+    function reloadKids() {
       Kid.query(function(kids){
         vm.kids = kids;
       });
@@ -30,6 +51,8 @@
 
       function onSuccess() {
         logger.info('Kid ' + name + ' deleted!');
+        vm.currentKid = undefined;
+        reloadKids();
       }
 
       function onError(error) {
@@ -37,20 +60,44 @@
       }
     }
 
+    function editKid() {
+      var modalInstance = instantiateModal(vm.currentKid);
+
+      modalInstance.result.then(onOkCallback, onCancelCallback);
+
+      function onOkCallback(kid) {
+        reloadKids();
+      }
+
+      function onCancelCallback() {
+
+      }
+    }
+
     function onCreate(){
 
-      var modalInstance = $uibModal.open({
-        templateUrl: 'app/kid/newKidModal.html',
-        controller: 'NewKidController',
-        controllerAs: 'vm'
-      });
+      var modalInstance = instantiateModal();
 
-      modalInstance.result.then(function (selectedItem) {
-        $scope.selected = selectedItem;
-      }, function () {
-        logger.info('Modal dismissed at: ' + new Date());
-      });
+      modalInstance.result.then(onOkCallback, onCancelCallback);
 
+      function onOkCallback(kid) {
+        reloadKids();
+      }
+
+      function onCancelCallback() {
+
+      }
+    }
+
+    function instantiateModal(kid) {
+      return $uibModal.open({
+        templateUrl: 'app/kid/kidModal.html',
+        controller: 'KidModalController',
+        controllerAs: 'vm',
+        resolve: {
+          kid: kid
+        }
+      });
     }
   }
 })();

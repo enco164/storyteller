@@ -14,28 +14,17 @@
   function getStates() {
     return [
       {
-        state: 'kid',
+        state: 'kids',
         config: {
-          url: '/kid',
-          templateUrl: 'app/kid/kid.html',
-          controller: 'KidController',
+          url: '/kids?id',
+          templateUrl: 'app/kid/kids.html',
+          controller: 'KidsController',
           controllerAs: 'vm',
-          title: 'Kid',
+          title: 'Kids',
           settings: {
             nav: 3,
-            content: '<i class="fa fa-child"></i> Kid'
+            content: '<i class="fa fa-child"></i> Kids'
           },
-          loginRequired: true
-        }
-      },
-      {
-        state: 'kidDetails',
-        config: {
-          url: '/kid/details/:kidId',
-          templateUrl: 'app/kid/kidDetails.html',
-          controller: 'KidDetailsController',
-          controllerAs: 'vm',
-          title: 'Kid details',
           loginRequired: true
         }
       }
