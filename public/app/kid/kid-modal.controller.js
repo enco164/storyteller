@@ -8,19 +8,18 @@
         .module('app.kid')
         .controller('KidModalController', KidModalController);
 
-    KidModalController.$inject = ['Kid', 'logger', '$uibModalInstance', 'kid'];
+    KidModalController.$inject = ['Kid', 'logger', '$uibModalInstance', 'kid', 'modalTitle'];
 
-    function KidModalController(Kid, logger, $uibModalInstance, kid) {
+    function KidModalController(Kid, logger, $uibModalInstance, kid, modalTitle) {
         var vm = this;
+
+        vm.modalTitle = modalTitle;
 
         vm.ok = ok;
         vm.cancel = cancel;
         vm.kid = kid;
 
-        console.log(kid);
-
         function ok(){
-            console.log('on ok');
             var kid = new Kid(vm.kid);
             kid.$save(function(){
                 $uibModalInstance.close(kid);
