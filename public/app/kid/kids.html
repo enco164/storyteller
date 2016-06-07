@@ -25,7 +25,7 @@
                                            placeholder="Search..."
                                            ng-model="vm.search.$">
                                 </div>
-                                <ul class="list-group" style="height: 350px; overflow-y: scroll;">
+                                <ul class="list-group" style="height: 350px; overflow: hidden; overflow-y: scroll;">
                                     <li class="list-group-item"
                                         ng-repeat="kid in vm.kids | filter:vm.search"
                                         ng-click="vm.selectKid(kid)"
@@ -42,7 +42,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div>
+                            <div ng-if="vm.currentKid">
                                 <h2 class="col-md-9" style="color:white; background-color: #FF6D00;" >
                                     {{vm.currentKid.firstName + ' ' + vm.currentKid.lastName }}
                                     <span class="pull-right">
@@ -57,7 +57,7 @@
                                     </span>
                                 </h2>
 
-                                <div class="col-md-3" ng-if="vm.currentKid">
+                                <div class="col-md-3">
                                     <div class="attr-div">
                                         <label>First Name:</label><br>
                                         <span>{{vm.currentKid.firstName || '-'}}</span>

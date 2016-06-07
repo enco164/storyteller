@@ -73,18 +73,26 @@ class KidsController extends ApiController
 
     public function update(Request $request, $id)
     {
-        //
+        $kid = Kid::find($id);
+        if (!$kid)
+        {
+            return $this->respondWithError("Kid does not exist.");
+        }
+
+        $kid->fill($request->all());
+        $kid->save();
+        return $kid;
     }
 
     public function destroy($id)
     {
         $kid = Kid::find($id);
-        if ( ! $kid)
+        if (!$kid)
         {
             return $this->respondWithError("Kid does not exist.");
         }
         $kid->delete();
-        return $this->response()->json(["message" => 'Kid successfully deleted.']);
+        return response()->json(["message" => 'Kid successfully deleted.']);
     }
 
 }

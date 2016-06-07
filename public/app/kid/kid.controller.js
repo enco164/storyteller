@@ -19,17 +19,24 @@
         activate();
 
         function activate() {
-            logger.info('Activated Kid View');
 
             if ($stateParams.id) {
-                Kid.get({id: $stateParams.id}, function (kid) {
-                    vm.currentKid = kid;
-                });
+                Kid.get({id: $stateParams.id}, onSuccess, onError);
             } else {
                 vm.currentKid = undefined;
             }
 
             reloadKids();
+
+            function onSuccess(kid) {
+                console.log(kid);
+                vm.currentKid = kid;
+            }
+
+            function onError(error) {
+                vm.currentKid = null;
+                logger.error(error.data.error.message);
+            }
 
         }
 

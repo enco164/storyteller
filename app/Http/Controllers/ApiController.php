@@ -22,7 +22,7 @@ class ApiController extends Controller
      */
     public function respondNotFound($message = 'Not Found')
     {
-        return $this->setStatusCode(404)->respondWithError('Lesson not found.');
+        return $this->setStatusCode(404)->respondWithError($message);
     }
 
     /**
@@ -31,12 +31,13 @@ class ApiController extends Controller
      */
     public function respondWithError($message)
     {
-        return $this->response([
+        $this->setStatusCode(400);
+        return response([
             'error' => [
                 'message' => $message,
                 'status_code' => $this->getStatusCode()
             ]
-        ]);
+        ])->setStatusCode($this->getStatusCode());
     }
 
     /**
@@ -46,7 +47,7 @@ class ApiController extends Controller
      */
     public function respond($data, $headers = [])
     {
-        return Response::json($data, $this->getStatusCode(), $headers);
+        return response()->json($data, $this->getStatusCode(), $headers);
     }
 
     /**
@@ -71,7 +72,7 @@ class ApiController extends Controller
      */
     public function respondCreated($message)
     {
-        return $this->response([
+        return response([
             'message' => $message
         ]);
     }
