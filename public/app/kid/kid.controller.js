@@ -53,8 +53,6 @@
         }
 
         function deleteKid(kid) {
-            // ST TODO: i ovde je nesto otislo u Honduras, kid je undefined pokusao sam preko vm.currentKid, ali i to nesto ne radi
-            // console.log(kid);
             var name = kid.firstName + ' ' + kid.lastName;
             kid.$delete(onSuccess, onError);
 

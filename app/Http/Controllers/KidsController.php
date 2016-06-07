@@ -51,7 +51,6 @@ class KidsController extends ApiController
 
     public function store(Request $request)
     {
-        /*ST TODO ne radi za edit kako treba*/
         if (!Input::get('firstName') or !Input::get('lastName')) {
             return $this->respondParametersFailed('First Name or Last Name missing');
         }

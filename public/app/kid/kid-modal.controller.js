@@ -23,13 +23,23 @@
             if (vm.kid.id) {
                 vm.kid.$update(onSuccess, onError);
             } else {
+                //TEST
+                // vm.kid.languageMotherFK = 1;
+                // vm.kid.languageFatherFK = 1;
+                // vm.kid.languageSchoolFK = 1;
+                // vm.kid.languageAdditionalSchoolFK = 1;
+                //
+
                 var kid = new Kid(vm.kid);
+
                 kid.$save(onSuccess, onError);
             }
 
             function onSuccess(newKid){
+                //ST TODO: Enco, proveri ovo dole (zakomentarisano), radilo je, sad ne radi :D
+                logger.info('Kid ' + vm.kid.firstName + ' ' + vm.kid.lastName + ' saved');
                 vm.kid = undefined;
-                logger.info('Kid ' + newKid.firstName + ' ' + newKid.lastName + ' saved');
+                // logger.info('Kid ' + newKid.firstName + ' ' + newKid.lastName + ' saved');
                 $uibModalInstance.close(kid);
             }
 

@@ -12,5 +12,10 @@ class Kid extends Model
         'cityOfBirth',
         'gender',
         'educationMother',
-        'educationFather'];
+        'educationFather',
+        'stateOfBirth',
+        'languageMotherFK',
+        'languageFatherFK',
+        'languageSchoolFK',
+        'languageAdditionalSchoolFK'];
 }
