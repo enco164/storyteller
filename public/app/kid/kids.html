@@ -1,0 +1,163 @@
+<section class="mainbar">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="widget wblue">
+                    <div ht-widget-header title="{{vm.title}}">
+
+                            <span class="btn-sm btn-default" ng-click="vm.onCreate()">
+                                <i class="fa fa-plus"></i>
+                                Add new Kid
+                            </span>
+
+                    </div>
+                    <div class="widget-content user">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="input-group" style="margin-bottom: 5px">
+                                  <span class="input-group-addon">
+                                      <i class="fa fa-search"
+                                         aria-hidden="true"
+                                      ></i>
+                                  </span>
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="Search..."
+                                           ng-model="vm.search.$">
+                                </div>
+                                <ul class="list-group" style="height: 350px; overflow: hidden; overflow-y: scroll;">
+                                    <li class="list-group-item"
+                                        ng-repeat="kid in vm.kids | filter:vm.search"
+                                        ng-click="vm.selectKid(kid)"
+                                        ng-class="{'active': vm.currentKid.id === kid.id}"
+                                        style="cursor: pointer; color:black">
+                                        <span>{{kid.firstName + ' ' + kid.lastName}}</span>
+                                        <span class="pull-right">
+                                          <i ng-if="kid.gender === 'f'"
+                                             class="fa fa-venus" aria-hidden="true"></i>
+                                          <i ng-if="kid.gender === 'm'"
+                                             class="fa fa-mars"
+                                             aria-hidden="true"></i>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div ng-if="vm.currentKid">
+                                <h2 class="col-md-9" style="color:white; background-color: #FF6D00;" >
+                                    {{vm.currentKid.firstName + ' ' + vm.currentKid.lastName }}
+                                    <span class="pull-right">
+                                        <button class="btn btn-default" ng-click="vm.editKid()">
+                                            <i class="fa fa-pencil"></i>
+                                            Edit
+                                        </button>
+                                        <button class="btn btn-default" ng-click="vm.deleteKid(vm.currentKid)">
+                                            <i class="fa fa-trash-o"></i>
+                                            Delete
+                                        </button>
+                                    </span>
+                                </h2>
+
+                                <div class="col-md-3">
+                                    <div class="attr-div">
+                                        <label>First Name:</label><br>
+                                        <span>{{vm.currentKid.firstName || '-'}}</span>
+                                    </div>
+                                    <div class="attr-div">
+                                        <label>Last Name:</label><br>
+                                        <span>{{vm.currentKid.lastName || '-'}}</span>
+                                    </div>
+                                    <div class="attr-div">
+                                        <label>Gender:</label><br>
+                                        <span>{{vm.currentKid.gender || '-'}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="attr-div">
+                                        <label>Year of Birth:</label><br>
+                                        <span>{{vm.currentKid.yearOfBirth || '-'}}</span>
+                                    </div>
+                                    <div class="attr-div">
+                                        <label>City of Birth:</label><br>
+                                        <span>{{vm.currentKid.cityOfBirth || '-'}}</span>
+                                    </div>
+                                    <div class="attr-div">
+                                        <label>State of Birth:</label><br>
+                                        <span>{{vm.currentKid.stateOfBirth || '-'}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="attr-div">
+                                        <label>Mother's Education:</label><br>
+                                        <span>{{vm.currentKid.educationMother || '-'}}</span>
+                                    </div>
+                                    <div class="attr-div">
+                                        <label>Father's Education:</label><br>
+                                        <span>{{vm.currentKid.educationFather || '-'}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--<table class="table table-condensed table-striped">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                    <!--<th>First Name</th>-->
+                    <!--<th>Last Name</th>-->
+                    <!--<th>Gender</th>-->
+                    <!--<th><span class="pull-right">Actions</span></th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--<tr ng-repeat="kid in vm.kids">-->
+                    <!--<td>{{kid.firstName}}</td>-->
+                    <!--<td>{{kid.lastName}}</td>-->
+                    <!--<td>{{kid.gender}}</td>-->
+                    <!--<td >-->
+                    <!--<span class="pull-right">-->
+
+                    <!--<button class="btn btn-primary">-->
+                    <!--<i class="fa fa-eye"></i>-->
+                    <!--Show-->
+                    <!--</button>-->
+                    <!--<button class="btn btn-default">-->
+                    <!--<i class="fa fa-pencil"></i>-->
+                    <!--Edit-->
+                    <!--</button>-->
+                    <!--<button class="btn btn-danger"-->
+                    <!--ng-click="vm.deleteKid(kid)"-->
+                    <!--&gt;-->
+                    <!--<i class="fa fa-trash-o"></i>-->
+                    <!--Delete-->
+                    <!--</button>-->
+
+                    <!--</span>-->
+                    <!--</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                    <!--</table>-->
+
+                </div>
+                <div class="widget-foot">
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+</section>
+
+<script type="text/ng-template" id="newKidModal.html">
+    <div>
+        <div class="modal-header">
+            <h3 class="modal-title">Create new Kid</h3>
+        </div>
+        <div class="modal-body">
+            aaaaaaa
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+        </div>
+    </div>
+</script>

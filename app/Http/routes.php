@@ -18,7 +18,16 @@ Route::post('auth/signup', 'AuthController@signup');
 Route::get('api/me', ['middleware' => 'auth', 'uses' => 'UserController@getUser']);
 Route::put('api/me', ['middleware' => 'auth', 'uses' => 'UserController@updateUser']);
 
-// If there is not requested route return index.html and let Angular display 404 page
-Route::get('{all}', function () {
-    return File::get(public_path().'/index.html');
+
+Route::group(['prefix' => 'api'], function () {
+    Route::resource('kids', 'KidsController');
 });
+
+// If there is not requested route return index.html and let Angular display 404 page
+//Route::get('{all}', function () {
+//    return File::get(public_path().'/index.html');
+//});
+Route::any('{path?}', function()
+{
+    return File::get(public_path() . '/index.html');
+})->where("path", ".+");

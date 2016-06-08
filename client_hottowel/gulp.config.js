@@ -9,7 +9,7 @@ module.exports = function() {
   var wiredep = require('wiredep');
   var bowerFiles = wiredep({ devDependencies: true })['js'];
   var bower = {
-    json: require('./bower.json'),
+    json: require('./../bower.json'),
     directory: './bower_components/',
     ignorePath: '../..'
   };
@@ -24,7 +24,7 @@ module.exports = function() {
       './src/**/*.js',
       './*.js'
     ],
-    build: '../public/',
+    build: './build/',
     client: client,
     css: temp + 'styles.css',
     fonts: bower.directory + 'font-awesome/fonts/**/*.*',
@@ -43,7 +43,7 @@ module.exports = function() {
       '**/*.module.js',
       '**/*.js'
     ],
-    less: client + 'styles/styles.less',
+    less: [client + 'styles/less/AdminLTE.less', client + 'styles/less/skins/_all-skins.less'],
     report: report,
     root: root,
     server: server,

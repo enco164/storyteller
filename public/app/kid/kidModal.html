@@ -1,0 +1,43 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">{{vm.modalTitle}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label >First name</label>
+            <input type="text" ng-model="vm.kid.firstName">
+        </div>
+        <div class="form-group">
+            <label >Last Name</label>
+            <input type="text" ng-model="vm.kid.lastName">
+        </div>
+        <div class="form-group">
+            <label >Gender</label>
+            <input type="text" ng-model="vm.kid.gender">
+        </div>
+        <div class="form-group">
+            <label >Year Of Birth</label>
+            <input type="text" ng-model="vm.kid.yearOfBirth">
+        </div>
+        <div class="form-group">
+            <label >City of Birth</label>
+            <input type="text" ng-model="vm.kid.cityOfBirth">
+        </div>
+        <div class="form-group">
+            <label >State of Birth</label>
+            <input type="text" ng-model="vm.kid.stateOfBirth">
+        </div>
+        <div class="form-group">
+            <label >Mother's Education</label>
+            <input type="text" ng-model="vm.kid.educationMother">
+        </div>
+        <div class="form-group">
+            <label >Father's Education</label>
+            <input type="text" ng-model="vm.kid.educationFather">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+    </div>
+</div>
