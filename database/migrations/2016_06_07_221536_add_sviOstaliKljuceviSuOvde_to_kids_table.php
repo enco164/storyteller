@@ -14,13 +14,13 @@ class AddSviOstaliKljuceviSuOvdeToKidsTable extends Migration
     {
         Schema::table('kids', function (Blueprint $table) {
             $table->integer('languageMotherFK')->length(10)->unsigned()->nullable();
-            $table->foreign('languageMotherFK')->references('id')->on('language')->onDelete('cascade');
+            $table->foreign('languageMotherFK')->references('id')->on('languages')->onDelete('cascade');
             $table->integer('languageFatherFK')->length(10)->unsigned()->nullable();
-            $table->foreign('languageFatherFK')->references('id')->on('language')->onDelete('cascade');
+            $table->foreign('languageFatherFK')->references('id')->on('languages')->onDelete('cascade');
             $table->integer('languageSchoolFK')->length(10)->unsigned()->nullable();
-            $table->foreign('languageSchoolFK')->references('id')->on('language')->onDelete('cascade');
+            $table->foreign('languageSchoolFK')->references('id')->on('languages')->onDelete('cascade');
             $table->integer('languageAdditionalSchoolFK')->length(10)->unsigned()->nullable();
-            $table->foreign('languageAdditionalSchoolFK')->references('id')->on('language')->onDelete('cascade');
+            $table->foreign('languageAdditionalSchoolFK')->references('id')->on('languages')->onDelete('cascade');
         });
     }
 

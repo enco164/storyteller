@@ -12,13 +12,13 @@ class CreateSceneTable extends Migration
      */
     public function up()
     {
-        Schema::create('scene', function (Blueprint $table) {
+        Schema::create('scenes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('sceneURL');
             $table->integer('sceneNumber');
             $table->string('title')->nullable();
             $table->integer('pictureBookFK')->length(10)->unsigned();
-            $table->foreign('pictureBookFK')->references('id')->on('pictureBook')->onDelete('cascade');
+            $table->foreign('pictureBookFK')->references('id')->on('pictureBooks')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateSceneTable extends Migration
      */
     public function down()
     {
-        Schema::drop('scene');
+        Schema::drop('scenes');
     }
 }

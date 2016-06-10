@@ -37,7 +37,7 @@
 
             function onSuccess(newKid){
                 //ST TODO: Enco, proveri ovo dole (zakomentarisano), radilo je, sad ne radi :D
-                logger.info('Kid ' + vm.kid.firstName + ' ' + vm.kid.lastName + ' saved');
+                logger.info('Kid ' + newKid.firstName + ' ' + newKid.lastName + ' saved');
                 vm.kid = undefined;
                 // logger.info('Kid ' + newKid.firstName + ' ' + newKid.lastName + ' saved');
                 $uibModalInstance.close(kid);

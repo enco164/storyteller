@@ -18,11 +18,13 @@
       templateUrl: 'app/layout/ht-top-nav.html'
     };
 
-    TopNavController.$inject = ['$scope', '$auth', '$state'];
+    TopNavController.$inject = ['$rootScope', '$scope', '$auth', '$state'];
 
     /* @ngInject */
-    function TopNavController($scope, $auth, $state) {
+    function TopNavController($rootScope, $scope, $auth, $state) {
       var vm = this;
+      $scope.$on('authChanged', onAuthChanged);
+
       vm.isAuthenticated = $auth.isAuthenticated();
 
       $scope.isCollapsed = true;
@@ -32,6 +34,10 @@
       function logout() {
         $auth.logout();
         $state.go('login');
+        $rootScope.$broadcast('authChanged');
+      }
+
+      function onAuthChanged() {
         vm.isAuthenticated = $auth.isAuthenticated();
       }
     }

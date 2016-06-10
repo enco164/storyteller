@@ -12,20 +12,20 @@
 
                     </div>
                     <div class="widget-content user">
+                        <div class="clear-fix"></div>
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="input-group" style="margin-bottom: 5px">
                                   <span class="input-group-addon">
                                       <i class="fa fa-search"
-                                         aria-hidden="true"
-                                      ></i>
+                                         aria-hidden="true"></i>
                                   </span>
                                     <input type="text"
                                            class="form-control"
                                            placeholder="Search..."
                                            ng-model="vm.search.$">
                                 </div>
-                                <ul class="list-group" style="height: 350px; overflow: hidden; overflow-y: scroll;">
+                                <ul class="list-group" style="height: 350px; overflow: hidden; overflow-y: auto;">
                                     <li class="list-group-item"
                                         ng-repeat="kid in vm.kids | filter:vm.search"
                                         ng-click="vm.selectKid(kid)"
@@ -97,6 +97,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="clear-fix"></div>
 
                     </div>
                     <!--<table class="table table-condensed table-striped">-->
@@ -146,18 +147,3 @@
         </div>
     </section>
 </section>
-
-<script type="text/ng-template" id="newKidModal.html">
-    <div>
-        <div class="modal-header">
-            <h3 class="modal-title">Create new Kid</h3>
-        </div>
-        <div class="modal-body">
-            aaaaaaa
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
-        </div>
-    </div>
-</script>

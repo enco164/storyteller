@@ -5,9 +5,9 @@
     .module('app.auth')
     .controller('SignupController', SignupController);
 
-  SignupController.$inject = ['$auth', '$state', 'logger'];
+  SignupController.$inject = ['$rootScope', '$auth', '$state', 'logger'];
   /* @ngInject */
-  function SignupController($auth, $state, logger) {
+  function SignupController($rootScope, $auth, $state, logger) {
     var vm = this;
     vm.title = 'Login';
 
@@ -26,6 +26,7 @@
           $auth.setToken(response);
           $state.go('dashboard');
           logger.info('You have successfully created a new account and have been signed-in');
+          $rootScope.$broadcast('authChanged');
         })
         .catch(function(error) {
           logger.error(error.data.message);

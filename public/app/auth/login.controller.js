@@ -5,9 +5,9 @@
     .module('app.auth')
     .controller('LoginController', LoginController);
 
-  LoginController.$inject = ['$auth', '$state', 'logger'];
+  LoginController.$inject = ['$rootScope', '$auth', '$state', 'logger'];
   /* @ngInject */
-  function LoginController($auth, $state, logger) {
+  function LoginController($rootScope, $auth, $state, logger) {
     var vm = this;
     vm.title = 'Login';
 
@@ -22,6 +22,7 @@
       $auth.login(vm.user)
         .then(function() {
           $state.go('dashboard');
+          $rootScope.$broadcast('authChanged');
         })
         .catch(function(error) {
           logger.error(error.data.message);

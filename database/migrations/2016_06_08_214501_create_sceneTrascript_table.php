@@ -12,14 +12,12 @@ class CreateSceneTrascriptTable extends Migration
      */
     public function up()
     {
-        Schema::create('sceneTrascript', function (Blueprint $table) {
+        Schema::create('sceneTrascripts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('transcriptFK')->length(10)->unsigned();
-            $table->foreign('transcriptFK')->references('id')->on('transcript')->onDelete('cascade');
+            $table->foreign('transcriptFK')->references('id')->on('transcripts')->onDelete('cascade');
             $table->integer('sceneFK')->length(10)->unsigned()->nullable();
-            $table->foreign('sceneFK')->references('id')->on('scene')->onDelete('cascade');
-            $table->integer('pictureBookFK')->length(10)->unsigned()->nullable();
-            $table->foreign('pictureBookFK')->references('id')->on('pictureBook')->onDelete('cascade');
+            $table->foreign('sceneFK')->references('id')->on('scenes')->onDelete('cascade');
             $table->string('text');
             $table->timestamps();
         });
@@ -32,6 +30,6 @@ class CreateSceneTrascriptTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sceneTrascript');
+        Schema::drop('sceneTrascripts');
     }
 }

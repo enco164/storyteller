@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kid extends Model
 {
-    protected $fillable = ['firstName',
+    protected $fillable = [
+        'firstName',
         'lastName',
         'yearOfBirth',
         'cityOfBirth',
