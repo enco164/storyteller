@@ -8,6 +8,7 @@
     'app.kid',
     'app.auth',
     'app.dashboard',
+    'app.recordings',
     'app.layout'
   ]);
 })();

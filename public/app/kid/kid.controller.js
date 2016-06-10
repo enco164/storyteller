@@ -29,7 +29,6 @@
             reloadKids();
 
             function onSuccess(kid) {
-                console.log(kid);
                 vm.currentKid = kid;
             }
 

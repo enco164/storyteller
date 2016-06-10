@@ -12,18 +12,10 @@ class CreateAudioRecordingTable extends Migration
      */
     public function up()
     {
-        Schema::create('audioRecording', function (Blueprint $table) {
+        Schema::create('audioRecordings', function (Blueprint $table) {
             $table->increments('id');
             $table->date('recordingDate');
             $table->string('audioURL');
-            $table->integer('userFK')->length(10)->unsigned();
-            $table->foreign('userFK')->references('id')->on('users');
-            $table->integer('pictureBookFK')->length(10)->unsigned()->nullable();
-            $table->foreign('pictureBookFK')->references('id')->on('pictureBook');
-            $table->integer('kidFK')->length(10)->unsigned();
-            $table->foreign('kidFK')->references('id')->on('kids');
-            $table->integer('transcriptFK')->length(10)->unsigned()->nullable();
-            $table->foreign('transcriptFK')->references('id')->on('transcript');
             $table->timestamps();
         });
     }
@@ -35,6 +27,6 @@ class CreateAudioRecordingTable extends Migration
      */
     public function down()
     {
-        Schema::drop('audioRecording');
+        Schema::drop('audioRecordings');
     }
 }

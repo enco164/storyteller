@@ -9,25 +9,16 @@
   </div>
   <div class="navbar-collapse collapse" uib-collapse="isCollapsed">
     <div class="pull-right navbar-logo">
-      <ul class="nav navbar-nav pull-right">
-        <li ng-if="vm.isAuthenticated">
-          <a ng-click="vm.logout()">Log out</a>
+      <ul class="nav navbar-nav pull-right"
+          ng-if="vm.isAuthenticated">
+        <li><a ui-sref="new"><i class="fa fa-plus" aria-hidden="true"></i> Start new session</a></li>
+        <li>
+          <a ng-click="vm.logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
         </li>
-        <!--<li>-->
-          <!--<a ng-href="{{vm.navline.link}}" target="_blank">-->
-                        <!--{{vm.navline.text}}-->
-                    <!--</a>-->
-        <!--</li>-->
-        <!--<li class="dropdown dropdown-big">-->
-          <!--<a href="http://www.angularjs.org" target="_blank">-->
-            <!--<img src="images/AngularJS-small.png" />-->
-          <!--</a>-->
-        <!--</li>-->
-        <!--<li>-->
-          <!--<a href="http://www.gulpjs.com/" target="_blank">-->
-            <!--<img src="images/gulp-tiny.png" />-->
-          <!--</a>-->
-        <!--</li>-->
+      </ul>
+      <ul class="nav navbar-nav pull-right"
+          ng-if="!vm.isAuthenticated">
+
       </ul>
     </div>
   </div>

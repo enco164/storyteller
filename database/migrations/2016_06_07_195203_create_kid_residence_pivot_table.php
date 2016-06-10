@@ -12,11 +12,11 @@ class CreateKidResidencePivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('kid_residence', function (Blueprint $table) {
+        Schema::create('kids_residences', function (Blueprint $table) {
             $table->integer('kid_id')->unsigned()->index();
             $table->foreign('kid_id')->references('id')->on('kids')->onDelete('cascade');
             $table->integer('residence_id')->unsigned()->index();
-            $table->foreign('residence_id')->references('id')->on('residence')->onDelete('cascade');
+            $table->foreign('residence_id')->references('id')->on('residences')->onDelete('cascade');
             $table->primary(['kid_id', 'residence_id']);
         });
     }
@@ -28,6 +28,6 @@ class CreateKidResidencePivotTable extends Migration
      */
     public function down()
     {
-        Schema::drop('kid_residence');
+        Schema::drop('kids_residences');
     }
 }

@@ -54,16 +54,15 @@ class KidsController extends ApiController
         if (!Input::get('firstName') or !Input::get('lastName')) {
             return $this->respondParametersFailed('First Name or Last Name missing');
         }
-        Kid::create($request->all());
+        $kid = Kid::create($request->all());
 
-        return response()->json(['message' => 'Kid successfully created.']);
+        return response()->json($kid);
     }
 
     public function show($id)
     {
         $kid = Kid::find($id);
-        if ( ! $kid)
-        {
+        if (!$kid) {
             return $this->respondNotFound('Kid does not exist.');
         }
 
@@ -73,21 +72,20 @@ class KidsController extends ApiController
     public function update(Request $request, $id)
     {
         $kid = Kid::find($id);
-        if (!$kid)
-        {
+        if (!$kid) {
             return $this->respondWithError("Kid does not exist.");
         }
 
         $kid->fill($request->all());
         $kid->save();
-        return $kid;
+
+        return response()->json($kid);
     }
 
     public function destroy($id)
     {
         $kid = Kid::find($id);
-        if (!$kid)
-        {
+        if (!$kid) {
             return $this->respondWithError("Kid does not exist.");
         }
         $kid->delete();

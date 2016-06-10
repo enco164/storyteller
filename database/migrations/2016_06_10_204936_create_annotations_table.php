@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateResidenceTable extends Migration
+class CreateAnnotationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,12 @@ class CreateResidenceTable extends Migration
      */
     public function up()
     {
-        Schema::create('residences', function (Blueprint $table) {
+        Schema::create('annotations', function (Blueprint $table) {
             $table->increments('id');
-            $table-> string('state');
-            $table-> string('city');
+            $table->string('name');
+            $table->string('comment');
+            $table->integer('startIndex');
+            $table->integer('endIndex');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateResidenceTable extends Migration
      */
     public function down()
     {
-        Schema::drop('residences');
+        Schema::drop('annotations');
     }
 }
