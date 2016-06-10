@@ -14,7 +14,6 @@ class CreateTranscriptTable extends Migration
     {
         Schema::create('transcripts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
             $table->timestamps();
         });
     }
