@@ -12,4 +12,8 @@ class Annotation extends Model
         'startIndex',
         'endIndex'
     ];
+
+    public function sceneTranscript() {
+        return $this->belongsTo('App\SceneTranscript');
+    }
 }

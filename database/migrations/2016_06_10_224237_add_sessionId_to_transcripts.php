@@ -13,8 +13,8 @@ class AddSessionIdToTranscripts extends Migration
     public function up()
     {
         Schema::table('transcripts', function (Blueprint $table) {
-            $table->integer('sessionId')->length(10)->unsigned()->nullable();
-            $table->foreign('sessionId')->references('id')->on('sessions')->onDelete('cascade');
+            $table->integer('session_id')->length(10)->unsigned()->nullable();
+            $table->foreign('session_id')->references('id')->on('sessions')->onDelete('cascade');
         });
 
     }
@@ -27,8 +27,8 @@ class AddSessionIdToTranscripts extends Migration
     public function down()
     {
         Schema::table('transcripts', function (Blueprint $table) {
-            $table->dropColumn('sessionId');
-            $table->dropColumn('sessionId');
+            $table->dropColumn('session_id');
+            $table->dropColumn('session_id');
         });
     }
 }

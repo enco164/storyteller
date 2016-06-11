@@ -13,8 +13,8 @@ class AddForeignAnnotationSchemaToTranscript extends Migration
     public function up()
     {
         Schema::table('transcripts', function (Blueprint $table) {
-            $table->integer('annotationSchemaId')->length(10)->unsigned()->nullable();
-            $table->foreign('annotationSchemaId')->references('id')->on('annotationSchemas')->onDelete('cascade');
+            $table->integer('annotationSchema_id')->length(10)->unsigned()->nullable();
+            $table->foreign('annotationSchema_id')->references('id')->on('annotationSchemas')->onDelete('cascade');
         });
     }
 
@@ -26,8 +26,8 @@ class AddForeignAnnotationSchemaToTranscript extends Migration
     public function down()
     {
         Schema::table('transcripts', function (Blueprint $table) {
-            $table->dropColumn('annotationSchemaId');
-            $table->dropColumn('annotationSchemaId');
+            $table->dropColumn('annotationSchema_id');
+            $table->dropColumn('annotationSchema_id');
         });
     }
 }

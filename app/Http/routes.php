@@ -21,6 +21,9 @@ Route::put('api/me', ['middleware' => 'auth', 'uses' => 'UserController@updateUs
 
 Route::group(['prefix' => 'api'], function () {
     Route::resource('kids', 'KidsController');
+    Route::resource('sessions', 'SessionsController');
+    Route::resource('scene_transcripts', 'SceneTranscriptsController');
+
 });
 
 // If there is not requested route return index.html and let Angular display 404 page
