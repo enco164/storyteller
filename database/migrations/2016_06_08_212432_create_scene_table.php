@@ -17,8 +17,8 @@ class CreateSceneTable extends Migration
             $table->string('sceneURL');
             $table->integer('sceneNumber');
             $table->string('title')->nullable();
-            $table->integer('pictureBookId')->length(10)->unsigned();
-            $table->foreign('pictureBookId')->references('id')->on('pictureBooks')->onDelete('cascade');
+            $table->integer('pictureBook_id')->length(10)->unsigned();
+            $table->foreign('pictureBook_id')->references('id')->on('pictureBooks')->onDelete('cascade');
             $table->timestamps();
         });
     }

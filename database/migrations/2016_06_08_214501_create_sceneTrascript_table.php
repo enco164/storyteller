@@ -14,8 +14,8 @@ class CreateSceneTrascriptTable extends Migration
     {
         Schema::create('sceneTranscripts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sceneId')->length(10)->unsigned()->nullable();
-            $table->foreign('sceneId')->references('id')->on('scenes')->onDelete('cascade');
+            $table->integer('scene_id')->length(10)->unsigned()->nullable();
+            $table->foreign('scene_id')->references('id')->on('scenes')->onDelete('cascade');
             $table->string('text');
             $table->timestamps();
         });

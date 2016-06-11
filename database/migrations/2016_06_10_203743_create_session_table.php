@@ -14,14 +14,14 @@ class CreateSessionTable extends Migration
     {
         Schema::create('sessions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('userId')->length(10)->unsigned()->nullable();
-            $table->foreign('userId')->references('id')->on('users');
-            $table->integer('kidId')->length(10)->unsigned()->nullable();
-            $table->foreign('kidId')->references('id')->on('kids');
-            $table->integer('pictureBookId')->length(10)->unsigned()->nullable();
-            $table->foreign('pictureBookId')->references('id')->on('pictureBooks');
-            $table->integer('audioRecordingId')->length(10)->unsigned()->nullable();
-            $table->foreign('audioRecordingId')->references('id')->on('audioRecordings');
+            $table->integer('user_id')->length(10)->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('kid_id')->length(10)->unsigned()->nullable();
+            $table->foreign('kid_id')->references('id')->on('kids');
+            $table->integer('pictureBook_id')->length(10)->unsigned()->nullable();
+            $table->foreign('pictureBook_id')->references('id')->on('pictureBooks');
+            $table->integer('audioRecording_id')->length(10)->unsigned()->nullable();
+            $table->foreign('audioRecording_id')->references('id')->on('audioRecordings');
             $table->timestamps();
         });
     }
