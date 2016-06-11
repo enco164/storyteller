@@ -36,10 +36,8 @@
             }
 
             function onSuccess(newKid){
-                //ST TODO: Enco, proveri ovo dole (zakomentarisano), radilo je, sad ne radi :D
                 logger.info('Kid ' + newKid.firstName + ' ' + newKid.lastName + ' saved');
                 vm.kid = undefined;
-                // logger.info('Kid ' + newKid.firstName + ' ' + newKid.lastName + ' saved');
                 $uibModalInstance.close(kid);
             }
 
@@ -50,6 +48,29 @@
 
         function cancel() {
             $uibModalInstance.dismiss('cancel');
+        }
+
+        function openDatePicker() {
+            vm.popup1 = true;
+        }
+
+        vm.openDatePicker = openDatePicker;
+
+        vm.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        vm.format = vm.formats[0];
+        vm.dateOptions = {
+            dateDisabled: disabled,
+            formatYear: 'yy',
+            maxDate: new Date(2020, 5, 22),
+            minDate: new Date(),
+            startingDay: 1
+        };
+        // Disable weekend selection
+        function disabled(data) {
+            return false;
+            var date = data.date,
+                mode = data.mode;
+            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
         }
     }
 })();
