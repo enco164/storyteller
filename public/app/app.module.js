@@ -10,6 +10,7 @@
     'app.dashboard',
     'app.recordings',
     'app.sessions',
+    'app.annotationSchema',
     'app.layout'
   ]);
 })();

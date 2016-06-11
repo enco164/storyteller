@@ -22,14 +22,7 @@
         function ok(){
             if (vm.kid.id) {
                 vm.kid.$update(onSuccess, onError);
-            } else {
-                //TEST
-                // vm.kid.languageMotherFK = 1;
-                // vm.kid.languageFatherFK = 1;
-                // vm.kid.languageSchoolFK = 1;
-                // vm.kid.languageAdditionalSchoolFK = 1;
-                //
-
+            } else {    
                 var kid = new Kid(vm.kid);
 
                 kid.$save(onSuccess, onError);
