@@ -18,6 +18,8 @@ class CreateAnnotationsTable extends Migration
             $table->string('comment');
             $table->integer('startIndex');
             $table->integer('endIndex');
+            $table->integer('transcriptId')->length(10)->unsigned()->nullable();
+            $table->foreign('transcriptId')->references('id')->on('transcripts')->onDelete('cascade');
             $table->timestamps();
         });
     }

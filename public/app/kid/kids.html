@@ -73,8 +73,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="attr-div">
-                                        <label>Year of Birth:</label><br>
-                                        <span>{{vm.currentKid.yearOfBirth || '-'}}</span>
+                                        <label>Date of Birth:</label><br>
+                                        <span>{{(vm.currentKid.yearOfBirth | date:'dd.MM.yyyy')|| '-'}}</span>
                                     </div>
                                     <div class="attr-div">
                                         <label>City of Birth:</label><br>

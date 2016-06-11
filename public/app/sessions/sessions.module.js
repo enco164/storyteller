@@ -4,7 +4,7 @@
 (function() {
     'use strict';
 
-    angular.module('app.recordings', [
+    angular.module('app.sessions', [
         'app.core',
         'app.widgets'
     ]);

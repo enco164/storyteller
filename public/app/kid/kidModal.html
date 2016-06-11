@@ -3,37 +3,72 @@
         <h3 class="modal-title">{{vm.modalTitle}}</h3>
     </div>
     <div class="modal-body">
-        <div class="form-group">
-            <label >First name</label>
-            <input type="text" ng-model="vm.kid.firstName">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label >First name</label><br>
+                    <input type="text" ng-model="vm.kid.firstName">
+                </div>
+                <div class="form-group">
+                    <label >City of Birth</label><br>
+                    <input type="text" ng-model="vm.kid.cityOfBirth">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label >Last Name</label><br>
+                    <input type="text" ng-model="vm.kid.lastName">
+                </div>
+                <div class="form-group">
+                    <label >State of Birth</label><br>
+                    <input type="text" ng-model="vm.kid.stateOfBirth">
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label >Last Name</label>
-            <input type="text" ng-model="vm.kid.lastName">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label >Date Of Birth</label><br>
+                    <input type="text" ng-model="vm.kid.yearOfBirth">
+
+                        <input type="text"
+                               class="form-control"
+                               uib-datepicker-popup="{{vm.format}}"
+                               ng-model="vm.kid.yearOfBirth"
+                               is-open="vm.popup1"
+                               datepicker-options="vm.dateOptions"
+                               close-text="Close" />
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openDatePicker()">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                      </span>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label >Gender</label><br>
+                    <input type="radio" ng-model="vm.kid.gender" value="m">Male
+                    <input type="radio" ng-model="vm.kid.gender" value="f">Female
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label >Gender</label>
-            <input type="text" ng-model="vm.kid.gender">
-        </div>
-        <div class="form-group">
-            <label >Year Of Birth</label>
-            <input type="text" ng-model="vm.kid.yearOfBirth">
-        </div>
-        <div class="form-group">
-            <label >City of Birth</label>
-            <input type="text" ng-model="vm.kid.cityOfBirth">
-        </div>
-        <div class="form-group">
-            <label >State of Birth</label>
-            <input type="text" ng-model="vm.kid.stateOfBirth">
-        </div>
-        <div class="form-group">
-            <label >Mother's Education</label>
-            <input type="text" ng-model="vm.kid.educationMother">
-        </div>
-        <div class="form-group">
-            <label >Father's Education</label>
-            <input type="text" ng-model="vm.kid.educationFather">
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label >Father's Education</label><br>
+                    <input type="text" ng-model="vm.kid.educationFather">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label >Mother's Education</label><br>
+                    <input type="text" ng-model="vm.kid.educationMother">
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal-footer">

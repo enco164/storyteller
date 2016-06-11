@@ -5,7 +5,7 @@
     'use strict';
 
     angular
-        .module('app.recordings')
+        .module('app.sessions')
         .run(appRun);
 
     appRun.$inject = ['routerHelper'];
@@ -26,7 +26,7 @@
                     title: 'Sessions',
                     settings: {
                         nav: 5,
-                        content: '<i class="fa fa-microphone"></i> Sessions'
+                        content: '<i class="fa fa-archive"></i> Sessions'
                     },
                     loginRequired: true
                 }

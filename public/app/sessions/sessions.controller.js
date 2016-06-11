@@ -5,14 +5,14 @@
     'use strict';
 
     angular
-        .module('app.recordings')
-        .controller('RecordingsController', RecordingsController);
+        .module('app.sessions')
+        .controller('SessionsController', SessionsController);
 
-    RecordingsController.$inject = [];
+    SessionsController.$inject = [];
     /* @ngInject */
-    function RecordingsController() {
+    function SessionsController() {
         var vm = this;
-        vm.title = 'Recordings';
+        vm.title = 'Sessions';
 
     }
 })();

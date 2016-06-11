@@ -9,6 +9,7 @@
     'app.auth',
     'app.dashboard',
     'app.recordings',
+    'app.sessions',
     'app.layout'
   ]);
 })();

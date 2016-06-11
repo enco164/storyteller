@@ -20,8 +20,6 @@ class CreateSessionTable extends Migration
             $table->foreign('kidId')->references('id')->on('kids');
             $table->integer('pictureBookId')->length(10)->unsigned()->nullable();
             $table->foreign('pictureBookId')->references('id')->on('pictureBooks');
-            $table->integer('transcriptId')->length(10)->unsigned()->nullable();
-            $table->foreign('transcriptId')->references('id')->on('transcripts');
             $table->integer('audioRecordingId')->length(10)->unsigned()->nullable();
             $table->foreign('audioRecordingId')->references('id')->on('audioRecordings');
             $table->timestamps();
