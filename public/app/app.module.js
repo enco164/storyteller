@@ -11,6 +11,7 @@
     'app.recordings',
     'app.sessions',
     'app.annotationSchema',
+    'app.residence',
     'app.layout'
   ]);
 })();
