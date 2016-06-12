@@ -31,8 +31,8 @@
 
             reloadResidences();
 
-            function onSuccess(annotSch) {
-                vm.currentResidence = annotSch;
+            function onSuccess(residence) {
+                vm.currentResidence = residence;
             }
 
             function onError(error) {
@@ -42,10 +42,10 @@
 
         }
 
-        function selectResidence(annotSch) {
+        function selectResidence(residence) {
             //notify:false je da ne reloaduje stranu
-            $state.go($state.current, {id: annotSch.id}, {notify: false});
-            vm.currentResidence = annotSch;
+            $state.go($state.current, {id: residence.id}, {notify: false});
+            vm.currentResidence = residence;
         }
 
         function reloadResidences() {
@@ -54,9 +54,9 @@
             });
         }
 
-        function deleteResidence(annotSch) {
-            var name = annotSch.city;
-            annotSch.$delete(onSuccess, onError);
+        function deleteResidence(residence) {
+            var name = residence.city;
+            residence.$delete(onSuccess, onError);
 
             function onSuccess() {
                 logger.info('Residence ' + name + ' deleted!');
@@ -74,7 +74,7 @@
 
             modalInstance.result.then(onOkCallback, onCancelCallback);
 
-            function onOkCallback(annotSch) {
+            function onOkCallback(residence) {
                 reloadResidences();
             }
 
@@ -88,7 +88,7 @@
 
             modalInstance.result.then(onOkCallback, onCancelCallback);
 
-            function onOkCallback(annotSch) {
+            function onOkCallback(residence) {
                 reloadResidences();
             }
 
@@ -97,13 +97,13 @@
             }
         }
 
-        function instantiateModal(annotSch, $modalTitle) {
+        function instantiateModal(residence, $modalTitle) {
             return $uibModal.open({
                 templateUrl: 'app/residence/residenceModal.html',
                 controller: 'ResidenceModalController',
                 controllerAs: 'vm',
                 resolve: {
-                    annotSch: annotSch,
+                    residence: residence,
                     modalTitle: function () {
                         return $modalTitle;
                     }

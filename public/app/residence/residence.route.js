@@ -20,13 +20,13 @@
                 state: 'residence',
                 config: {
                     url: '/residence?id',
-                    templateUrl: 'app/residence/residence.html',
+                    templateUrl: 'app/residence/residences.html',
                     controller: 'ResidenceController',
                     controllerAs: 'vm',
-                    title: 'Residence',
+                    title: 'Residences',
                     settings: {
                         nav: 6,
-                        content: '<i class="fa fa-file-text" aria-hidden="true"></i> Residence'
+                        content: '<i class="fa fa-file-text" aria-hidden="true"></i> Residences'
                     },
                     loginRequired: true
                 }
