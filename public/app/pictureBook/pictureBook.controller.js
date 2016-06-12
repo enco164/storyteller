@@ -97,7 +97,7 @@
         function instantiateModal(pictureBook, $modalTitle) {
             return $uibModal.open({
                 templateUrl: 'app/pictureBook/pictureBookModal.html',
-                controller: 'PictureBookController',
+                controller: 'PictureBookModalController',
                 controllerAs: 'vm',
                 resolve: {
                     pictureBook: pictureBook,
