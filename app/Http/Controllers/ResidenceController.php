@@ -27,45 +27,45 @@ class ResidenceController extends ApiController
     public function store(Request $request)
     {
 
-        if (!Input::get('state') and !Input::get('city')) {
+        if (!Input::get('State') and !Input::get('City')) {
             return $this->respondParametersFailed('State or City missing');
         }
-        $schema = Residence::create($request->all());
+        $residence = Residence::create($request->all());
 
-        return response()->json($schema);
+        return response()->json($residence);
     }
 
     public function show($id)
     {
-        $schema = Residence::find($id);
+        $residence = Residence::find($id);
 
-        if(!$schema) {
+        if(!$residence) {
             return $this->respondNotFound('Residence does not exist');
         }
 
-        return response()->json($schema);
+        return response()->json($residence);
     }
 
     public function update(Request $request, $id)
     {
-        $schema = Residence::find($id);
-        if (!$schema) {
+        $residence = Residence::find($id);
+        if (!$residence) {
             return $this->respondWithError("Residence does not exist.");
         }
 
-        $schema->fill($request->all());
-        $schema->save();
+        $residence->fill($request->all());
+        $residence->save();
 
-        return response()->json($schema);
+        return response()->json($residence);
     }
 
     public function destroy($id)
     {
-        $schema = Residence::find($id);
-        if (!$schema) {
+        $residence = Residence::find($id);
+        if (!$residence) {
             return $this->respondWithError("Residence does not exist.");
         }
-        $schema->delete();
+        $residence->delete();
         return response()->json(["message" => 'Residence successfully deleted.']);
     }
 }

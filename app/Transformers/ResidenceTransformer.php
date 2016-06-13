@@ -11,14 +11,14 @@ class ResidenceTransformer extends Transformer
 {
 
     /**
-     * @param Residence $annotSch
+     * @param Residence $residence
      * @return array
      */
-    public function transform($annotSch)
+    public function transform($residence)
     {
         return [
-            'state' => $annotSch['state'],
-            'city' => $annotSch['city']
+            'State' => $residence['State'],
+            'City' => $residence['City']
         ];
     }
 }
