@@ -24,12 +24,12 @@
                 vm.residence.$update(onSuccess, onError);
             } else {
                 var residence = new Residence(vm.residence);
-                console.log(residence.State + " " +residence.City);
+                //console.log(residence.State + " " +residence.City);
                 residence.$save(onSuccess, onError);
             }
 
             function onSuccess(newResidence){
-                logger.info('Residence ' + newResidence.City +' saved');
+                logger.info('Residence ' + newResidence.city +' saved');
                 vm.residence = undefined;
                 $uibModalInstance.close(residence);
             }

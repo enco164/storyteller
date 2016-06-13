@@ -27,7 +27,7 @@ class ResidenceController extends ApiController
     public function store(Request $request)
     {
 
-        if (!Input::get('State') and !Input::get('City')) {
+        if (!Input::get('state') and !Input::get('city')) {
             return $this->respondParametersFailed('State or City missing');
         }
         $residence = Residence::create($request->all());

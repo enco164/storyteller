@@ -17,8 +17,8 @@ class ResidenceTransformer extends Transformer
     public function transform($residence)
     {
         return [
-            'State' => $residence['State'],
-            'City' => $residence['City']
+            'state' => $residence['state'],
+            'city' => $residence['city']
         ];
     }
 }

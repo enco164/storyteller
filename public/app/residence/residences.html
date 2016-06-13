@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="widget wblue">
-                    <div ht-widget-header title="{{vm.title}}">
+                    <div ht-widget-header title="{{vm.City}}">
 
                             <span class="btn-sm btn-default" ng-click="vm.onCreate()" style="cursor: pointer">
                                 <i class="fa fa-plus"></i>
@@ -31,14 +31,14 @@
                                         ng-click="vm.selectResidence(residence)"
                                         ng-class="{'active': vm.currentResidence.id === residence.id}"
                                         style="cursor: pointer; color:black">
-                                        <span>{{residence.State}}</span>
-                                        <span>{{residence.City}}</span>
+                                        <span>{{residence.state}}</span>
+                                        <span>{{residence.city}}</span>
                                     </li>
                                 </ul>
                             </div>
                             <div ng-if="vm.currentResidence">
                                 <h2 class="col-md-9" style="color:white; background-color: #FF6D00;" >
-                                    {{vm.currentResidence.City}}
+                                    {{vm.currentResidence.city}}
                                     <span class="pull-right">
                                         <button class="btn btn-default" ng-click="vm.editResidence()">
                                             <i class="fa fa-pencil"></i>
@@ -52,11 +52,11 @@
                                 </h2>
                                 <div class="col-md-3">
                                     <label>State:</label><br>
-                                    <span>{{vm.currentResidence.State}}</span>
+                                    <span>{{vm.currentResidence.state}}</span>
                                 </div>
                                 <div class="col-md-3">
                                     <label>City:</label><br>
-                                    <span>{{vm.currentResidence.City }}</span>
+                                    <span>{{vm.currentResidence.city }}</span>
                                 </div>
 
                             </div>
