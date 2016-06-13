@@ -12,7 +12,7 @@ class CreateSceneTrascriptTable extends Migration
      */
     public function up()
     {
-        Schema::create('sceneTranscripts', function (Blueprint $table) {
+        Schema::create('scene_transcripts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('scene_id')->length(10)->unsigned()->nullable();
             $table->foreign('scene_id')->references('id')->on('scenes')->onDelete('cascade');
@@ -28,6 +28,6 @@ class CreateSceneTrascriptTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sceneTranscripts');
+        Schema::drop('scene_transcripts');
     }
 }

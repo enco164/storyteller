@@ -13,7 +13,7 @@ class AddStateOfBirthToKidsTable extends Migration
     public function up()
     {
         Schema::table('kids', function (Blueprint $table) {
-            $table->string('stateOfBirth');
+            $table->string('state_of_birth');
         });
     }
 
@@ -25,7 +25,7 @@ class AddStateOfBirthToKidsTable extends Migration
     public function down()
     {
         Schema::table('kids', function (Blueprint $table) {
-            $table->dropColumn('stateOfBirth');
+            $table->dropColumn('state_of_birth');
         });
     }
 }

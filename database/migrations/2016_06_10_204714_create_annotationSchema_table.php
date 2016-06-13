@@ -12,7 +12,7 @@ class CreateAnnotationSchemaTable extends Migration
      */
     public function up()
     {
-        Schema::create('annotationSchemas', function (Blueprint $table) {
+        Schema::create('annotation_schemas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('description');
@@ -34,6 +34,6 @@ class CreateAnnotationSchemaTable extends Migration
      */
     public function down()
     {
-        Schema::drop('annotationSchemas');
+        Schema::drop('annotation_schemas');
     }
 }

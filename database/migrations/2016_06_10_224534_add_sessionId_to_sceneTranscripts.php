@@ -12,8 +12,7 @@ class AddSessionIdToSceneTranscripts extends Migration
      */
     public function up()
     {
-
-        Schema::table('sceneTranscripts', function (Blueprint $table) {
+        Schema::table('scene_transcripts', function (Blueprint $table) {
             $table->integer('session_id')->length(10)->unsigned()->nullable();
             $table->foreign('session_id')->references('id')->on('sessions')->onDelete('cascade');
         });
@@ -26,7 +25,7 @@ class AddSessionIdToSceneTranscripts extends Migration
      */
     public function down()
     {
-        Schema::table('sceneTranscripts', function (Blueprint $table) {
+        Schema::table('scene_transcripts', function (Blueprint $table) {
             $table->dropColumn('session_id');
             $table->dropColumn('session_id');
         });

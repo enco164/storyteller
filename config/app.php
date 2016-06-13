@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('7m0IUD8eChazTnovvvuT8Gr4NEooBvfbd6rhqHSDNx8='),
 
     'cipher' => 'AES-256-CBC',
 
@@ -157,6 +157,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Eloquence\EloquenceServiceProvider::class,
 
     ],
 

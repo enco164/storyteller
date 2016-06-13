@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kid extends Model
 {
+    use \Eloquence\Behaviours\CamelCasing;
+
     protected $fillable = [
         'firstName',
         'lastName',

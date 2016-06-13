@@ -8,7 +8,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\SceneTranscript;
 use App\Session;
 use Illuminate\Http\Request;
@@ -30,6 +29,11 @@ class SessionsController extends ApiController
         }
 
         return $session;
+    }
+
+    public function update(Request $request) {
+
+//        return PictureBook::all();
     }
 
     public function destroy() {
