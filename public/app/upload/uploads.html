@@ -1,8 +1,15 @@
-<div>
-    <input type="file"
-           accept="image/*"
-           name="uploadedFile"
-           ng-model="vm.model.file"
-           change="vm.upload()"
-           style="position:relative; left:50%; bottom:50%;"/>
+<div style="position:relative; left:50%; bottom:50%;">
+    <h4>Upload on file select</h4>
+    <button type="file" ngf-select="vm.uploadFiles($file, $invalidFiles)"
+            accept="image/*">
+        Select File</button>
+    <br><br>
+    File:
+    <div style="font:smaller">{{vm.f.name}} {{vm.errFile.name}} {{vm.errFile.$error}} {{vm.errFile.$errorParam}}
+      <span class="progress" ng-show="f.progress >= 0">
+          <div style="width:{{f.progress}}%"
+               ng-bind="vm.f.progress + '%'"></div>
+      </span>
+    </div>
+    {{errorMsg}}
 </div>
