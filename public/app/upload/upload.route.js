@@ -17,15 +17,15 @@
     function getStates() {
         return [
             {
-                state: 'upload',
+                state: 'uploads',
                 config: {
-                    url: '/upload?id',
+                    url: '/uploads?id',
                     templateUrl: 'app/upload/uploads.html',
                     controller: 'UploadController',
                     controllerAs: 'vm',
                     title: 'Uploads',
                     settings: {
-                        nav: 6,
+                        nav: 7,
                         content: '<i class="fa fa-file-text" aria-hidden="true"></i> Uploads'
                     },
                     loginRequired: true

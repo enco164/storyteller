@@ -13,8 +13,8 @@
     'app.annotationSchema',
     'app.residence',
     'app.language',
-    'app.upload',
     'app.pictureBook',
+    'app.upload',
     'app.layout'
   ]);
 })();

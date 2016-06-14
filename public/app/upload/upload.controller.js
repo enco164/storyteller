@@ -5,24 +5,25 @@
 (function() {
     'use strict';
 
-    angular.
-        module('app.upload', ['ur.file', 'ngResource'])
+    angular
+        .module('app.upload', ['ur.file', 'ngResource'])
         .controller('UploadController', UploadController);
 
-    UploadController.$inject = ['$state', '$stateParams','logger', 'Upload', '$uibModal','$scope', '$resource'];
+    UploadController.$inject = ['$resource', '$http'];
     /* @ngInject */
-    function UploadController($state, $stateParams, logger, Residence, $uibModal,$scope, $resource) {
-        var Files = $resource('/media/:id', { id: "@id" });
+    function UploadController($resource, $http) {
+        var vm = this;
+        var Files = $resource('/api/uploads/:id', { id: "@id" });
+        vm.model = {};
+        vm.model.file = null;
 
-        angular.extend($scope, {
 
-            model: { file: null },
 
-            upload: function(model) {
-                Files.prototype.$save.call(model.file, function(self, headers) {
-                    // Handle server response
-                });
-            }
-        });
+        vm.upload = function() {
+            Files.save({test: "abc"}, function(self, headers) {
+                // server laze
+                console.log("Success?");
+            });
+        };
     }
 })();
