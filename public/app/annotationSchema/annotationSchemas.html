@@ -1,0 +1,137 @@
+<section class="mainbar">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="widget wblue">
+                    <div ht-widget-header title="{{vm.title}}">
+
+                            <span class="btn-sm btn-default" ng-click="vm.onCreate()" style="cursor: pointer">
+                                <i class="fa fa-plus"></i>
+                                Add new Schema
+                            </span>
+
+                    </div>
+                    <div class="widget-content user">
+                        <div class="clear-fix"></div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="input-group" style="margin-bottom: 5px">
+                                  <span class="input-group-addon">
+                                      <i class="fa fa-search"
+                                         aria-hidden="true"></i>
+                                  </span>
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="Search..."
+                                           ng-model="vm.search.$">
+                                </div>
+                                <ul class="list-group" style="height: 350px; overflow: hidden; overflow-y: auto;">
+                                    <li class="list-group-item"
+                                        ng-repeat="schema in vm.schemas | filter:vm.search"
+                                        ng-click="vm.selectSchema(schema)"
+                                        ng-class="{'active': vm.currentSchema.id === schema.id}"
+                                        style="cursor: pointer; color:black">
+                                        <span>{{schema.title}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div ng-if="vm.currentSchema">
+                                <h2 class="col-md-9" style="color:white; background-color: #FF6D00;" >
+                                    {{vm.currentSchema.title}}
+                                    <span class="pull-right">
+                                        <button class="btn btn-default" ng-click="vm.editSchema()">
+                                            <i class="fa fa-pencil"></i>
+                                            Edit
+                                        </button>
+                                        <button class="btn btn-default" ng-click="vm.deleteSchema(vm.currentSchema)">
+                                            <i class="fa fa-trash-o"></i>
+                                            Delete
+                                        </button>
+                                    </span>
+                                </h2>
+                                <!--ST TODO: srediti redosled boja (ne slaze se boja i vm.boja)-->
+                                <div class="col-md-3">
+                                    <label>Title:</label><br>
+                                    <span>{{vm.currentSchema.title}}</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Description:</label><br>
+                                    <span>{{vm.currentSchema.description || '-'}}</span>
+                                </div>
+                                <div ng-if="vm.currentSchema.blue">
+                                    <div class="col-md-3">
+                                        <label>Color:</label><br>
+                                        <div class="color-box" style="background-color: #FCBCBC; width: 40px; height: 20px"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Color description:</label><br>
+                                        <span ng-if="vm.currentSchema.blue">{{vm.currentSchema.blue}}</span><br>
+                                    </div>
+                                </div>
+
+                                <div ng-if="vm.currentSchema.green">
+                                    <div class="col-md-3">
+                                        <div class="color-box" style="background-color: #c7fcbc; width: 40px; height: 20px"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span ng-if="vm.currentSchema.green">{{vm.currentSchema.green}}</span><br>
+                                    </div>
+                                </div>
+                                <div ng-if="vm.currentSchema.red">
+                                    <div class="col-md-3">
+                                        <div class="color-box" style="background-color: #bcdffc; width: 40px; height: 20px"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span ng-if="vm.currentSchema.red">{{vm.currentSchema.red}}</span><br>
+                                    </div>
+                                </div>
+                                <div ng-if="vm.currentSchema.aqua">
+                                    <div class="col-md-3">
+                                        <div class="color-box" style="background-color: #f8f89b; width: 40px; height: 20px"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span ng-if="vm.currentSchema.aqua">{{vm.currentSchema.aqua}}</span><br>
+                                    </div>
+                                </div>
+                                <div ng-if="vm.currentSchema.pink">
+                                    <div class="col-md-3">
+                                        <div class="color-box" style="background-color: #fcbcfa; width: 40px; height: 20px"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span ng-if="vm.currentSchema.pink">{{vm.currentSchema.pink}}</span><br>
+                                    </div>
+                                </div>
+                                <div ng-if="vm.currentSchema.yellow">
+                                    <div class="col-md-3">
+                                        <div class="color-box" style="background-color: #bcfcf7; width: 40px; height: 20px"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span ng-if="vm.currentSchema.yellow">{{vm.currentSchema.yellow}}</span><br>
+                                    </div>
+                                </div>
+                                <div ng-if="vm.currentSchema.orange">
+                                    <div class="col-md-3">
+                                        <div class="color-box" style="background-color: darkblue; width: 40px; height: 20px"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span ng-if="vm.currentSchema.orange">{{vm.currentSchema.orange}}</span><br>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <div class="clear-fix"></div>
+
+                    </div>
+
+                </div>
+                <div class="widget-foot">
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+</section>

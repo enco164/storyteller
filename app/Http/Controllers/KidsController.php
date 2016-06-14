@@ -31,7 +31,7 @@ class KidsController extends ApiController
     {
         $limit = Input::get('limit') ?: 30;
         $limit = ($limit <= 20) ? $limit : 20;
-        $kids = Kid::orderBy('firstName', 'asc');
+        $kids = Kid::orderBy('first_name', 'asc');
         /*  i can just do this:
          *    return $kids->paginate($limit);
          *  but it will not be transformed

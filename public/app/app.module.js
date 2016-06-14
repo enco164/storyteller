@@ -10,6 +10,11 @@
     'app.dashboard',
     'app.recordings',
     'app.sessions',
+    'app.annotationSchema',
+    'app.residence',
+    'app.language',
+    'app.upload',
+    'app.pictureBook',
     'app.layout'
   ]);
 })();

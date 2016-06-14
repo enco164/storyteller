@@ -13,14 +13,14 @@ class AddSviOstaliKljuceviSuOvdeToKidsTable extends Migration
     public function up()
     {
         Schema::table('kids', function (Blueprint $table) {
-            $table->integer('languageMother_id')->length(10)->unsigned()->nullable();
-            $table->foreign('languageMother_id')->references('id')->on('languages')->onDelete('cascade');
-            $table->integer('languageFather_id')->length(10)->unsigned()->nullable();
-            $table->foreign('languageFather_id')->references('id')->on('languages')->onDelete('cascade');
-            $table->integer('languageSchool_id')->length(10)->unsigned()->nullable();
-            $table->foreign('languageSchool_id')->references('id')->on('languages')->onDelete('cascade');
-            $table->integer('languageAdditionalSchool_id')->length(10)->unsigned()->nullable();
-            $table->foreign('languageAdditionalSchool_id')->references('id')->on('languages')->onDelete('cascade');
+            $table->integer('language_mother_id')->length(10)->unsigned()->nullable();
+            $table->foreign('language_mother_id')->references('id')->on('languages')->onDelete('cascade');
+            $table->integer('language_father_id')->length(10)->unsigned()->nullable();
+            $table->foreign('language_father_id')->references('id')->on('languages')->onDelete('cascade');
+            $table->integer('language_school_id')->length(10)->unsigned()->nullable();
+            $table->foreign('language_school_id')->references('id')->on('languages')->onDelete('cascade');
+            $table->integer('language_additional_school_id')->length(10)->unsigned()->nullable();
+            $table->foreign('language_additional_school_id')->references('id')->on('languages')->onDelete('cascade');
         });
     }
 
@@ -32,14 +32,14 @@ class AddSviOstaliKljuceviSuOvdeToKidsTable extends Migration
     public function down()
     {
         Schema::table('kids', function (Blueprint $table) {
-            $table->dropColumn('languageMother_id');
-            $table->dropColumn('languageMother_id');
-            $table->dropColumn('languageFather_id');
-            $table->dropColumn('languageFather_id');
-            $table->dropColumn('languageSchool_id');
-            $table->dropColumn('languageSchool_id');
-            $table->dropColumn('languageAdditionalSchool_id');
-            $table->dropColumn('languageAdditionalSchool_id');
+            $table->dropColumn('language_mother_id');
+            $table->dropColumn('language_mother_id');
+            $table->dropColumn('language_father_id');
+            $table->dropColumn('language_father_id');
+            $table->dropColumn('language_school_id');
+            $table->dropColumn('language_school_id');
+            $table->dropColumn('language_additional_school_id');
+            $table->dropColumn('language_additional_school_id');
         });
     }
 }

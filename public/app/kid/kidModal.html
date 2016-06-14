@@ -9,17 +9,23 @@
                     <label >First name</label><br>
                     <input type="text" ng-model="vm.kid.firstName">
                 </div>
-                <div class="form-group">
-                    <label >City of Birth</label><br>
-                    <input type="text" ng-model="vm.kid.cityOfBirth">
-                </div>
             </div>
-
             <div class="col-md-6">
                 <div class="form-group">
                     <label >Last Name</label><br>
                     <input type="text" ng-model="vm.kid.lastName">
                 </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label >City of Birth</label><br>
+                    <input type="text" ng-model="vm.kid.cityOfBirth">
+                </div>
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
                     <label >State of Birth</label><br>
                     <input type="text" ng-model="vm.kid.stateOfBirth">
@@ -32,13 +38,13 @@
                     <label >Date Of Birth</label><br>
                     <input type="text" ng-model="vm.kid.yearOfBirth">
 
-                        <input type="text"
-                               class="form-control"
-                               uib-datepicker-popup="{{vm.format}}"
-                               ng-model="vm.kid.yearOfBirth"
-                               is-open="vm.popup1"
-                               datepicker-options="vm.dateOptions"
-                               close-text="Close" />
+                    <input type="text"
+                           class="form-control"
+                           uib-datepicker-popup="{{vm.format}}"
+                           ng-model="vm.kid.yearOfBirth"
+                           is-open="vm.popup1"
+                           datepicker-options="vm.dateOptions"
+                           close-text="Close" />
                       <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openDatePicker()">
                             <i class="glyphicon glyphicon-calendar"></i>

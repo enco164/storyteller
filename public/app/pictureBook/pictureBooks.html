@@ -1,0 +1,66 @@
+<section class="mainbar">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="widget wblue">
+                    <div ht-widget-header title="{{vm.title}}">
+
+                            <span class="btn-sm btn-default" ng-click="vm.onCreate()" style="cursor: pointer">
+                                <i class="fa fa-plus"></i>
+                                Add new Picture Book
+                            </span>
+
+                    </div>
+                    <div class="widget-content user">
+                        <div class="clear-fix"></div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="input-group" style="margin-bottom: 5px">
+                                  <span class="input-group-addon">
+                                      <i class="fa fa-search"
+                                         aria-hidden="true"></i>
+                                  </span>
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="Search..."
+                                           ng-model="vm.search.$">
+                                </div>
+                                <ul class="list-group" style="height: 350px; overflow: hidden; overflow-y: auto;">
+                                    <li class="list-group-item"
+                                        ng-repeat="pictureBook in vm.pictureBooks | filter:vm.search"
+                                        ng-click="vm.selectPictureBook(pictureBook)"
+                                        ng-class="{'active': vm.currentPictureBook.id === pictureBook.id}"
+                                        style="cursor: pointer; color:black">
+                                        <span>{{pictureBook.title}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div ng-if="vm.currentPictureBook">
+                                <h2 class="col-md-9" style="color:white; background-color: #FF6D00;" >
+                                    {{vm.currentPictureBook.title}}
+                                    <span class="pull-right">
+                                        <button class="btn btn-default" ng-click="vm.editPictureBook()">
+                                            <i class="fa fa-pencil"></i>
+                                            Edit
+                                        </button>
+                                        <button class="btn btn-default" ng-click="vm.deletePictureBook(vm.currentPictureBook)">
+                                            <i class="fa fa-trash-o"></i>
+                                            Delete
+                                        </button>
+                                    </span>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="clear-fix"></div>
+
+                    </div>
+
+                </div>
+                <div class="widget-foot">
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+</section>

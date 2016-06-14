@@ -12,10 +12,10 @@ class CreateAudioRecordingTable extends Migration
      */
     public function up()
     {
-        Schema::create('audioRecordings', function (Blueprint $table) {
+        Schema::create('audio_recordings', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('recordingDate');
-            $table->string('audioURL');
+            $table->date('recording_date');
+            $table->string('audio_URL');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateAudioRecordingTable extends Migration
      */
     public function down()
     {
-        Schema::drop('audioRecordings');
+        Schema::drop('audio_recordings');
     }
 }

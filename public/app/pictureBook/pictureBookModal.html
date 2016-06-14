@@ -1,0 +1,25 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">{{vm.modalTitle}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group"><label>Title</label><br> <input type="text" ng-model="vm.pictureBook.title">
+                </div>
+                <div class="form-group"><label>Author</label><br> <input type="text" ng-model="vm.pictureBook.authors">
+                </div>
+                <div class="form-group"><label>Publisher</label><br> <input type="text"
+                                                                            ng-model="vm.pictureBook.publisher"></div>
+                <div class="form-group"><label>Year of publishing</label><br> <input type="text"
+                                                                                     ng-model="vm.pictureBook.yearOfPublishing">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+</div>
+</div>

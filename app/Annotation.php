@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Annotation extends Model
 {
+    use \Eloquence\Behaviours\CamelCasing;
+
     protected $fillable = [
         'name',
         'comment',
@@ -15,5 +17,10 @@ class Annotation extends Model
 
     public function sceneTranscript() {
         return $this->belongsTo('App\SceneTranscript');
+    }
+
+    public function transcript()
+    {
+        return $this->belongsTo('App\Transcript');
     }
 }

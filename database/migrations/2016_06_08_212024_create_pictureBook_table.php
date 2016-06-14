@@ -12,12 +12,12 @@ class CreatePictureBookTable extends Migration
      */
     public function up()
     {
-        Schema::create('pictureBooks', function (Blueprint $table) {
+        Schema::create('picture_books', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('authors');
             $table->string('publisher');
-            $table->string('yearOfPublishing');
+            $table->string('year_of_publishing');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreatePictureBookTable extends Migration
      */
     public function down()
     {
-        Schema::drop('pictureBooks');
+        Schema::drop('picture_books');
     }
 }

@@ -14,13 +14,13 @@ class CreateKidsTable extends Migration
     {
         Schema::create('kids', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstName');
-            $table->string('lastName');
-            $table->date('yearOfBirth');
-            $table->string('cityOfBirth');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->date('year_of_birth');
+            $table->string('city_of_birth');
             $table->char('gender', 1);
-            $table->string('educationMother');
-            $table->string('educationFather');
+            $table->string('education_mother');
+            $table->string('education_father');
             $table->timestamps();
         });
     }

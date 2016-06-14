@@ -16,12 +16,12 @@ class CreateAnnotationsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('comment');
-            $table->integer('startIndex');
-            $table->integer('endIndex');
+            $table->integer('start_index');
+            $table->integer('end_index');
             $table->integer('transcript_id')->length(10)->unsigned()->nullable();
             $table->foreign('transcript_id')->references('id')->on('transcripts')->onDelete('cascade');
-            $table->integer('sceneTranscript_id')->length(10)->unsigned()->nullable();
-            $table->foreign('sceneTranscript_id')->references('id')->on('sceneTranscripts')->onDelete('cascade');
+            $table->integer('scene_transcript_id')->length(10)->unsigned()->nullable();
+            $table->foreign('scene_transcript_id')->references('id')->on('scene_transcripts')->onDelete('cascade');
             $table->timestamps();
         });
     }
