@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Language extends Model
 {
-    use \Eloquence\Behaviours\CamelCasing;
-    //
+
+    protected $table = 'languages';
+
+    protected $fillable =[
+        'language_name'
+    ];
 }

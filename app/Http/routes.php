@@ -25,6 +25,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource('scene_transcripts', 'SceneTranscriptsController');
     Route::resource('annotation_schemas', 'AnnotationSchemaController');
     Route::resource('residences', 'ResidenceController');
+    Route::resource('languages', 'LanguageController');
     Route::resource('picture_books', 'PictureBookController');
 
 });

@@ -12,6 +12,7 @@
     'app.sessions',
     'app.annotationSchema',
     'app.residence',
+    'app.language',
     'app.pictureBook',
     'app.layout'
   ]);
