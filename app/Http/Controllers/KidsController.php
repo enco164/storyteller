@@ -29,17 +29,21 @@ class KidsController extends ApiController
 
     public function index()
     {
-        $limit = Input::get('limit') ?: 30;
-        $limit = ($limit <= 20) ? $limit : 20;
-        $kids = Kid::orderBy('first_name', 'asc');
+        $kids = Kid::all();
+//        $limit = Input::get('limit') ?: 30;
+//        $limit = ($limit <= 20) ? $limit : 20;
+//        $kids = Kid::orderBy('first_name', 'asc');
+        foreach ($kids as $kid){
+            $kid->load('languageMother', 'languageFather', 'languageSchool', 'languageAdditionalSchool');
+        }
         /*  i can just do this:
          *    return $kids->paginate($limit);
          *  but it will not be transformed
         */
-        $kids = $kids->paginate($limit);
+        //$kids = $kids->paginate($limit);
         //$lessons = Lesson::all(); // Really bad practice
         return response()
-            ->json($kids->all());
+            ->json($kids);
 //            ->header('x-total-count', $kids->total())
 //            ->header('x-total-pages', $kids->lastPage())
 //            ->header('previous_page', $kids->previousPageUrl())
@@ -65,7 +69,7 @@ class KidsController extends ApiController
         if (!$kid) {
             return $this->respondNotFound('Kid does not exist.');
         }
-
+        $kid->load('languageMother', 'languageFather', 'languageSchool', 'languageAdditionalSchool');
         return response()->json($kid);
     }
 

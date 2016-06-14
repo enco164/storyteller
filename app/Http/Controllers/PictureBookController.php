@@ -32,42 +32,42 @@ class PictureBookController extends ApiController
             and !Input::get('publisher') and !Input::get('yearOfPublishing')) {
             return $this->respondParametersFailed('Parameter is missing');
         }
-        $schema = PictureBook::create($request->all());
+        $picBook = PictureBook::create($request->all());
 
-        return response()->json($schema);
+        return response()->json($picBook);
     }
 
     public function show($id)
     {
-        $schema = PictureBook::find($id);
+        $picBook = PictureBook::find($id);
 
-        if(!$schema) {
+        if(!$picBook) {
             return $this->respondNotFound('Picture book does not exist');
         }
 
-        return response()->json($schema);
+        return response()->json($picBook);
     }
 
     public function update(Request $request, $id)
     {
-        $schema = PictureBook::find($id);
-        if (!$schema) {
+        $picBook = PictureBook::find($id);
+        if (!$picBook) {
             return $this->respondWithError("Picture book does not exist.");
         }
 
-        $schema->fill($request->all());
-        $schema->save();
+        $picBook->fill($request->all());
+        $picBook->save();
 
-        return response()->json($schema);
+        return response()->json($picBook);
     }
 
     public function destroy($id)
     {
-        $schema = PictureBook::find($id);
-        if (!$schema) {
+        $picBook = PictureBook::find($id);
+        if (!$picBook) {
             return $this->respondWithError("Picture book does not exist.");
         }
-        $schema->delete();
+        $picBook->delete();
         return response()->json(["message" => 'Picture book successfully deleted.']);
     }
 

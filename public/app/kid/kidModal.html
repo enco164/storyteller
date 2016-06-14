@@ -76,6 +76,16 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="sel1">Mother's Language:</label><br>
+                    <select class="form-control" id="sel1" ng-model="vm.kid.languageMother.languageName">
+                        <option ng-repeat="language in vm.languageList">{{language.languageName}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
