@@ -13,6 +13,7 @@
     'app.annotationSchema',
     'app.residence',
     'app.language',
+    'app.upload',
     'app.pictureBook',
     'app.layout'
   ]);
