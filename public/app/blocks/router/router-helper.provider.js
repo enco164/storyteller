@@ -81,7 +81,6 @@
       }
 
       function loginRequired() {
-        console.log('login req');
         var deferred = $q.defer();
         if ($auth.isAuthenticated()) {
           deferred.resolve();

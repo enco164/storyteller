@@ -2,11 +2,11 @@
     'use strict';
     angular
     .module('app.pictureBook')
-        .factory('PictureBooks', PictureBooks);
+        .factory('PictureBook', PictureBook);
 
-    PictureBooks.$inject = ['$resource'];
+    PictureBook.$inject = ['$resource'];
 
-    function PictureBooks($resource) {
+    function PictureBook($resource) {
         return $resource('/api/picture_books/:id', {id: '@id'},
             {
                 'update': {method: 'PUT'},

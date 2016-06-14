@@ -8,6 +8,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Kid;
+use App\PictureBook;
 use App\SceneTranscript;
 use App\Session;
 use Illuminate\Http\Request;
@@ -17,17 +19,34 @@ class SessionsController extends ApiController
 
     public function index()
     {
-        return Session::with('sceneTranscripts')->get();
+        return Session::with('kid', 'pictureBook')->get();
     }
 
     public function store(Request $request) {
-        $session = Session::create();
-
-        $sceneTranscipJsonList = $request->get('sceneTranscripts');
-        foreach ($sceneTranscipJsonList as &$sceneTranscriptJson) {
-            $session->sceneTranscripts()->save(new SceneTranscript($sceneTranscriptJson));
+        $kidId = $request->get('kidId');
+        $pictureBookId = $request->get('pictureBookId');
+        if (!$kidId || !$pictureBookId) {
+            return $this->respondParametersFailed('Kid or PictureBook missing.');
         }
 
+        $kid = Kid::find($kidId);
+        $pictureBook = PictureBook::find($pictureBookId);
+        if (!$kid || !$pictureBook) {
+            $this->respondNotFound('Kid or Picture Book not found');
+        }
+
+        $session = Session::create();
+        $session->kid()->associate($kid);
+        $session->pictureBook()->associate($pictureBook);
+        $session->save();
+
+        return $session;
+    }
+
+    public function show($id)
+    {
+        $session = Session::find($id);
+        $session->load('kid', 'pictureBook', 'transcripts', 'sceneTranscripts', 'audioRecording');
         return $session;
     }
 

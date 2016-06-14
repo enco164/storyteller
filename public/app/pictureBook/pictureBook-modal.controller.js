@@ -5,9 +5,9 @@
         .module('app.pictureBook')
         .controller('PictureBookModalController', PictureBookModalController);
 
-    PictureBookModalController.$inject = ['PictureBooks', 'logger', '$uibModalInstance', 'pictureBook', 'modalTitle'];
+    PictureBookModalController.$inject = ['PictureBook', 'logger', '$uibModalInstance', 'pictureBook', 'modalTitle'];
 
-    function PictureBookModalController(PictureBooks, logger, $uibModalInstance, pictureBook, modalTitle) {
+    function PictureBookModalController(PictureBook, logger, $uibModalInstance, pictureBook, modalTitle) {
         var vm = this;
 
         vm.modalTitle = modalTitle;
@@ -20,7 +20,7 @@
             if (vm.pictureBook.id) {
                 vm.pictureBook.$update(onSuccess, onError);
             } else {
-                var pictureBook = new PictureBooks(vm.pictureBook);
+                var pictureBook = new PictureBook(vm.pictureBook);
                 console.log(pictureBook);
                 pictureBook.$save(onSuccess, onError);
             }
