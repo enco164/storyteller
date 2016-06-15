@@ -1,15 +1,12 @@
-/**
- * Created by Nikola on 14/6/2016.
- */
 (function() {
     'use strict';
     angular
-        .module('app.upload')
-        .factory('Upload', Upload);
+    .module('app.upload')
+        .factory('Uploads', Uploads);
 
-    Upload.$inject = ['$resource'];
+    Uploads.$inject = ['$resource'];
 
-    function Upload($resource) {
+    function Uploads($resource) {
         return $resource('/api/uploads/:id', {id: '@id'},
             {
                 'update': {method: 'PUT'},

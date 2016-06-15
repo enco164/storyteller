@@ -8,12 +8,15 @@
         .module('app.kid')
         .controller('KidModalController', KidModalController);
 
-    KidModalController.$inject = ['Kid', 'logger', '$uibModalInstance', 'kid', 'modalTitle'];
+    KidModalController.$inject = ['Kid', 'logger', '$uibModalInstance', 'kid', 'modalTitle', 'Language'];
 
-    function KidModalController(Kid, logger, $uibModalInstance, kid, modalTitle) {
+    function KidModalController(Kid, logger, $uibModalInstance, kid, modalTitle, Language) {
         var vm = this;
 
         vm.modalTitle = modalTitle;
+        Language.query(function (languages) {
+            vm.languageList = languages
+        });
 
         vm.ok = ok;
         vm.cancel = cancel;

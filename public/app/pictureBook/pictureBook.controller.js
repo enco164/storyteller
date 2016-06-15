@@ -5,9 +5,9 @@
         .module('app.pictureBook')
         .controller('PictureBookController', PictureBookController);
 
-    PictureBookController.$inject = ['$state', '$stateParams','logger', 'PictureBooks', '$uibModal'];
+    PictureBookController.$inject = ['$state', '$stateParams','logger', 'PictureBook', '$uibModal'];
     /* @ngInject */
-    function PictureBookController($state, $stateParams, logger, PictureBooks, $uibModal) {
+    function PictureBookController($state, $stateParams, logger, PictureBook, $uibModal) {
         var vm = this;
         vm.title = 'Picture Books';
 
@@ -21,7 +21,7 @@
         function activate() {
 
             if ($stateParams.id) {
-                PictureBooks.get({id: $stateParams.id}, onSuccess, onError);
+                PictureBook.get({id: $stateParams.id}, onSuccess, onError);
             } else {
                 vm.currentPictureBook = undefined;
             }
@@ -46,7 +46,7 @@
         }
 
         function reloadPictureBooks() {
-            PictureBooks.query(function(pictureBooks){
+            PictureBook.query(function(pictureBooks){
                 vm.pictureBooks = pictureBooks;
             });
         }

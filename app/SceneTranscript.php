@@ -9,8 +9,6 @@ class SceneTranscript extends Model
 {
     use \Eloquence\Behaviours\CamelCasing;
 
-    protected $table = 'sceneTranscripts';
-
     protected $fillable = [
         'text'
     ];

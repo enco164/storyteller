@@ -19,7 +19,15 @@
             {
                 state: 'sessions',
                 config: {
-                    url: '/sessions?id',
+                    url: '/sessions',
+                    abstract: true,
+                    template: '<div ui-view></div>'
+                }
+            },
+            {
+                state: 'sessions.list',
+                config: {
+                    url: '/list',
                     templateUrl: 'app/sessions/sessions.html',
                     controller: 'SessionsController',
                     controllerAs: 'vm',
@@ -29,6 +37,36 @@
                         content: '<i class="fa fa-archive"></i> Sessions'
                     },
                     loginRequired: true
+                }
+            },
+            {
+                state: 'sessions.detail',
+                config: {
+                    url: '/detail/:id',
+                    templateUrl: 'app/sessions/session-detail.html',
+                    controller: 'SessionDetailController',
+                    controllerAs: 'vm',
+                    title: 'Session Detail',
+                    loginRequired: true
+                }
+            },
+            {
+                state: 'sessions.new',
+                config: {
+                    url: '/new',
+                    loginRequired: true,
+                    onEnter: ['$uibModal', '$state', function($uibModal, $state) {
+                        $uibModal.open({
+                            templateUrl: 'app/sessions/sessions-modal.html',
+                            controller: 'SessionsModalController',
+                            controllerAs: 'vm',
+                            resolve: {
+                                title: function() {return 'Sessions'}
+                            }
+                        }).result.then(function(session) {
+                            //$state.go('sessions.detail', {id: session.id});
+                        });
+                    }]
                 }
             }
         ];

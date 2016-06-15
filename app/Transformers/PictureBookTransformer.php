@@ -6,7 +6,7 @@ class PictureBookTransformer extends Transformer
 {
 
     /**
-     * @param PictureBook $$pictureBook
+     * @param PictureBook $pictureBook
      * @return array
      */
     public function transform($pictureBook)

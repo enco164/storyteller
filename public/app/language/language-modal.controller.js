@@ -29,7 +29,7 @@
             }
 
             function onSuccess(newLanguage){
-                logger.info('Language ' + newLanguage.language_name +' saved');
+                logger.info('Language ' + newLanguage.languageName +' saved');
                 vm.language = undefined;
                 $uibModalInstance.close(language);
             }

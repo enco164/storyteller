@@ -17,8 +17,21 @@ class Kid extends Model
         'educationMother',
         'educationFather',
         'stateOfBirth',
-        'languageMotherFK',
-        'languageFatherFK',
-        'languageSchoolFK',
-        'languageAdditionalSchoolFK'];
+        'languageMotherId',
+        'languageFatherId',
+        'languageSchoolId',
+        'languageAdditionalSchoolId'];
+    
+    public function languageMother() {
+        return $this->belongsTo('App\Language', 'languageMother_id');
+    }
+    public function languageFather() {
+        return $this->belongsTo('App\Language', 'languageFather_id');
+    }
+    public function languageSchool() {
+        return $this->belongsTo('App\Language', 'languageSchool_id');
+    }
+    public function languageAdditionalSchool() {
+        return $this->belongsTo('App\Language', 'languageAdditionalSchool_id');
+    }
 }

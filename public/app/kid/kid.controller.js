@@ -43,6 +43,7 @@
             //notify:false je da ne reloaduje stranu
             $state.go($state.current, {id: kid.id}, {notify: false});
             vm.currentKid = kid;
+            //console.log(kid);
         }
 
         function reloadKids() {
