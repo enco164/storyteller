@@ -11,7 +11,7 @@ class Language extends Model
     protected $table = 'languages';
 
     protected $fillable =[
-        'language_name'
+        'languageName'
     ];
 
     public function kidsMother(){

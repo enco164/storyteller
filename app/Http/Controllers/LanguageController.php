@@ -33,7 +33,7 @@ class LanguageController extends ApiController
     public function store(Request $request)
     {
 
-        if (!Input::get('language_name')) {
+        if (!Input::get('languageName')) {
             return $this->respondParametersFailed('Language name missing');
         }
         $language = Language::create($request->all());

@@ -31,13 +31,13 @@
                                         ng-click="vm.selectLanguage(language)"
                                         ng-class="{'active': vm.currentLanguage.id === language.id}"
                                         style="cursor: pointer; color:black">
-                                        <span>{{language.language_name}}</span>
+                                        <span>{{language.languageName}}</span>
                                     </li>
                                 </ul>
                             </div>
                             <div ng-if="vm.currentLanguage">
                                 <h2 class="col-md-9" style="color:white; background-color: #FF6D00;" >
-                                    {{vm.currentLanguage.language_name}}
+                                    {{vm.currentLanguage.languageName}}
                                     <span class="pull-right">
                                         <button class="btn btn-default" ng-click="vm.editLanguage()">
                                             <i class="fa fa-pencil"></i>
@@ -51,7 +51,7 @@
                                 </h2>
                                 <div class="col-md-3">
                                     <label>Language name:</label><br>
-                                    <span>{{vm.currentLanguage.language_name}}</span>
+                                    <span>{{vm.currentLanguage.languageName}}</span>
                                 </div>
                             </div>
                         </div>

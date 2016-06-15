@@ -55,7 +55,7 @@
         }
 
         function deleteLanguage(language) {
-            var name = language.language_name;
+            var name = language.languageName;
             language.$delete(onSuccess, onError);
 
             function onSuccess() {

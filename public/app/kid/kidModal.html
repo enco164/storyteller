@@ -80,8 +80,34 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="sel1">Mother's Language:</label><br>
-                    <select class="form-control" id="sel1" ng-model="vm.kid.languageMother.languageName">
-                        <option ng-repeat="language in vm.languageList">{{language.languageName}}</option>
+                    <select class="form-control" id="sel1" ng-model="vm.kid.languageMother.id">
+                        <option ng-repeat="language in vm.languageList" value={{language.id}}>{{language.languageName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="sel1">Father's Language:</label><br>
+                    <select class="form-control" id="sel1" ng-model="vm.kid.languageFather.id">
+                        <option ng-repeat="language in vm.languageList" value={{language.id}}>{{language.languageName}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="sel1">School Language:</label><br>
+                    <select class="form-control" id="sel1" ng-model="vm.kid.languageSchool.id">
+                        <option ng-repeat="language in vm.languageList" value={{language.id}}>{{language.languageName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="sel1">Additional School Language:</label><br>
+                    <select class="form-control" id="sel1" ng-model="vm.kid.languageAdditionalSchool.id">
+                        <option ng-repeat="language in vm.languageList" value={{language.id}}>{{language.languageName}}</option>
                     </select>
                 </div>
             </div>
