@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Kid;
+use App\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Transformers\KidTransformer;
@@ -58,7 +59,27 @@ class KidsController extends ApiController
         if (!Input::get('firstName') or !Input::get('lastName')) {
             return $this->respondParametersFailed('First Name or Last Name missing');
         }
+        
         $kid = Kid::create($request->all());
+        $kid->save();
+        //$kid->languageMother()->create($request->get('motherLanguage'));
+        return $kid->load('languageMother');
+        
+//        $kid = Kid::create();
+        $languageMother = $request->get('motherLanguage');
+        $languageFather = $request->get('fatherLanguage');
+        $languageSchool = $request->get('schoolLanguage');
+        $languageAdditionalSchool = $request->get('additionalSchoolLanguage');
+
+//        $languageMother = $kid->languageMother->languageName;
+//        $languageFather = $kid->languageFather->languageName;
+//        $languageSchool = $kid->languageSchool->languageName;
+//        $languageAdditionalSchool = $kid->languageAdditionalSchool->languageName;
+        
+        $kid->motherLanguage()->save(new Language($languageMother));
+        $kid->fatherLanguage()->save(new Language($languageFather));
+        $kid->schoolLanguage()->save(new Language($languageSchool));
+        $kid->additionalSchoolLanguage()->save(new Language($languageAdditionalSchool));
 
         return response()->json($kid);
     }
