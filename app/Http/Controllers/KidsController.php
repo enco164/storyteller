@@ -63,23 +63,23 @@ class KidsController extends ApiController
         $kid = Kid::create($request->all());
         $kid->save();
         //$kid->languageMother()->create($request->get('motherLanguage'));
-        return $kid->load('languageMother');
+        //return $kid->load('languageMother');
         
 //        $kid = Kid::create();
-        $languageMother = $request->get('motherLanguage');
-        $languageFather = $request->get('fatherLanguage');
-        $languageSchool = $request->get('schoolLanguage');
-        $languageAdditionalSchool = $request->get('additionalSchoolLanguage');
+//        $languageMother = $request->get('motherLanguage');
+//        $languageFather = $request->get('fatherLanguage');
+//        $languageSchool = $request->get('schoolLanguage');
+//        $languageAdditionalSchool = $request->get('additionalSchoolLanguage');
 
 //        $languageMother = $kid->languageMother->languageName;
 //        $languageFather = $kid->languageFather->languageName;
 //        $languageSchool = $kid->languageSchool->languageName;
 //        $languageAdditionalSchool = $kid->languageAdditionalSchool->languageName;
         
-        $kid->motherLanguage()->save(new Language($languageMother));
-        $kid->fatherLanguage()->save(new Language($languageFather));
-        $kid->schoolLanguage()->save(new Language($languageSchool));
-        $kid->additionalSchoolLanguage()->save(new Language($languageAdditionalSchool));
+//        $kid->motherLanguage()->save(new Language($languageMother));
+//        $kid->fatherLanguage()->save(new Language($languageFather));
+//        $kid->schoolLanguage()->save(new Language($languageSchool));
+//        $kid->additionalSchoolLanguage()->save(new Language($languageAdditionalSchool));
 
         return response()->json($kid);
     }

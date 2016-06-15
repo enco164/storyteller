@@ -88,6 +88,7 @@
 
             function onOkCallback(kid) {
                 reloadKids();
+                vm.currentKid = kid;
             }
 
             function onCancelCallback() {

@@ -64,7 +64,7 @@ class LanguageController extends ApiController
 
         return response()->json($language);
     }
-
+    
     public function destroy($id)
     {
         $language = Language::find($id);
