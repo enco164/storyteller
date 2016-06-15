@@ -80,7 +80,7 @@ class KidsController extends ApiController
 //        $kid->fatherLanguage()->save(new Language($languageFather));
 //        $kid->schoolLanguage()->save(new Language($languageSchool));
 //        $kid->additionalSchoolLanguage()->save(new Language($languageAdditionalSchool));
-
+        $kid->load('languageMother', 'languageFather', 'languageSchool', 'languageAdditionalSchool');
         return response()->json($kid);
     }
 
@@ -103,7 +103,7 @@ class KidsController extends ApiController
 
         $kid->fill($request->all());
         $kid->save();
-
+        $kid->load('languageMother', 'languageFather', 'languageSchool', 'languageAdditionalSchool');
         return response()->json($kid);
     }
 
