@@ -54,6 +54,10 @@
                                             <i class="fa fa-trash-o"></i>
                                             Delete
                                         </button>
+                                        <button class="btn btn-default" ng-click="vm.showAddForm()">
+                                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                            Add residence
+                                        </button>
                                     </span>
                                 </h2>
 
@@ -109,6 +113,17 @@
                                     <div class="attr-div">
                                         <label>Additional School Language:</label><br>
                                         <span>{{vm.currentKid.languageAdditionalSchool.languageName || '-'}}</span>
+                                    </div>
+
+                                    <!--ST TODO: ovde dodati listu postojecih prebivališta-->
+
+                                    <div class="col-md-9" ng-if="vm.showForm">
+                                        <br><br>
+                                        <label>Residence:</label><br>
+                                        <select class="form-control" ng-model="vm.currentKid.residenceId">
+                                            <option ng-repeat="residence in vm.residenceList" value={{residence.id}}>{{residence.state}} {{residence.city}}</option>
+                                        </select>
+                                        <button class="btn btn-primary" type="button" ng-click="vm.addResidence()">Add</button>
                                     </div>
                                 </div>
                             </div>

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Residence;
+use App\Kid;
 use App\Transformers\ResidenceTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;

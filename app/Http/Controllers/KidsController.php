@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 use App\Kid;
 use App\Language;
+use App\Residence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Transformers\KidTransformer;

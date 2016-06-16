@@ -5,16 +5,22 @@
         .module('app.kid')
         .controller('KidsController', KidsController);
 
-    KidsController.$inject = ['$state', '$stateParams','logger', 'Kid', '$uibModal'];
+    KidsController.$inject = ['$state', '$stateParams','logger', 'Kid','KidResidence','Residence','$uibModal'];
     /* @ngInject */
-    function KidsController($state, $stateParams, logger, Kid, $uibModal) {
+    function KidsController($state, $stateParams, logger, Kid, KidResidence, Residence, $uibModal) {
         var vm = this;
         vm.title = 'Kids';
+
+        Residence.query(function (residences) {
+            vm.residenceList = residences
+        });
 
         vm.deleteKid = deleteKid;
         vm.editKid = editKid;
         vm.onCreate = onCreate;
         vm.selectKid = selectKid;
+        vm.showAddForm = showAddForm;
+        vm.addResidence = addResidence;
 
         activate();
 
@@ -94,6 +100,17 @@
             function onCancelCallback() {
 
             }
+        }
+
+        function showAddForm() {
+            vm.showForm = !vm.showForm;
+            vm.newKidResidence = vm.newKidResidence || [];
+        }
+
+        function addResidence() {
+            console.log("Kid id:"+vm.currentKid.id);
+            console.log("Residence id:"+vm.currentKid.residenceId);
+            //ST TODO proslediti kid_id i residence_id u KidResidence pivot tabelu
         }
 
         function instantiateModal(kid, $modalTitle) {

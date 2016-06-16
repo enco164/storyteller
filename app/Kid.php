@@ -34,4 +34,10 @@ class Kid extends Model
     public function languageAdditionalSchool() {
         return $this->belongsTo('App\Language', 'languageAdditionalSchool_id');
     }
+
+    //Residences that belong to kid
+    public function residences()
+    {
+        return $this->belongsToMany('App\Residence','kids_residences','kid_id','residence_id');
+    }
 }
