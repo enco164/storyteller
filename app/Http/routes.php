@@ -28,6 +28,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource('languages', 'LanguageController');
     Route::resource('picture_books', 'PictureBookController');
     Route::resource('uploads', 'UploadController');
+    Route::resource('scenes', 'ScenesController');
+    Route::resource('picture_books.scenes', 'PictureBookSceneController');
 
 });
 

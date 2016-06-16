@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\PictureBook;
+use App\Scene;
 use App\Transformers\PictureBookTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -32,6 +33,7 @@ class PictureBookController extends ApiController
             and !Input::get('publisher') and !Input::get('yearOfPublishing')) {
             return $this->respondParametersFailed('Parameter is missing');
         }
+
         $picBook = PictureBook::create($request->all());
 
         return response()->json($picBook);
@@ -57,7 +59,7 @@ class PictureBookController extends ApiController
 
         $picBook->fill($request->all());
         $picBook->save();
-
+        
         return response()->json($picBook);
     }
 

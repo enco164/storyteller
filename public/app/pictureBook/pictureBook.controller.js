@@ -5,16 +5,19 @@
         .module('app.pictureBook')
         .controller('PictureBookController', PictureBookController);
 
-    PictureBookController.$inject = ['$state', '$stateParams','logger', 'PictureBook', '$uibModal'];
+    PictureBookController.$inject = ['$state', '$stateParams','logger', 'PictureBook', 'PictureBookScene', '$uibModal'];
     /* @ngInject */
-    function PictureBookController($state, $stateParams, logger, PictureBook, $uibModal) {
+    function PictureBookController($state, $stateParams, logger, PictureBook, PictureBookScene, $uibModal) {
         var vm = this;
         vm.title = 'Picture Books';
+        vm.showForm = false;
 
         vm.deletePictureBook = deletePictureBook;
         vm.editPictureBook = editPictureBook;
         vm.onCreate = onCreate;
         vm.selectPictureBook = selectPictureBook;
+        vm.showAddForm = showAddForm;
+        vm.addScene = addScene;
 
         activate();
 
@@ -106,6 +109,31 @@
                     }
                 }
             });
+        }
+        
+        function showAddForm() {
+            vm.showForm = !vm.showForm;
+            vm.newScene = vm.newScene || [];
+        }
+
+        function addScene() {
+
+            logger.info("Nije zavrseno");
+
+            //ST TODO: Ovaj deo nisam uspeo da namestim
+            // vm.newScene.push({"title": vm.tmp.title, "sceneNumber": vm.tmp.sceneNumber, "pictureBookId": vm.currentPictureBook.id});
+            //ST TODO: Ovaj red ispod ne valja
+            // PictureBookScene.save({pictureBookId: vm.currentPictureBook.id}, vm.newScene, onSuccess);
+            //
+            // function onSuccess(newPictureBook){
+            //     logger.info('Picture Book ' + newPictureBook.title +' updated, scene added');
+            //     vm.pictureBook = undefined;
+            // }
+            //
+            // function onError(error){
+            //     logger.error(error.data.error.message);
+            // }
+            
         }
 
 
