@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Input;
 
 /**
  * Created by PhpStorm.
- * User: Nikola
+ * User: Darko
  * Date: 14/6/2016
  * Time: 10:27 AM
  */
@@ -21,18 +21,23 @@ class UploadController extends ApiController {
     public function store() {
         $input = Input::file('file');
 
-        $path = public_path()."/media";
+        $currentDate = date("Y/m");
+        $path = public_path()."/media/".$currentDate;
+
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
 
         $fileName = $input->getClientOriginalName();
         $fileName = str_replace(" " , "_" , $fileName);
 
-        //ST TODO: treba srediti da se u putanju dodaju godina i mesec
+        $fileNameHolder = $fileName;
 
         while(1)
         {
             if(file_exists($path."/".$fileName))
             {
-                $fileNameParts = explode(".", $fileName);
+                $fileNameParts = explode(".", $fileNameHolder);
                 $fileNameParts[0] .= "_".rand();
                 $fileName = $fileNameParts[0].".".$fileNameParts[1];
             }
