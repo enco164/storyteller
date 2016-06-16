@@ -2,28 +2,41 @@
  * Created by Nikola on 14/6/2016.
  */
 
+//ST TODO: angular ne prepoznaje ovaj kontroler, treba srediti(paging dr.enco...)
+
 (function() {
     'use strict';
 
-    angular
-        .module('app.upload', ['ur.file', 'ngResource'])
+    angular.
+        module('app.upload', ['ur.file', 'ngResource'])
         .controller('UploadController', UploadController);
 
-    UploadController.$inject = ['$resource', '$http'];
+    UploadController.$inject = ['Upload', '$timeout'];
     /* @ngInject */
-    function UploadController($resource, $http) {
+    function UploadController(Upload, $timeout) {
         var vm = this;
-        var Files = $resource('/api/uploads/:id', { id: "@id" });
-        vm.model = {};
-        vm.model.file = null;
+        
+        vm.uploadFiles = function(file, errFiles) {
+            vm.f = file;
+            vm.errFile = errFiles && errFiles[0];
+            if (file) {
+                file.upload = Upload.upload({
+                    url: 'api/uploads',
+                    data: {file: file}
+                });
 
-
-
-        vm.upload = function() {
-            Files.save({test: "abc"}, function(self, headers) {
-                // server laze
-                console.log("Success?");
-            });
-        };
+                file.upload.then(function (response) {
+                    $timeout(function () {
+                        file.result = response.data;
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        vm.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            }
+        }
     }
 })();

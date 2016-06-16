@@ -19,44 +19,30 @@ class UploadController extends ApiController {
     }
 
     public function store() {
-//        nemam pojma sta radim @_@
+        $input = Input::file('file');
 
-//        $input == Input::file('uploadedFile');
+        $path = public_path()."/media";
 
-//        $fileName = $input->getClientOriginalName();
-//
-//        $fileName = str_replace(" " , "_" , $fileName);
-//
-//        $image = Image::make($input);
-//
-//        File::exists(public_path()) or File::makeDirectory(user_photos_path());
-//
-//        $image->save(user_photos_path().$fileName);
-//        $width = $image->width();
-//        $height = $image->height();
-//
-//        $measure = ($width > $height) ? $height : $width;
-//
-//        $image->crop($measure, $measure);
-//        $image->save(user_photos_path().'large-'.$fileName);
-//        $image->resize(200, 200);
-//        $image->save(user_photos_path().'tn-'.$fileName);
-//        $image->blur(15);
-//        $image->save(user_photos_path().'blur-'.$fileName);
-//
-//        Photos::firstOrCreate(array('userid' => Auth::id()));
-//
-//        $lawly = Photos::where('userid', '=', Auth::id())->first();
-//
-//        // change the attribute
-//        $lawly->fileName = 'large-'.$fileName;
-//        $lawly->thumbnailName = 'tn-'.$fileName;
-//        $lawly->title = Auth::user()->username;
-//
-//        // save to our database
-//        $lawly->save();
+        $fileName = $input->getClientOriginalName();
+        $fileName = str_replace(" " , "_" , $fileName);
 
-//        echo "Success-Your  picture has been saved.";
+        //ST TODO: treba srediti da se u putanju dodaju godina i mesec
+
+        while(1)
+        {
+            if(file_exists($path."/".$fileName))
+            {
+                $fileNameParts = explode(".", $fileName);
+                $fileNameParts[0] .= "_".rand();
+                $fileName = $fileNameParts[0].".".$fileNameParts[1];
+            }
+            else
+            {
+                $input->move($path, $fileName);
+                break;
+            }
+        }
+        return $path."/".$fileName;
     }
 
     public function create() {
