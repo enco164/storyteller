@@ -6,8 +6,8 @@
                     <div ht-widget-header title="{{vm.title}}"></div>
                     <div class="widget-content user">
                         <a ui-sref="sessions.sceneTranscripts({id: vm.session.id})">SceneTranscripts</a>
+                        <!--ng-if="!vm.session.transcript && vm.session.sceneTranscripts.length > 0"-->
                         <button class="btn btn-primary"
-                                ng-if="!vm.session.transcript && vm.session.sceneTranscripts.length > 0"
                                 ng-click="vm.addTranscript()">
                             Add new Annotation
                         </button>

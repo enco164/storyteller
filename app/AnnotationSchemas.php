@@ -19,4 +19,8 @@ class AnnotationSchemas extends Model
         'yellow',
         'orange'
     ];
+    
+    public function transcript(){
+        $this->hasMany('App\Transcript');
+    }
 }

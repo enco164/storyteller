@@ -8,6 +8,11 @@ class Transcript extends Model
 {
     public function session()
     {
-        return $this->belongsTo('App\Session');
+        return $this->belongsTo('App\Session', 'session_id');
+    }
+
+    public function annotationSchema()
+    {
+        return $this->belongsTo('App\AnnotationSchemas', 'annotationSchema_id');
     }
 }
