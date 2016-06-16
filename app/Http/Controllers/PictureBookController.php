@@ -47,7 +47,7 @@ class PictureBookController extends ApiController
             return $this->respondNotFound('Picture book does not exist');
         }
 
-        return response()->json($picBook);
+        return $picBook->load('scenes');
     }
 
     public function update(Request $request, $id)

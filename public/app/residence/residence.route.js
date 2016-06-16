@@ -26,7 +26,7 @@
                     title: 'Residences',
                     settings: {
                         nav: 6,
-                        content: '<i class="fa fa-file-text" aria-hidden="true"></i> Residences'
+                        content: '<i class="material-icons">home</i> Residences'
                     },
                     loginRequired: true
                 }

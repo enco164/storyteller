@@ -1,180 +1,132 @@
-<section class="mainbar">
-    <section class="matter">
-        <div class="container">
-            <div class="row">
-                <div class="widget wblue">
-                    <div ht-widget-header title="{{vm.title}}">
 
-                            <span class="btn-sm btn-default" ng-click="vm.onCreate()" style="cursor: pointer">
-                                <i class="fa fa-plus"></i>
-                                Add new Kid
-                            </span>
+<div class="demo-content mdl-grid">
 
-                    </div>
-                    <div class="widget-content user">
-                        <div class="clear-fix"></div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="input-group" style="margin-bottom: 5px">
-                                  <span class="input-group-addon">
-                                      <i class="fa fa-search"
-                                         aria-hidden="true"></i>
-                                  </span>
-                                    <input type="text"
-                                           class="form-control"
-                                           placeholder="Search..."
-                                           ng-model="vm.search.$">
-                                </div>
-                                <ul class="list-group" style="height: 350px; overflow: hidden; overflow-y: auto;">
-                                    <li class="list-group-item"
-                                        ng-repeat="kid in vm.kids | filter:vm.search"
-                                        ng-click="vm.selectKid(kid)"
-                                        ng-class="{'active': vm.currentKid.id === kid.id}"
-                                        style="cursor: pointer; color:black">
-                                        <span>{{kid.firstName + ' ' + kid.lastName}}</span>
-                                        <span class="pull-right">
-                                          <i ng-if="kid.gender === 'f'"
-                                             class="fa fa-venus" aria-hidden="true"></i>
-                                          <i ng-if="kid.gender === 'm'"
-                                             class="fa fa-mars"
-                                             aria-hidden="true"></i>
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div ng-if="vm.currentKid">
-                                <h2 class="col-md-9" style="color:white; background-color: #FF6D00;" >
-                                    {{vm.currentKid.firstName + ' ' + vm.currentKid.lastName }}
-                                    <span class="pull-right">
-                                        <button class="btn btn-default" ng-click="vm.editKid()">
-                                            <i class="fa fa-pencil"></i>
-                                            Edit
-                                        </button>
-                                        <button class="btn btn-default" ng-click="vm.deleteKid(vm.currentKid)">
-                                            <i class="fa fa-trash-o"></i>
-                                            Delete
-                                        </button>
-                                        <button class="btn btn-default" ng-click="vm.showAddForm()">
-                                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                            Add residence
-                                        </button>
-                                    </span>
-                                </h2>
+    <button ng-click="vm.onCreate()"
+            class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--floating-action mdl-shadow--4dp">
+        <i class="material-icons">add</i>
+    </button>
+    <div class="mdl-cell mdl-cell--3-col">
 
-                                <div class="col-md-3">
-                                    <div class="attr-div">
-                                        <label>First Name:</label><br>
-                                        <span>{{vm.currentKid.firstName || '-'}}</span>
-                                    </div>
-                                    <div class="attr-div">
-                                        <label>Last Name:</label><br>
-                                        <span>{{vm.currentKid.lastName || '-'}}</span>
-                                    </div>
-                                    <div class="attr-div">
-                                        <label>Gender:</label><br>
-                                        <span>{{vm.currentKid.gender || '-'}}</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="attr-div">
-                                        <label>Date of Birth:</label><br>
-                                        <span>{{(vm.currentKid.yearOfBirth | date:'dd.MM.yyyy')|| '-'}}</span>
-                                    </div>
-                                    <div class="attr-div">
-                                        <label>City of Birth:</label><br>
-                                        <span>{{vm.currentKid.cityOfBirth || '-'}}</span>
-                                    </div>
-                                    <div class="attr-div">
-                                        <label>State of Birth:</label><br>
-                                        <span>{{vm.currentKid.stateOfBirth || '-'}}</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="attr-div">
-                                        <label>Mother's Education:</label><br>
-                                        <span>{{vm.currentKid.educationMother || '-'}}</span>
-                                    </div>
-                                    <div class="attr-div">
-                                        <label>Father's Education:</label><br>
-                                        <span>{{vm.currentKid.educationFather || '-'}}</span>
-                                    </div>
-                                    <div class="attr-div">
-                                        <label>Mother's Language:</label><br>
-                                        <span>{{vm.currentKid.languageMother.languageName || '-'}}</span>
-                                    </div>
-                                    <div class="attr-div">
-                                        <label>Father's Language:</label><br>
-                                        <span>{{vm.currentKid.languageFather.languageName || '-'}}</span>
-                                    </div>
-                                    <div class="attr-div">
-                                        <label>School Language:</label><br>
-                                        <span>{{vm.currentKid.languageSchool.languageName || '-'}}</span>
-                                    </div>
-                                    <div class="attr-div">
-                                        <label>Additional School Language:</label><br>
-                                        <span>{{vm.currentKid.languageAdditionalSchool.languageName || '-'}}</span>
-                                    </div>
-
-                                    <!--ST TODO: ovde dodati listu postojecih prebivališta-->
-
-                                    <div class="col-md-9" ng-if="vm.showForm">
-                                        <br><br>
-                                        <label>Residence:</label><br>
-                                        <select class="form-control" ng-model="vm.currentKid.residenceId">
-                                            <option ng-repeat="residence in vm.residenceList" value={{residence.id}}>{{residence.state}} {{residence.city}}</option>
-                                        </select>
-                                        <button class="btn btn-primary" type="button" ng-click="vm.addResidence()">Add</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear-fix"></div>
-
-                    </div>
-                    <!--<table class="table table-condensed table-striped">-->
-                    <!--<thead>-->
-                    <!--<tr>-->
-                    <!--<th>First Name</th>-->
-                    <!--<th>Last Name</th>-->
-                    <!--<th>Gender</th>-->
-                    <!--<th><span class="pull-right">Actions</span></th>-->
-                    <!--</tr>-->
-                    <!--</thead>-->
-                    <!--<tbody>-->
-                    <!--<tr ng-repeat="kid in vm.kids">-->
-                    <!--<td>{{kid.firstName}}</td>-->
-                    <!--<td>{{kid.lastName}}</td>-->
-                    <!--<td>{{kid.gender}}</td>-->
-                    <!--<td >-->
-                    <!--<span class="pull-right">-->
-
-                    <!--<button class="btn btn-primary">-->
-                    <!--<i class="fa fa-eye"></i>-->
-                    <!--Show-->
-                    <!--</button>-->
-                    <!--<button class="btn btn-default">-->
-                    <!--<i class="fa fa-pencil"></i>-->
-                    <!--Edit-->
-                    <!--</button>-->
-                    <!--<button class="btn btn-danger"-->
-                    <!--ng-click="vm.deleteKid(kid)"-->
-                    <!--&gt;-->
-                    <!--<i class="fa fa-trash-o"></i>-->
-                    <!--Delete-->
-                    <!--</button>-->
-
-                    <!--</span>-->
-                    <!--</td>-->
-                    <!--</tr>-->
-                    <!--</tbody>-->
-                    <!--</table>-->
-
-                </div>
-                <div class="widget-foot">
-                    <div class="clearfix"></div>
-                </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+                <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+                <input class="mdl-textfield__input" type="text" id="sample6" ng-model="vm.search.$">
+                <label class="mdl-textfield__label" for="sample-expandable">Search...</label>
             </div>
         </div>
+        <div class="demo-list-action mdl-list">
+            <a class="mdl-list__item"
+               ng-repeat="kid in vm.kids | filter:vm.search"
+               ng-click="vm.selectKid(kid)"
+               ng-class="{'active': vm.currentKid.id === kid.id}"
+               style="cursor: pointer; border-bottom: #c0c0c0 solid 1px;">
+                <span class="mdl-list__item-primary-content">
+                  <!--<i class="material-icons mdl-list__item-avatar">person</i>-->
+                  <span>{{kid.firstName + ' ' + kid.lastName}}</span>
+                </span>
+                <span class="mdl-list__item-secondary-action" href="#">
+                    <i ng-if="kid.gender === 'f'"
+                       class="fa fa-venus" aria-hidden="true"></i>
+                    <i ng-if="kid.gender === 'm'"
+                       class="fa fa-mars"
+                       aria-hidden="true"></i>
+                </span>
+            </a>
         </div>
-    </section>
-</section>
+
+    </div>
+    <div class="mdl-card mdl-cell mdl-cell--9-col mdl-shadow--2dp" ng-if="vm.currentKid" >
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">{{vm.currentKid.firstName + ' ' + vm.currentKid.lastName }}</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--3-col">
+                    <div class="attr-div">
+                        <label>First Name:</label><br>
+                        <span>{{vm.currentKid.firstName || '-'}}</span>
+                    </div>
+                    <div class="attr-div">
+                        <label>Last Name:</label><br>
+                        <span>{{vm.currentKid.lastName || '-'}}</span>
+                    </div>
+                    <div class="attr-div">
+                        <label>Gender:</label><br>
+                        <span>{{vm.currentKid.gender || '-'}}</span>
+                    </div>
+                </div>
+
+
+                <div class="mdl-cell mdl-cell--3-col">
+                    <div class="attr-div">
+                        <label>Date of Birth:</label><br>
+                        <span>{{(vm.currentKid.yearOfBirth | date:'dd.MM.yyyy')|| '-'}}</span>
+                    </div>
+                    <div class="attr-div">
+                        <label>City of Birth:</label><br>
+                        <span>{{vm.currentKid.cityOfBirth || '-'}}</span>
+                    </div>
+                    <div class="attr-div">
+                        <label>State of Birth:</label><br>
+                        <span>{{vm.currentKid.stateOfBirth || '-'}}</span>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--3-col">
+                    <div class="attr-div">
+                        <label>Mother's Education:</label><br>
+                        <span>{{vm.currentKid.educationMother || '-'}}</span>
+                    </div>
+                    <div class="attr-div">
+                        <label>Father's Education:</label><br>
+                        <span>{{vm.currentKid.educationFather || '-'}}</span>
+                    </div>
+                    <div class="attr-div">
+                        <label>Mother's Language:</label><br>
+                        <span>{{vm.currentKid.languageMother.languageName || '-'}}</span>
+                    </div>
+                    <div class="attr-div">
+                        <label>Father's Language:</label><br>
+                        <span>{{vm.currentKid.languageFather.languageName || '-'}}</span>
+                    </div>
+                    <div class="attr-div">
+                        <label>School Language:</label><br>
+                        <span>{{vm.currentKid.languageSchool.languageName || '-'}}</span>
+                    </div>
+                    <div class="attr-div">
+                        <label>Additional School Language:</label><br>
+                        <span>{{vm.currentKid.languageAdditionalSchool.languageName || '-'}}</span>
+                    </div>
+
+                    <!--ST TODO: ovde dodati listu postojecih prebivališta-->
+
+                    <div class="mdl-cell mdl-cell--3-col" ng-if="vm.showForm">
+                        <br><br>
+                        <label>Residence:</label><br>
+                        <select class="form-control" ng-model="vm.currentKid.residenceId">
+                            <option ng-repeat="residence in vm.residenceList" value={{residence.id}}>{{residence.state}} {{residence.city}}</option>
+                        </select>
+                        <button class="btn btn-primary" type="button" ng-click="vm.addResidence()">Add</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="mdl-card__actions">
+            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.editKid()">
+                <i class="material-icons">edit</i>
+                Edit
+            </a>
+            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.deleteKid(vm.currentKid)">
+                <i class="material-icons">delete</i>
+                Delete
+            </a>
+            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.showAddForm()">
+                <i class="material-icons">add</i>
+                Add residence
+            </a>
+        </div>
+    </div>
+</div>

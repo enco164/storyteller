@@ -8,11 +8,11 @@
         .module('app.sessions')
         .controller('SessionDetailController', SessionDetailController);
 
-    SessionDetailController.$inject = ['$state', '$stateParams', 'Session'];
+    SessionDetailController.$inject = ['$rootScope', '$state', '$stateParams', 'Session'];
     /* @ngInject */
-    function SessionDetailController($state, $stateParams, Session) {
+    function SessionDetailController($rootScope, $state, $stateParams, Session) {
         var vm = this;
-        vm.title = 'Session';
+        $rootScope.pageTitle = 'Session';
 
         vm.addTranscript = addTranscript;
         vm.addSceneTranscripts = addSceneTranscripts;
@@ -23,7 +23,7 @@
         function activate() {
             Session.get({id: $stateParams.id}, function(session) {
                 vm.session = session;
-                vm.title += ' [' +
+                $rootScope.pageTitle += ' [' +
                     session.kid.firstName + ' ' +
                     session.kid.lastName + ', ' +
                     session.pictureBook.title + ']';

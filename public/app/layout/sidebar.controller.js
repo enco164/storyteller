@@ -29,7 +29,7 @@
         return '';
       }
       var menuName = route.title;
-      return $state.current.title.substr(0, menuName.length) === menuName ? 'current' : '';
+      return $state.current.title.substr(0, menuName.length) === menuName ? 'active' : '';
     }
   }
 })();

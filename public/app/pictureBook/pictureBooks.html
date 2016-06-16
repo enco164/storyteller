@@ -1,100 +1,97 @@
-<section class="mainbar">
-    <section class="matter">
-        <div class="container">
-            <div class="row">
-                <div class="widget wblue">
-                    <div ht-widget-header title="{{vm.title}}">
+<div class="demo-content mdl-grid">
 
-                            <span class="btn-sm btn-default" ng-click="vm.onCreate()" style="cursor: pointer">
-                                <i class="fa fa-plus"></i>
-                                Add new Picture Book
-                            </span>
+    <button ng-click="vm.onCreate()"
+            class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--floating-action mdl-shadow--4dp">
+        <i class="material-icons">add</i>
+    </button>
+    <div class="mdl-cell mdl-cell--3-col">
 
-                    </div>
-                    <div class="widget-content user">
-                        <div class="clear-fix"></div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="input-group" style="margin-bottom: 5px">
-                                  <span class="input-group-addon">
-                                      <i class="fa fa-search"
-                                         aria-hidden="true"></i>
-                                  </span>
-                                    <input type="text"
-                                           class="form-control"
-                                           placeholder="Search..."
-                                           ng-model="vm.search.$">
-                                </div>
-                                <ul class="list-group" style="height: 350px; overflow: hidden; overflow-y: auto;">
-                                    <li class="list-group-item"
-                                        ng-repeat="pictureBook in vm.pictureBooks | filter:vm.search"
-                                        ng-click="vm.selectPictureBook(pictureBook)"
-                                        ng-class="{'active': vm.currentPictureBook.id === pictureBook.id}"
-                                        style="cursor: pointer; color:black">
-                                        <span>{{pictureBook.title}}</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div ng-if="vm.currentPictureBook">
-                                <h2 class="col-md-9" style="color:white; background-color: #FF6D00;" >
-                                    {{vm.currentPictureBook.title}}
-                                    <span class="pull-right">
-                                        <button class="btn btn-default" ng-click="vm.editPictureBook()">
-                                            <i class="fa fa-pencil"></i>
-                                            Edit
-                                        </button>
-                                        <button class="btn btn-default" ng-click="vm.deletePictureBook(vm.currentPictureBook)">
-                                            <i class="fa fa-trash-o"></i>
-                                            Delete
-                                        </button>
-                                        <button class="btn btn-default" ng-click="vm.showAddForm()">
-                                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                            Add scene
-                                        </button>
-                                    </span>
-                                </h2>
-                                <div class="col-md-4">
-                                    <div class="attr-div">
-                                        <label>Title:</label><br>
-                                        <span>{{vm.currentPictureBook.title || '-'}}</span>
-                                    </div>
-                                    <div class="attr-div">
-                                        <label>Authors:</label><br>
-                                        <span>{{vm.currentPictureBook.authors || '-'}}</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="attr-div">
-                                        <label>Publisher:</label><br>
-                                        <span>{{vm.currentPictureBook.publisher || '-'}}</span>
-                                    </div>
-                                    <div class="attr-div">
-                                        <label>Year of Publishing:</label><br>
-                                        <span>{{vm.currentPictureBook.yearOfPublishing || '-'}}</span>
-                                    </div>
-                                </div>
-                                <!--ST TODO: ovde dodati listu postojecih scena-->
-
-                                <div class="col-md-9" ng-if="vm.showForm">
-                                    <br><br>
-                                    <label>Title:</label>
-                                    <input type="text" ng-model="vm.tmp.title">
-                                    <label>Scene Number:</label>
-                                    <input type="text" ng-model="vm.tmp.sceneNumber">
-                                    <button class="btn btn-primary" type="button" ng-click="vm.addScene()">Add</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear-fix"></div>
-
-                    </div>
-
-                </div>
-                <div class="widget-foot">
-                    <div class="clearfix"></div>
-                </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+                <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+                <input class="mdl-textfield__input" type="text" id="sample6" ng-model="vm.search.$">
+                <label class="mdl-textfield__label" for="sample-expandable">Search...</label>
             </div>
         </div>
+        <div class="demo-list-action mdl-list">
+            <a class="mdl-list__item"
+               ng-repeat="pictureBook in vm.pictureBooks | filter:vm.search"
+               ng-click="vm.selectPictureBook(pictureBook)"
+               ng-class="{'active': vm.currentPictureBook.id === pictureBook.id}"
+               style="cursor: pointer; border-bottom: #c0c0c0 solid 1px;">
+                <span class="mdl-list__item-primary-content">
+                  <!--<i class="material-icons mdl-list__item-avatar">person</i>-->
+                  <span>{{pictureBook.title}}</span>
+                </span>
+                <span class="mdl-list__item-secondary-action" href="#">
+                    <i ng-if="kid.gender === 'f'"
+                       class="fa fa-venus" aria-hidden="true"></i>
+                    <i ng-if="kid.gender === 'm'"
+                       class="fa fa-mars"
+                       aria-hidden="true"></i>
+                </span>
+            </a>
         </div>
-    </section>
-</section>
+    </div>
+    <div class="mdl-card mdl-cell mdl-cell--9-col mdl-shadow--2dp" ng-if="vm.currentPictureBook" >
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">{{vm.currentPictureBook.title}}</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--4-col">
+                    <div class="attr-div">
+                        <label>Title:</label><br>
+                        <span>{{vm.currentPictureBook.title || '-'}}</span>
+                    </div>
+                    <div class="attr-div">
+                        <label>Authors:</label><br>
+                        <span>{{vm.currentPictureBook.authors || '-'}}</span>
+                    </div>
+                </div>
+
+                <div class="mdl-cell mdl-cell--4-col">
+                    <div class="attr-div">
+                        <label>Publisher:</label><br>
+                        <span>{{vm.currentPictureBook.publisher || '-'}}</span>
+                    </div>
+                    <div class="attr-div">
+                        <label>Year of Publishing:</label><br>
+                        <span>{{vm.currentPictureBook.yearOfPublishing || '-'}}</span>
+                    </div>
+                </div>
+                <!--ST TODO: ovde dodati listu postojecih scena-->
+
+                <div class="mdl-cell mdl-cell--4-col" ng-if="vm.showForm">
+                    <br><br>
+                    <label>Title:</label>
+                    <input type="text" ng-model="vm.tmp.title">
+                    <label>Scene Number:</label>
+                    <input type="text" ng-model="vm.tmp.sceneNumber">
+                    <button class="btn btn-primary" type="button" ng-click="vm.addScene()">Add</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mdl-card__actions">
+            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect"
+               ng-click="vm.editPictureBook()">
+                <i class="material-icons">edit</i>
+                Edit
+            </a>
+            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect"
+               ng-click="vm.deletePictureBook(vm.currentPictureBook)">
+                <i class="material-icons">delete</i>
+                Delete
+            </a>
+            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect"
+               ng-click="vm.showAddForm()">
+                <i class="material-icons">add</i>
+                Add scene
+            </a>
+        </div>
+    </div>
+</div>

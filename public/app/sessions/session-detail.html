@@ -1,41 +1,30 @@
-<section class="mainbar">
-    <section class="matter">
-        <div class="container">
-            <div class="row">
-                <div class="widget wblue">
-                    <div ht-widget-header title="{{vm.title}}"></div>
-                    <div class="widget-content user">
-                        <a ui-sref="sessions.sceneTranscripts({id: vm.session.id})">SceneTranscripts</a>
-                        <button class="btn btn-primary"
-                                ng-if="!vm.session.transcript && vm.session.sceneTranscripts.length > 0"
-                                ng-click="vm.addTranscript()">
-                            Add new Annotation
-                        </button>
-                        <button class="btn btn-primary"
-                                ng-if="!(vm.session.sceneTranscripts.length > 0)"
-                                ng-click="vm.addSceneTranscripts()">
-                            Add Transcript
-                        </button>
-                        <button class="btn btn-primary"
-                                ng-if="!vm.audioRecording"
-                                ng-click="vm.addAudioRecording()">
-                            Add Audio Recording
-                        </button>
+<div class="demo-content mdl-grid">
+    <a ui-sref="sessions.sceneTranscripts({id: vm.session.id})">SceneTranscripts</a>
+    <button class="btn btn-primary"
+            ng-if="!vm.session.transcript && vm.session.sceneTranscripts.length > 0"
+            ng-click="vm.addTranscript()">
+        Add new Annotation
+    </button>
+    <button class="btn btn-primary"
+            ng-if="!(vm.session.sceneTranscripts.length > 0)"
+            ng-click="vm.addSceneTranscripts()">
+        Add Transcript
+    </button>
+    <button class="btn btn-primary"
+            ng-if="!vm.audioRecording"
+            ng-click="vm.addAudioRecording()">
+        Add Audio Recording
+    </button>
 
-                        <div ng-if="vm.session.transcripts.length>0">
-                            <label>Choose Annotation:</label>
-                            <select ng-model="vm.selectedTranscript"
-                                    ng-options="transcript as transcript.title for transcript in vm.transcripts">
+    <div ng-if="vm.session.transcripts.length>0">
+        <label>Choose Annotation:</label>
+        <select ng-model="vm.selectedTranscript"
+                ng-options="transcript as transcript.title for transcript in vm.transcripts">
 
-                            </select>
+        </select>
 
-                            <!-- TODO: prikazati kroz ng repeat sve transkripte-->
+        <!-- TODO: prikazati kroz ng repeat sve transkripte-->
 
-                        </div>
+    </div>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</section>
+</div>

@@ -23,7 +23,7 @@
           title: 'Annotation Schemas',
           settings: {
             nav: 6,
-            content: '<i class="fa fa-file-text" aria-hidden="true"></i> Annotation Schemas'
+            content: '<i class="material-icons">receipt</i> Annotation Schemas'
           },
           loginRequired: true
         }

@@ -28,128 +28,134 @@
 
   <!-- build:css styles/app.css -->
   <!-- inject:css -->
-  <link rel="stylesheet" href=".tmp/styles.css">
   <!-- endinject -->
   <!-- endbuild -->
 
   <link rel="stylesheet" href="bower_components/summernote/dist/summernote.css">
+  <link rel="stylesheet" href="bower_components/material-design-lite/material.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="./.tmp/mdl-styles.css">
 </head>
 
 <body>
-  <div>
-    <div ng-include="'app/layout/shell.html'"></div>
-    <div id="splash-page" ng-show="showSplash">
-      <div class="page-splash">
-        <div class="page-splash-message">
-          storyteller
-        </div>
-        <div class="progress progress-striped active page-progress-bar">
-          <div class="bar"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div ng-include="'app/layout/shell.html'"></div>
+<div >
 
-  <!-- build:js js/lib.js -->
-  <!-- bower:js -->
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="bower_components/extras.angular.plus/ngplus-overlay.js"></script>
-  <script src="bower_components/moment/moment.js"></script>
-  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="bower_components/toastr/toastr.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="bower_components/satellizer/satellizer.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
-  <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
-  <script src="bower_components/summernote/dist/summernote.js"></script>
-  <script src="bower_components/angular-summernote/dist/angular-summernote.js"></script>
-  <!-- endbower -->
-  <!-- endbuild -->
 
-  <!-- build:js js/app.js -->
-  <!-- inject:js -->
-  <script src="app/pictureBook/pictureBook.module.js"></script>
-  <script src="app/pictureBook/pictureBook.route.js"></script>
-  <script src="app/pictureBook/pictureBook.service.js"></script>
-  <script src="app/pictureBook/pictureBook.controller.js"></script>
-  <script src="app/pictureBook/pictureBook-modal.controller.js"></script>
-  <script src="app/annotationSchema/annotationSchema.module.js"></script>
-  <script src="app/annotationSchema/annotationSchema.route.js"></script>
-  <script src="app/annotationSchema/annotationSchema.service.js"></script>
-  <script src="app/annotationSchema/annotationSchema.controller.js"></script>
-  <script src="app/annotationSchema/schema-modal.controller.js"></script>
-  <script src="app/residence/residence.module.js"></script>
-  <script src="app/residence/residence.route.js"></script>
-  <script src="app/residence/residence.service.js"></script>
-  <script src="app/residence/residence.controller.js"></script>
-  <script src="app/residence/residence-modal.controller.js"></script>
-  <script src="app/language/language.module.js"></script>
-  <script src="app/language/language.route.js"></script>
-  <script src="app/language/language.service.js"></script>
-  <script src="app/language/language.controller.js"></script>
-  <script src="app/language/language-modal.controller.js"></script>
-  <script src="app/upload/upload.controller.js"></script>
-  <script src="app/upload/upload.module.js"></script>
-  <script src="app/upload/upload.service.js"></script>
-  <script src="app/upload/upload.route.js"></script>
-  <script src="app/app.module.js"></script>
-  <script src="app/admin/admin.module.js"></script>
-  <script src="app/auth/auth.module.js"></script>
-  <script src="app/blocks/exception/exception.module.js"></script>
-  <script src="app/blocks/logger/logger.module.js"></script>
-  <script src="app/blocks/router/router.module.js"></script>
-  <script src="app/core/core.module.js"></script>
-  <script src="app/dashboard/dashboard.module.js"></script>
-  <script src="app/layout/layout.module.js"></script>
-  <script src="app/widgets/widgets.module.js"></script>
-  <script src="app/admin/admin.controller.js"></script>
-  <script src="app/admin/admin.route.js"></script>
-  <script src="app/auth/auth.route.js"></script>
-  <script src="app/auth/login.controller.js"></script>
-  <script src="app/auth/signup.controller.js"></script>
-  <script src="app/blocks/exception/exception-handler.provider.js"></script>
-  <script src="app/blocks/exception/exception.js"></script>
-  <script src="app/blocks/logger/logger.js"></script>
-  <script src="app/blocks/router/router-helper.provider.js"></script>
-  <script src="app/core/config.js"></script>
-  <script src="app/core/constants.js"></script>
-  <script src="app/core/core.route.js"></script>
-  <script src="app/dashboard/dashboard.controller.js"></script>
-  <script src="app/dashboard/dashboard.route.js"></script>
-  <script src="app/kid/kid.module.js"></script>
-  <script src="app/kid/kid.route.js"></script>
-  <script src="app/kid/kid.service.js"></script>
-  <script src="app/kid/kid.controller.js"></script>
-  <script src="app/kid/kid-modal.controller.js"></script>
-  <script src="app/layout/ht-sidebar.directive.js"></script>
-  <script src="app/layout/ht-top-nav.directive.js"></script>
-  <script src="app/layout/shell.controller.js"></script>
-  <script src="app/layout/sidebar.controller.js"></script>
-  <script src="app/recordings/recordings.module.js"></script>
-  <script src="app/recordings/recordings.route.js"></script>
-  <script src="app/recordings/recordings.controller.js"></script>
-  <script src="app/sessions/sessions.module.js"></script>
-  <script src="app/sessions/sessions.route.js"></script>
-  <script src="app/sessions/sessions.service.js"></script>
-  <script src="app/sessions/sessions-scene-transcripts.service.js"></script>
-  <script src="app/sessions/sessions.controller.js"></script>
-  <script src="app/sessions/sessions-modal.controller.js"></script>
-  <script src="app/sessions/session-detail.controller.js"></script>
-  <script src="app/sessions/session-scene-transcripts.controller.js"></script>
-  <script src="app/widgets/ht-img-person.directive.js"></script>
-  <script src="app/widgets/ht-widget-header.directive.js"></script>
-   <!-- endinject -->
+  <!--<div id="splash-page" ng-show="showSplash">-->
+    <!--<div class="page-splash">-->
+      <!--<div class="page-splash-message">-->
+        <!--storyteller-->
+      <!--</div>-->
+      <!--<div class="progress progress-striped active page-progress-bar">-->
+        <!--<div class="bar"></div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+</div>
 
-  <!-- inject:templates:js -->
-  <!-- endinject -->
-  <!-- endbuild -->
+<!-- build:js js/lib.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/extras.angular.plus/ngplus-overlay.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/toastr/toastr.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/satellizer/satellizer.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
+<script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+<script src="bower_components/summernote/dist/summernote.js"></script>
+<script src="bower_components/angular-summernote/dist/angular-summernote.js"></script>
+<script src="bower_components/material-design-lite/material.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js js/app.js -->
+<!-- inject:js -->
+<script src="app/pictureBook/pictureBook.module.js"></script>
+<script src="app/pictureBook/pictureBook.route.js"></script>
+<script src="app/pictureBook/pictureBook.service.js"></script>
+<script src="app/pictureBook/pictureBook.controller.js"></script>
+<script src="app/pictureBook/pictureBook-modal.controller.js"></script>
+<script src="app/annotationSchema/annotationSchema.module.js"></script>
+<script src="app/annotationSchema/annotationSchema.route.js"></script>
+<script src="app/annotationSchema/annotationSchema.service.js"></script>
+<script src="app/annotationSchema/annotationSchema.controller.js"></script>
+<script src="app/annotationSchema/schema-modal.controller.js"></script>
+<script src="app/residence/residence.module.js"></script>
+<script src="app/residence/residence.route.js"></script>
+<script src="app/residence/residence.service.js"></script>
+<script src="app/residence/residence.controller.js"></script>
+<script src="app/residence/residence-modal.controller.js"></script>
+<script src="app/language/language.module.js"></script>
+<script src="app/language/language.route.js"></script>
+<script src="app/language/language.service.js"></script>
+<script src="app/language/language.controller.js"></script>
+<script src="app/language/language-modal.controller.js"></script>
+<script src="app/upload/upload.controller.js"></script>
+<script src="app/upload/upload.module.js"></script>
+<script src="app/upload/upload.service.js"></script>
+<script src="app/upload/upload.route.js"></script>
+<script src="app/app.module.js"></script>
+<script src="app/admin/admin.module.js"></script>
+<script src="app/auth/auth.module.js"></script>
+<script src="app/blocks/exception/exception.module.js"></script>
+<script src="app/blocks/logger/logger.module.js"></script>
+<script src="app/blocks/router/router.module.js"></script>
+<script src="app/core/core.module.js"></script>
+<script src="app/dashboard/dashboard.module.js"></script>
+<script src="app/layout/layout.module.js"></script>
+<script src="app/widgets/widgets.module.js"></script>
+<script src="app/admin/admin.controller.js"></script>
+<script src="app/admin/admin.route.js"></script>
+<script src="app/auth/auth.route.js"></script>
+<script src="app/auth/login.controller.js"></script>
+<script src="app/auth/signup.controller.js"></script>
+<script src="app/blocks/exception/exception-handler.provider.js"></script>
+<script src="app/blocks/exception/exception.js"></script>
+<script src="app/blocks/logger/logger.js"></script>
+<script src="app/blocks/router/router-helper.provider.js"></script>
+<script src="app/core/config.js"></script>
+<script src="app/core/constants.js"></script>
+<script src="app/core/core.route.js"></script>
+<script src="app/dashboard/dashboard.controller.js"></script>
+<script src="app/dashboard/dashboard.route.js"></script>
+<script src="app/kid/kid.module.js"></script>
+<script src="app/kid/kid.route.js"></script>
+<script src="app/kid/kid.service.js"></script>
+<script src="app/kid/kid.controller.js"></script>
+<script src="app/kid/kid-modal.controller.js"></script>
+<script src="app/layout/ht-sidebar.directive.js"></script>
+<script src="app/layout/ht-top-nav.directive.js"></script>
+<script src="app/layout/shell.controller.js"></script>
+<script src="app/layout/sidebar.controller.js"></script>
+<script src="app/recordings/recordings.module.js"></script>
+<script src="app/recordings/recordings.route.js"></script>
+<script src="app/recordings/recordings.controller.js"></script>
+<script src="app/sessions/sessions.module.js"></script>
+<script src="app/sessions/sessions.route.js"></script>
+<script src="app/sessions/sessions.service.js"></script>
+<script src="app/sessions/sessions-scene-transcripts.service.js"></script>
+<script src="app/sessions/sessions.controller.js"></script>
+<script src="app/sessions/sessions-modal.controller.js"></script>
+<script src="app/sessions/session-detail.controller.js"></script>
+<script src="app/sessions/session-scene-transcripts.controller.js"></script>
+<script src="app/widgets/ht-img-person.directive.js"></script>
+<script src="app/widgets/ht-widget-header.directive.js"></script>
+<!-- endinject -->
+
+<!-- inject:templates:js -->
+<!-- endinject -->
+<!-- endbuild -->
 </body>
 
 </html>
