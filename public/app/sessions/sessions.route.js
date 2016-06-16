@@ -42,7 +42,7 @@
             {
                 state: 'sessions.detail',
                 config: {
-                    url: '/detail/:id',
+                    url: '/:id',
                     templateUrl: 'app/sessions/session-detail.html',
                     controller: 'SessionDetailController',
                     controllerAs: 'vm',
@@ -67,6 +67,15 @@
                             //$state.go('sessions.detail', {id: session.id});
                         });
                     }]
+                }
+            }, {
+                state: 'sessions.sceneTranscripts',
+                config: {
+                    url: '/:id/sceneTranscripts',
+                    loginRequired: true,
+                    templateUrl: 'app/sessions/session-scene-transcripts.html',
+                    controller: 'SessionSceneTranscriptsController',
+                    controllerAs: 'vm'
                 }
             }
         ];

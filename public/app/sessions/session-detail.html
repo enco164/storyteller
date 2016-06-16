@@ -5,6 +5,7 @@
                 <div class="widget wblue">
                     <div ht-widget-header title="{{vm.title}}"></div>
                     <div class="widget-content user">
+                        <a ui-sref="sessions.sceneTranscripts({id: vm.session.id})">SceneTranscripts</a>
                         <button class="btn btn-primary"
                                 ng-if="!vm.session.transcript && vm.session.sceneTranscripts.length > 0"
                                 ng-click="vm.addTranscript()">

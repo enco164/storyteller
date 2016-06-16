@@ -1,0 +1,22 @@
+<section class="mainbar">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="widget wblue">
+                    <div ht-widget-header title="{{vm.title}}"></div>
+                    <div class="widget-content user">
+                        <div ng-repeat="sceneTranscript in vm.sceneTranscripts | orderBy:'scene.sceneNumber'">
+                            <h4>{{sceneTranscript.scene.title}}</h4>
+                            <img ng-src="sceneTranscript.scene.sceneURL">
+                            <summernote ng-model="sceneTranscript.text"></summernote>
+                            <!--<trix-editor angular-trix class="trix-content" ng-model="sceneTranscript.text"></trix-editor>-->
+                            <span ng-bind-html="sceneTranscript.text"></span>
+                            <span>{{sceneTranscript.text}}</span>
+                        </div>
+                        <button class="btn btn-primary" ng-click="vm.save()">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

@@ -31,15 +31,17 @@
         }
 
         function addSceneTranscripts() {
-            $state.go('add-scene-transcripts');
+            $state.go('sessions.sceneTranscripts', {id: vm.session.id});
         }
 
         function addAudioRecording() {
-            // TODO: prikazati galeriju u modalu > izabrati/uploadovati audio > modal vraca audio > uvezati za sesiju
+            // ST TODO: prikazati galeriju u modalu > izabrati/uploadovati audio > modal vraca audio > uvezati za sesiju
+            // https://github.com/enco164/storyteller/issues/1
         }
 
         function addTranscript() {
-            // TODO: prikazati dijalog za odabir sheme anotacije i upisati title za transkript > uvezati za sesiju
+            // ST TODO: prikazati dijalog za odabir sheme anotacije i upisati title za transkript > uvezati za sesiju
+            // https://github.com/enco164/storyteller/issues/2
         }
     }
 })();

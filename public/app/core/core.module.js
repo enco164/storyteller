@@ -1,10 +1,11 @@
 (function() {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('app.core', [
-      'ngAnimate', 'ngSanitize',
-      'blocks.exception', 'blocks.logger', 'blocks.router',
-      'ui.router', 'ngplus', 'satellizer', 'ngResource', 'ui.bootstrap'
-    ]);
+    angular
+        .module('app.core', [
+            'ngAnimate', 'ngSanitize',
+            'blocks.exception', 'blocks.logger', 'blocks.router',
+            'ui.router', 'ngplus', 'satellizer', 'ngResource',
+            'ui.bootstrap', 'summernote'
+        ]);
 })();

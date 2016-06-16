@@ -31,6 +31,8 @@
   <link rel="stylesheet" href=".tmp/styles.css">
   <!-- endinject -->
   <!-- endbuild -->
+
+  <link rel="stylesheet" href="bower_components/summernote/dist/summernote.css">
 </head>
 
 <body>
@@ -50,22 +52,24 @@
 
   <!-- build:js js/lib.js -->
   <!-- bower:js -->
-  <script src="/bower_components/jquery/dist/jquery.js"></script>
-  <script src="/bower_components/angular/angular.js"></script>
-  <script src="/bower_components/angular-resource/angular-resource.js"></script>
-  <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="/bower_components/extras.angular.plus/ngplus-overlay.js"></script>
-  <script src="/bower_components/moment/moment.js"></script>
-  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="/bower_components/toastr/toastr.js"></script>
-  <script src="/bower_components/angular-animate/angular-animate.js"></script>
-  <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="/bower_components/satellizer/satellizer.js"></script>
-  <script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-  <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="/bower_components/ng-file-upload-shim/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
-  <script src="/bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/extras.angular.plus/ngplus-overlay.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/toastr/toastr.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/satellizer/satellizer.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
+  <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+  <script src="bower_components/summernote/dist/summernote.js"></script>
+  <script src="bower_components/angular-summernote/dist/angular-summernote.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -134,9 +138,11 @@
   <script src="app/sessions/sessions.module.js"></script>
   <script src="app/sessions/sessions.route.js"></script>
   <script src="app/sessions/sessions.service.js"></script>
+  <script src="app/sessions/sessions-scene-transcripts.service.js"></script>
   <script src="app/sessions/sessions.controller.js"></script>
   <script src="app/sessions/sessions-modal.controller.js"></script>
   <script src="app/sessions/session-detail.controller.js"></script>
+  <script src="app/sessions/session-scene-transcripts.controller.js"></script>
   <script src="app/widgets/ht-img-person.directive.js"></script>
   <script src="app/widgets/ht-widget-header.directive.js"></script>
    <!-- endinject -->

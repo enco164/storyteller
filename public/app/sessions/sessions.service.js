@@ -4,7 +4,7 @@
 (function() {
     'use strict';
     angular
-        .module('app.pictureBook')
+        .module('app.sessions')
         .factory('Session', Session);
 
     Session.$inject = ['$resource'];

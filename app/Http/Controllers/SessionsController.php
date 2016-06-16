@@ -46,7 +46,11 @@ class SessionsController extends ApiController
     public function show($id)
     {
         $session = Session::find($id);
-        $session->load('kid', 'pictureBook', 'transcripts', 'sceneTranscripts', 'audioRecording');
+        if (!$session) {
+            $this->respondNotFound('Session not found');
+        }
+        $session->load('kid', 'transcripts', 'sceneTranscripts.scene', 'audioRecording',
+            'pictureBook.scenes');
         return $session;
     }
 

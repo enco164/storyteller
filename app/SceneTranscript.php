@@ -18,7 +18,14 @@ class SceneTranscript extends Model
         return $this->belongsTo('App\Scene');
     }
 
-    public function annotations() {
+    public function session()
+    {
+        return $this->belongsTo('App\Session');
+    }
+
+    public function annotations()
+    {
         return $this->hasMany('App\Annotation');
     }
+
 }
