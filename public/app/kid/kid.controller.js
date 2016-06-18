@@ -88,6 +88,7 @@
         }
 
         function onCreate(){
+            logger.info('aaaaaaaa');
             var modalInstance = instantiateModal(undefined, "Create new kid");
             
             modalInstance.result.then(onOkCallback, onCancelCallback);

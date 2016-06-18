@@ -20,8 +20,8 @@
             <a class="mdl-list__item"
                ng-repeat="kid in vm.kids | filter:vm.search"
                ng-click="vm.selectKid(kid)"
-               ng-class="{'active': vm.currentKid.id === kid.id}"
-               style="cursor: pointer; border-bottom: #c0c0c0 solid 1px;">
+               ng-class="{'mdl-color-text--white mdl-color--blue-grey-300': vm.currentKid.id === kid.id}"
+               style="cursor: pointer;">
                 <span class="mdl-list__item-primary-content">
                   <!--<i class="material-icons mdl-list__item-avatar">person</i>-->
                   <span>{{kid.firstName + ' ' + kid.lastName}}</span>
@@ -38,8 +38,8 @@
 
     </div>
     <div class="mdl-card mdl-cell mdl-cell--9-col mdl-shadow--2dp" ng-if="vm.currentKid" >
-        <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">{{vm.currentKid.firstName + ' ' + vm.currentKid.lastName }}</h2>
+        <div class="mdl-card__title mdl-color--orange-800">
+            <h2 class="mdl-card__title-text mdl-color-text--white">{{vm.currentKid.firstName + ' ' + vm.currentKid.lastName }}</h2>
         </div>
         <div class="mdl-card__supporting-text">
             <div class="mdl-grid">
