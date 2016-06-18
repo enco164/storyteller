@@ -34,7 +34,7 @@
                     title: 'Sessions',
                     settings: {
                         nav: 5,
-                        content: '<i class="fa fa-archive"></i> Sessions'
+                        content: '<i class="material-icons">inbox</i> Sessions'
                     },
                     loginRequired: true
                 }

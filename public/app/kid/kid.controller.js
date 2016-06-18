@@ -5,11 +5,11 @@
         .module('app.kid')
         .controller('KidsController', KidsController);
 
-    KidsController.$inject = ['$state', '$stateParams','logger', 'Kid','KidResidence','Residence','$uibModal'];
+    KidsController.$inject = ['$rootScope', '$state', '$stateParams','logger', 'Kid','KidResidence','Residence','$uibModal'];
     /* @ngInject */
-    function KidsController($state, $stateParams, logger, Kid, KidResidence, Residence, $uibModal) {
+    function KidsController($rootScope, $state, $stateParams, logger, Kid, KidResidence, Residence, $uibModal) {
         var vm = this;
-        vm.title = 'Kids';
+        $rootScope.pageTitle = 'Kids';
 
         Residence.query(function (residences) {
             vm.residenceList = residences
@@ -88,6 +88,7 @@
         }
 
         function onCreate(){
+            logger.info('aaaaaaaa');
             var modalInstance = instantiateModal(undefined, "Create new kid");
             
             modalInstance.result.then(onOkCallback, onCancelCallback);

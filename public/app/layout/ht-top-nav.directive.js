@@ -23,6 +23,9 @@
     /* @ngInject */
     function TopNavController($rootScope, $scope, $auth, $state) {
       var vm = this;
+      $rootScope.$watch('pageTitle', function(pageTitle){
+        vm.pageTitle = pageTitle;
+      });
       $scope.$on('authChanged', onAuthChanged);
 
       vm.isAuthenticated = $auth.isAuthenticated();

@@ -23,7 +23,7 @@
           title: 'Kids',
           settings: {
             nav: 3,
-            content: '<i class="fa fa-child"></i> Kids'
+            content: '<i class="material-icons">child_care</i> Kids'
           },
           loginRequired: true
         }

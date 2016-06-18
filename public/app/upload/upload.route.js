@@ -26,7 +26,7 @@
                     title: 'Uploads',
                     settings: {
                         nav: 7,
-                        content: '<i class="fa fa-file-text" aria-hidden="true"></i> Uploads'
+                        content: '<i class="material-icons">backup</i> Uploads'
                     },
                     loginRequired: true
                 }

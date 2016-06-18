@@ -23,7 +23,7 @@
           title: 'Picture Books',
           settings: {
             nav: 6,
-            content: '<i class="fa fa-file-text" aria-hidden="true"></i> Picture Books'
+            content: '<i class="material-icons">book</i> Picture Books'
           },
           loginRequired: true
         }

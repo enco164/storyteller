@@ -26,7 +26,7 @@
                     title: 'Recordings',
                     settings: {
                         nav: 4,
-                        content: '<i class="fa fa-microphone"></i> Recordings'
+                        content: '<i class="material-icons">mic</i> Recordings'
                     },
                     loginRequired: true
                 }

@@ -8,11 +8,11 @@
         .module('app.sessions')
         .controller('SessionsController', SessionsController);
 
-    SessionsController.$inject = ['Session'];
+    SessionsController.$inject = ['$rootScope','Session'];
     /* @ngInject */
-    function SessionsController(Session) {
+    function SessionsController($rootScope, Session) {
         var vm = this;
-        vm.title = 'Sessions';
+        $rootScope.pageTitle = 'Sessions';
 
         activate();
 
