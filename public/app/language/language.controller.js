@@ -8,11 +8,11 @@
         .module('app.language')
         .controller('LanguageController', LanguageController);
 
-    LanguageController.$inject = ['$state', '$stateParams','logger', 'Language', '$uibModal'];
+    LanguageController.$inject = ['$rootScope','$state', '$stateParams','logger', 'Language', '$uibModal'];
     /* @ngInject */
-    function LanguageController($state, $stateParams, logger, Language, $uibModal) {
+    function LanguageController($rootScope, $state, $stateParams, logger, Language, $uibModal) {
         var vm = this;
-        vm.title = 'Language';
+        $rootScope.pageTitle = 'Languages';
 
         vm.deleteLanguage = deleteLanguage;
         vm.editLanguage = editLanguage;

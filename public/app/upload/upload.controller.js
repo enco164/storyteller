@@ -9,10 +9,11 @@
         module('app.upload', ['ngFileUpload'])
         .controller('UploadController', UploadController);
 
-    UploadController.$inject = ['Upload', '$timeout'];
+    UploadController.$inject = ['$rootScope','Upload', '$timeout'];
     /* @ngInject */
-    function UploadController(Upload, $timeout) {
+    function UploadController($rootScope, Upload, $timeout) {
         var vm = this;
+        $rootScope.pageTitle = 'Upload';
 
         vm.uploadFiles = function(file, errFiles) {
             vm.f = file;

@@ -5,11 +5,11 @@
         .module('app.annotationSchema')
         .controller('AnnotationSchemaController', AnnotationSchemaController);
 
-    AnnotationSchemaController.$inject = ['$state', '$stateParams','logger', 'AnnotationSchemas', '$uibModal'];
+    AnnotationSchemaController.$inject = ['$rootScope','$state', '$stateParams','logger', 'AnnotationSchemas', '$uibModal'];
     /* @ngInject */
-    function AnnotationSchemaController($state, $stateParams, logger, AnnotationSchemas, $uibModal) {
+    function AnnotationSchemaController($rootScope, $state, $stateParams, logger, AnnotationSchemas, $uibModal) {
         var vm = this;
-        vm.title = 'Annotation Schemas';
+        $rootScope.pageTitle = 'Annotation Schemas';
 
         vm.deleteSchema = deleteSchema;
         vm.editSchema = editSchema;
