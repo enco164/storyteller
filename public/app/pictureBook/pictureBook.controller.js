@@ -5,11 +5,11 @@
         .module('app.pictureBook')
         .controller('PictureBookController', PictureBookController);
 
-    PictureBookController.$inject = ['$state', '$stateParams','logger', 'PictureBook', 'PictureBookScene', '$uibModal'];
+    PictureBookController.$inject = ['$rootScope','$state', '$stateParams','logger', 'PictureBook', 'PictureBookScene', '$uibModal'];
     /* @ngInject */
-    function PictureBookController($state, $stateParams, logger, PictureBook, PictureBookScene, $uibModal) {
+    function PictureBookController($rootScope, $state, $stateParams, logger, PictureBook, PictureBookScene, $uibModal) {
         var vm = this;
-        vm.title = 'Picture Books';
+        $rootScope.pageTitle = 'Picture Books';
         vm.showForm = false;
 
         vm.deletePictureBook = deletePictureBook;

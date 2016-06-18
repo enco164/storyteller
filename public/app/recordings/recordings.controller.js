@@ -8,11 +8,11 @@
         .module('app.recordings')
         .controller('RecordingsController', RecordingsController);
 
-    RecordingsController.$inject = [];
+    RecordingsController.$inject = ['$rootScope'];
     /* @ngInject */
-    function RecordingsController() {
+    function RecordingsController($rootScope) {
         var vm = this;
-        vm.title = 'Recordings';
+        $rootScope.pageTitle = 'Recordings';
 
     }
 })();

@@ -8,11 +8,11 @@
         .module('app.residence')
         .controller('ResidenceController', ResidenceController);
 
-    ResidenceController.$inject = ['$state', '$stateParams','logger', 'Residence', '$uibModal'];
+    ResidenceController.$inject = ['$rootScope','$state', '$stateParams','logger', 'Residence', '$uibModal'];
     /* @ngInject */
-    function ResidenceController($state, $stateParams, logger, Residence, $uibModal) {
+    function ResidenceController($rootScope, $state, $stateParams, logger, Residence, $uibModal) {
         var vm = this;
-        vm.title = 'Residence';
+        $rootScope.pageTitle = 'Residences';
 
         vm.deleteResidence = deleteResidence;
         vm.editResidence = editResidence;
