@@ -1,30 +1,81 @@
-<div class="demo-content mdl-grid">
-    <a ui-sref="sessions.sceneTranscripts({id: vm.session.id})">SceneTranscripts</a>
-    <button class="btn btn-primary"
-            ng-if="!vm.session.transcript && vm.session.sceneTranscripts.length > 0"
-            ng-click="vm.addTranscript()">
-        Add new Annotation
-    </button>
-    <button class="btn btn-primary"
-            ng-if="!(vm.session.sceneTranscripts.length > 0)"
-            ng-click="vm.addSceneTranscripts()">
-        Add Transcript
-    </button>
-    <button class="btn btn-primary"
-            ng-if="!vm.audioRecording"
-            ng-click="vm.addAudioRecording()">
-        Add Audio Recording
-    </button>
+<div class="mdl-grid ">
+    <div class="mdl-card mdl-cell mdl-cell--8-col mdl-shadow--2dp  ">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">
+                {{vm.session.kid.firstName + ' ' + vm.session.kid.lastName}}
 
-    <div ng-if="vm.session.transcripts.length>0">
-        <label>Choose Annotation:</label>
-        <select ng-model="vm.selectedTranscript"
-                ng-options="transcript as transcript.title for transcript in vm.transcripts">
+            </h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <span class="mdl-typography--font-bold">Book: </span> <span class="mdl-typography--font-regular">{{vm.session.pictureBook.title}}</span><br>
+            <span class="mdl-typography--font-bold">Created: </span> <span class="mdl-typography--font-regular">{{vm.session.createdAt}}</span><br>
+            <span class="mdl-typography--font-bold">Annotations: </span><br>
+            <ul>
+                <li ng-repeat="transcript in vm.session.transcripts">{{transcript.title}} <small>{{transcript.annotationSchema.title}}</small></li>
+            </ul>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
 
-        </select>
 
-        <!-- TODO: prikazati kroz ng repeat sve transkripte-->
 
+
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                    ng-if="!vm.session.transcript && vm.session.sceneTranscripts.length > 0"
+                    ng-click="vm.addTranscript()">
+                Add new Annotation
+            </a>
+            <!--ng-if="!(vm.session.sceneTranscripts.length > 0)"-->
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+
+                    ng-click="vm.addSceneTranscripts()">
+                Add Transcript
+            </a>
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                    ng-if="!vm.audioRecording"
+                    ng-click="vm.addAudioRecording()">
+                Add Audio Recording
+            </a>
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                    ui-sref="sessions.sceneTranscripts({id: vm.session.id})">Scene Transcripts</a>
+        </div>
+        <div class="mdl-card__menu">
+            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">file_download</i>
+            </button>
+        </div>
     </div>
+
+
+
+
+
+
+    <!--<a ui-sref="sessions.sceneTranscripts({id: vm.session.id})">SceneTranscripts</a>-->
+    <!--<button class="btn btn-primary"-->
+            <!--ng-if="!vm.session.transcript && vm.session.sceneTranscripts.length > 0"-->
+            <!--ng-click="vm.addTranscript()">-->
+        <!--Add new Annotation-->
+    <!--</button>-->
+    <!--<button class="btn btn-primary"-->
+            <!--ng-if="!(vm.session.sceneTranscripts.length > 0)"-->
+            <!--ng-click="vm.addSceneTranscripts()">-->
+        <!--Add Transcript-->
+    <!--</button>-->
+    <!--<button class="btn btn-primary"-->
+            <!--ng-if="!vm.audioRecording"-->
+            <!--ng-click="vm.addAudioRecording()">-->
+        <!--Add Audio Recording-->
+    <!--</button>-->
+
+    <!--<div ng-if="vm.session.transcripts.length>0">-->
+        <!--<label>Choose Annotation:</label>-->
+        <!--<select ng-model="vm.selectedTranscript"-->
+                <!--ng-options="transcript as transcript.title for transcript in vm.transcripts">-->
+
+        <!--</select>-->
+
+        <!--&lt;!&ndash; TODO: prikazati kroz ng repeat sve transkripte&ndash;&gt;-->
+
+    <!--</div>-->
 
 </div>

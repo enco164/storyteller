@@ -23,7 +23,7 @@ class PictureBookController extends ApiController
 
     public function index()
     {
-        return PictureBook::all();
+        return PictureBook::all()->load('scenes');
     }
 
     public function store(Request $request)
@@ -36,7 +36,7 @@ class PictureBookController extends ApiController
 
         $picBook = PictureBook::create($request->all());
 
-        return response()->json($picBook);
+        return $picBook;
     }
 
     public function show($id)

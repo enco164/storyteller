@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AnnotationSchemas extends Model
 {
-    protected $table = 'annotationSchemas';
+    use \Eloquence\Behaviours\CamelCasing;
 
     protected $fillable =[
         'title',

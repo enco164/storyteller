@@ -31,16 +31,25 @@ class SessionsController extends ApiController
 
         $kid = Kid::find($kidId);
         $pictureBook = PictureBook::find($pictureBookId);
-        if (!$kid || !$pictureBook) {
-            $this->respondNotFound('Kid or Picture Book not found');
+        if ($kid === NULL || $pictureBook === NULL) {
+            return $this->respondNotFound('Kid or Picture Book not found');
         }
 
+        // Creating session
         $session = Session::create();
         $session->kid()->associate($kid);
         $session->pictureBook()->associate($pictureBook);
         $session->save();
 
-        return $session;
+        //Creating sceneTranscript for every scene
+        $scenes = $pictureBook->scenes()->get();
+        foreach ($scenes as $scene) {
+            $sceneTranscript = new SceneTranscript(['text' => '']);
+            $sceneTranscript = $scene->sceneTranscripts()->save($sceneTranscript);
+            $sceneTranscript = $session->sceneTranscripts()->save($sceneTranscript);
+        }
+
+        return $session->load('pictureBook', 'kid');
     }
 
     public function show($id)

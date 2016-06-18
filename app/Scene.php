@@ -18,8 +18,8 @@ class Scene extends Model
     }
 
 
-    public function sceneTranscript()
+    public function sceneTranscripts()
     {
-        return $this->hasOne('App\SceneTranscript');
+        return $this->hasMany('App\SceneTranscript');
     }
 }
