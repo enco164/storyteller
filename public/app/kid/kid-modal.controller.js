@@ -8,9 +8,9 @@
         .module('app.kid')
         .controller('KidModalController', KidModalController);
 
-    KidModalController.$inject = ['Kid', 'logger', '$uibModalInstance', 'kid', 'modalTitle', 'Language','Residence'];
+    KidModalController.$inject = ['Kid', 'logger', '$uibModalInstance', 'kid', 'modalTitle', 'Language','Residence', 'KidResidence'];
 
-    function KidModalController(Kid, logger, $uibModalInstance, kid, modalTitle, Language, Residence) {
+    function KidModalController(Kid, logger, $uibModalInstance, kid, modalTitle, Language, Residence, KidResidence) {
         var vm = this;
 
         vm.modalTitle = modalTitle;
@@ -22,16 +22,19 @@
             vm.residenceList = residences
         });
 
-        vm.ok = ok;
+        vm.addKid = addKid;
+        vm.addKidAndStayOpen = addKidAndStayOpen;
         vm.cancel = cancel;
         vm.kid = kid;
+        vm.showAddOption = false;
         vm.showAddForm = showAddForm;
         vm.addResidence = addResidence;
+        vm.removeResidence = removeResidence;
 
-        function ok(){
+        function addKid(){
             if (vm.kid.id) {
-                vm.kid.$update(onSuccess, onError);
-            } else {    
+                Kid.update(vm.kid, onSuccess, onError);
+            } else {
                 var kid = new Kid(vm.kid);
 
                 kid.$save(onSuccess, onError);
@@ -40,7 +43,7 @@
             function onSuccess(newKid){
                 logger.info('Kid ' + newKid.firstName + ' ' + newKid.lastName + ' saved');
                 vm.kid = undefined;
-                $uibModalInstance.close(kid);
+                $uibModalInstance.close(newKid);
             }
 
             function onError(error){
@@ -48,18 +51,54 @@
             }
         }
 
+        function addKidAndStayOpen() {
+            var kid = new Kid(vm.kid);
+            kid.$save(onSuccess, onError);
+            vm.showAddOption = true;
+            vm.showForm = true;
+
+
+            function onSuccess(newKid){
+                logger.info('Kid ' + newKid.firstName + ' ' + newKid.lastName + ' saved');
+                vm.kid=newKid;
+            }
+
+            function onError(error){
+                logger.error(error.data.error.message);
+            }
+        }
+
+
         function cancel() {
             $uibModalInstance.dismiss('cancel');
         }
 
         function showAddForm() {
             vm.showForm = !vm.showForm;
-            vm.newKidResidence = vm.newKidResidence || [];
+            vm.newResidence = vm.newResidence;
         }
 
         function addResidence() {
-            console.log("Residence id:"+vm.kid.residenceId);
-            //ST TODO proslediti residence_id u KidResidence pivot tabelu
+            KidResidence.save({kidId: vm.kid.id}, vm.newResidence, onSuccess);
+
+            function onSuccess(newKid){
+                logger.info('Added residence to: ' + newKid.firstName + ' ' + newKid.lastName);
+                vm.kid = newKid;
+                vm.showForm = false;
+                vm.newResidence = {};
+            }
+        }
+
+        function removeResidence($residenceId) {
+
+            KidResidence.delete({kidId: vm.kid.id, residenceId: $residenceId}, onSuccess);
+
+            function onSuccess(newKid){
+                logger.info('Removed residence from: ' + newKid.firstName + ' ' + newKid.lastName);
+                vm.kid = newKid;
+                //console.log(vm.kid);
+            }
+
         }
 
         function openDatePicker() {

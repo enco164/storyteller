@@ -25,7 +25,8 @@
 
             if ($stateParams.id) {
                 PictureBook.get({id: $stateParams.id}, onSuccess, onError);
-            } else {
+            }
+            else {
                 vm.currentPictureBook = undefined;
             }
 
@@ -113,26 +114,17 @@
         
         function showAddForm() {
             vm.showForm = !vm.showForm;
-            vm.newScene = vm.newScene || [];
+            vm.newScene = {};
         }
 
         function addScene() {
+            
+            PictureBookScene.save({pictureBookId: vm.currentPictureBook.id}, vm.newScene, onSuccess);
 
-            logger.info("Nije zavrseno");
-
-            //ST TODO: Ovaj deo nisam uspeo da namestim
-            // vm.newScene.push({"title": vm.tmp.title, "sceneNumber": vm.tmp.sceneNumber, "pictureBookId": vm.currentPictureBook.id});
-            //ST TODO: Ovaj red ispod ne valja
-            // PictureBookScene.save({pictureBookId: vm.currentPictureBook.id}, vm.newScene, onSuccess);
-            //
-            // function onSuccess(newPictureBook){
-            //     logger.info('Picture Book ' + newPictureBook.title +' updated, scene added');
-            //     vm.pictureBook = undefined;
-            // }
-            //
-            // function onError(error){
-            //     logger.error(error.data.error.message);
-            // }
+            function onSuccess(newPictureBook){
+                logger.info('Added scene to picture Book ' + newPictureBook.title);
+                vm.currentPictureBook = newPictureBook;
+            }
             
         }
 

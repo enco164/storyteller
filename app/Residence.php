@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Residence extends Model
 {
-    protected $table = 'residences';
+    use \Eloquence\Behaviours\CamelCasing;
 
     protected $fillable =[
         'state',

@@ -22,6 +22,4 @@
         return $resource('/api/picture_books/:pictureBookId/scenes/:sceneId', {pictureBookId: '@pictureBookId', sceneId: '@sceneId'});
     }
     
-    //ST TODO: Enco, je l' ok ovako? Drugi fajl da se obrise...
-    
 })();

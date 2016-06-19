@@ -9,17 +9,26 @@
 namespace App\Http\Controllers;
 
 use App\Kid;
-use App\Residence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class KidResidenceController extends ApiController
 {
-    public function store(Request $request, $kid_id, $residence_id)
+    public function store(Request $request, $kidId)
     {
-        $kid = Kid::find($kid_id);
-        $kid->residences()->attach($residence_id);
+        $kid = Kid::find($kidId);
+        $kid->residences()->attach(Input::get('id'));
+        $kid->load('residences');
 
-        return $kid->load('residences');
+        return $kid;
+    }
+
+    public function destroy($kidId, $residenceId)
+    {
+        $kid = Kid::find($kidId);
+        $kid->residences()->detach($residenceId);
+        $kid->load('residences');
+        return $kid;
     }
 
 }

@@ -80,15 +80,14 @@
 
             function onOkCallback(kid) {
                 reloadKids();
+                vm.currentKid = kid;
             }
 
             function onCancelCallback() {
-
             }
         }
 
         function onCreate(){
-            logger.info('aaaaaaaa');
             var modalInstance = instantiateModal(undefined, "Create new kid");
             
             modalInstance.result.then(onOkCallback, onCancelCallback);
@@ -99,19 +98,26 @@
             }
 
             function onCancelCallback() {
-
             }
         }
 
         function showAddForm() {
             vm.showForm = !vm.showForm;
-            vm.newKidResidence = vm.newKidResidence || [];
+            vm.newResidence = {};
         }
 
         function addResidence() {
-            console.log("Kid id:"+vm.currentKid.id);
-            console.log("Residence id:"+vm.currentKid.residenceId);
-            //ST TODO proslediti kid_id i residence_id u KidResidence pivot tabelu
+            
+            KidResidence.save({kidId: vm.currentKid.id}, vm.newResidence, onSuccess);
+
+            function onSuccess(newKid){
+                logger.info('Added residence to: ' + newKid.firstName + ' ' + newKid.lastName);
+                reloadKids();
+                vm.currentKid = newKid;
+                vm.showForm = false;
+                vm.newResidence = {};
+
+            }
         }
 
         function instantiateModal(kid, $modalTitle) {

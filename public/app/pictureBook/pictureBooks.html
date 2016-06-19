@@ -62,16 +62,25 @@
                         <span>{{vm.currentPictureBook.yearOfPublishing || '-'}}</span>
                     </div>
                 </div>
-                <!--ST TODO: ovde dodati listu postojecih scena-->
+
+                <div class="mdl-cell mdl-cell--4-col">
+                    <div ng-repeat="scene in vm.currentPictureBook.scenes">
+                        <label>Scene Title:</label>
+                        <span>{{scene.title}}</span> <br>
+                        <label>Scene Number:</label>
+                        <span>{{scene.sceneNumber}}</span> <br><br>
+                    </div>
+                </div>
 
                 <div class="mdl-cell mdl-cell--4-col" ng-if="vm.showForm">
                     <br><br>
                     <label>Title:</label>
-                    <input type="text" ng-model="vm.tmp.title">
+                    <input type="text" ng-model="vm.newScene.title">
                     <label>Scene Number:</label>
-                    <input type="text" ng-model="vm.tmp.sceneNumber">
+                    <input type="text" ng-model="vm.newScene.sceneNumber">
                     <button class="btn btn-primary" type="button" ng-click="vm.addScene()">Add</button>
                 </div>
+
 
             </div>
         </div>

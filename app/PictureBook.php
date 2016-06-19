@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PictureBook extends Model
 {
     use \Eloquence\Behaviours\CamelCasing;
+    
     protected $fillable = [
         "title", "authors", "publisher", "yearOfPublishing"
     ];

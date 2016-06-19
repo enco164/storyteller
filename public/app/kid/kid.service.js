@@ -21,7 +21,7 @@
     }
 
     function KidResidence($resource) {
-        return $resource('/api/kids/:kid_id/residences/:residence_id', {kid_id: '@kid_id',residence_id: '@residence_id'},
+        return $resource('/api/kids/:kidId/residences/:residenceId', {kidId: '@kidId', residenceId: '@residenceId'},
             {
                 'update': {method: 'PUT'},
                 'destroy': {method: 'DELETE'}

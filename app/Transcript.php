@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transcript extends Model
 {
+    use \Eloquence\Behaviours\CamelCasing;
+
     public function session()
     {
         return $this->belongsTo('App\Session', 'session_id');

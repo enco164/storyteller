@@ -31,13 +31,12 @@ class KidsController extends ApiController
 
     public function index()
     {
-        $kids = Kid::all();
+        $kids = Kid::all()->load('languageMother', 'languageFather', 'languageSchool', 'languageAdditionalSchool', 'residences');
+        //$kids->residences()->get();
 //        $limit = Input::get('limit') ?: 30;
 //        $limit = ($limit <= 20) ? $limit : 20;
 //        $kids = Kid::orderBy('first_name', 'asc');
-        foreach ($kids as $kid){
-            $kid->load('languageMother', 'languageFather', 'languageSchool', 'languageAdditionalSchool');
-        }
+
         /*  i can just do this:
          *    return $kids->paginate($limit);
          *  but it will not be transformed
@@ -81,7 +80,7 @@ class KidsController extends ApiController
 //        $kid->fatherLanguage()->save(new Language($languageFather));
 //        $kid->schoolLanguage()->save(new Language($languageSchool));
 //        $kid->additionalSchoolLanguage()->save(new Language($languageAdditionalSchool));
-        $kid->load('languageMother', 'languageFather', 'languageSchool', 'languageAdditionalSchool');
+        $kid->load('languageMother', 'languageFather', 'languageSchool', 'languageAdditionalSchool', 'residences');
         return response()->json($kid);
     }
 
@@ -91,7 +90,7 @@ class KidsController extends ApiController
         if (!$kid) {
             return $this->respondNotFound('Kid does not exist.');
         }
-        $kid->load('languageMother', 'languageFather', 'languageSchool', 'languageAdditionalSchool');
+        $kid->load('languageMother', 'languageFather', 'languageSchool', 'languageAdditionalSchool', 'residences');
         return response()->json($kid);
     }
 
@@ -104,7 +103,7 @@ class KidsController extends ApiController
 
         $kid->fill($request->all());
         $kid->save();
-        $kid->load('languageMother', 'languageFather', 'languageSchool', 'languageAdditionalSchool');
+        $kid->load('languageMother', 'languageFather', 'languageSchool', 'languageAdditionalSchool', 'residences');
         return response()->json($kid);
     }
 

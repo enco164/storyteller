@@ -14,6 +14,13 @@ use Illuminate\Http\Request;
 
 class PictureBookSceneController extends ApiController
 {
+
+    public function index($picBookId){
+        $pictureBook = PictureBook::find($picBookId);
+
+        return $pictureBook->scenes()->get();
+    }
+
     public function store(Request $request, $picBookId)
     {
         $pictureBook = PictureBook::find($picBookId);

@@ -114,23 +114,39 @@
         </div>
 
         <div class="row">
-            <button class="btn btn-default" ng-click="vm.showAddForm()">
-                <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                Add residence
-            </button>
-
-            <div class="col-md-9" ng-if="vm.showForm">
-                <br><br>
-                <label>Residence:</label><br>
-                <select class="form-control" ng-model="vm.kid.residenceId">
-                    <option ng-repeat="residence in vm.residenceList" value={{residence.id}}>{{residence.state}} {{residence.city}}</option>
-                </select>
-                <button class="btn btn-primary" type="button" ng-click="vm.addResidence()">Add</button>
+            <div class="col-md-6">
+                <div>
+                    <label>Last Known Residence:</label><br>
+                    <span>{{vm.kid.residences[vm.kid.residences.length - 1].state}} - {{vm.kid.residences[vm.kid.residences.length - 1].city}}</span><br>
+                    <label>Residences:</label><br>
+                    <div ng-repeat="residence in vm.kid.residences">
+                        <span>{{residence.state}} - {{residence.city}}</span>
+                        <button class="btn btn-danger" ng-click="vm.removeResidence(residence.id)">
+                            <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                <div ng-if="vm.kid.id">
+                    <button ng-if="!vm.showForm" class="btn btn-default" ng-click="vm.showAddForm()">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        Add residence
+                    </button>
+                    <div ng-if="vm.showForm">
+                        <br><br>
+                        <label>Residence:</label><br>
+                        <select class="form-control" ng-model="vm.newResidence">
+                            <option ng-repeat="residence in vm.residenceList" value={{residence}}>{{residence.state}} {{residence.city}}</option>
+                        </select>
+                        <button class="btn btn-primary" type="button" ng-click="vm.addResidence()">Add</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
+        <button ng-if="!vm.kid.id" class="btn btn-primary" type="button" ng-click="vm.addKidAndStayOpen()">Add Kid and add Residence</button>
+        <button ng-if="!vm.kid.id" class="btn btn-primary" type="button" ng-click="vm.addKid()">Just Add Kid</button>
+        <button ng-if="vm.kid.id" class="btn btn-primary" type="button" ng-click="vm.addKid()">Save</button>
         <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
     </div>
 </div>
