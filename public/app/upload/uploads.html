@@ -1,11 +1,20 @@
 <div style="position:relative; left:50%; bottom:50%;">
     <h4>Upload on file select</h4>
-    <button type="file" ngf-select="vm.uploadFiles($file, $invalidFiles)"
+    <!--<button type="file" ngf-select="vm.uploadFiles($file, $invalidFiles)"
+            accept="image/*">Select File
+    </button>-->
+    <button ng-click="vm.onCreate()"
+            class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--floating-action mdl-shadow--4dp"
+            type="file"
+            ngf-select="vm.uploadFiles($file, $invalidFiles)"
             accept="image/*">
-        Select File</button>
+        <i class="material-icons">add</i>
+    </button>
+    <div class="mdl-cell mdl-cell--3-col">
     <br><br>
     File:
     <div style="font:smaller">{{vm.f.name}} {{vm.errFile.name}} {{vm.errFile.$error}} {{vm.errFile.$errorParam}}
     </div>
     {{errorMsg}}
+</div>
 </div>

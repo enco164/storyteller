@@ -1,137 +1,87 @@
-<section class="mainbar">
-    <section class="matter">
-        <div class="container">
-            <div class="row">
-                <div class="widget wblue">
-                    <div ht-widget-header title="{{vm.title}}">
 
-                            <span class="btn-sm btn-default" ng-click="vm.onCreate()" style="cursor: pointer">
-                                <i class="fa fa-plus"></i>
-                                Add new Schema
-                            </span>
+<!--- NOVO --->
+<div class="demo-content mdl-grid">
 
-                    </div>
-                    <div class="widget-content user">
-                        <div class="clear-fix"></div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="input-group" style="margin-bottom: 5px">
-                                  <span class="input-group-addon">
-                                      <i class="fa fa-search"
-                                         aria-hidden="true"></i>
-                                  </span>
-                                    <input type="text"
-                                           class="form-control"
-                                           placeholder="Search..."
-                                           ng-model="vm.search.$">
-                                </div>
-                                <ul class="list-group" style="height: 350px; overflow: hidden; overflow-y: auto;">
-                                    <li class="list-group-item"
-                                        ng-repeat="schema in vm.schemas | filter:vm.search"
-                                        ng-click="vm.selectSchema(schema)"
-                                        ng-class="{'active': vm.currentSchema.id === schema.id}"
-                                        style="cursor: pointer; color:black">
-                                        <span>{{schema.title}}</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div ng-if="vm.currentSchema">
-                                <h2 class="col-md-9" style="color:white; background-color: #FF6D00;" >
-                                    {{vm.currentSchema.title}}
-                                    <span class="pull-right">
-                                        <button class="btn btn-default" ng-click="vm.editSchema()">
-                                            <i class="fa fa-pencil"></i>
-                                            Edit
-                                        </button>
-                                        <button class="btn btn-default" ng-click="vm.deleteSchema(vm.currentSchema)">
-                                            <i class="fa fa-trash-o"></i>
-                                            Delete
-                                        </button>
-                                    </span>
-                                </h2>
-                                <!--ST TODO: srediti redosled boja (ne slaze se boja i vm.boja)-->
-                                <div class="col-md-3">
-                                    <label>Title:</label><br>
-                                    <span>{{vm.currentSchema.title}}</span>
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Description:</label><br>
-                                    <span>{{vm.currentSchema.description || '-'}}</span>
-                                </div>
-                                <div ng-if="vm.currentSchema.blue">
-                                    <div class="col-md-3">
-                                        <label>Color:</label><br>
-                                        <div class="color-box" style="background-color: #FCBCBC; width: 40px; height: 20px"></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Color description:</label><br>
-                                        <span ng-if="vm.currentSchema.blue">{{vm.currentSchema.blue}}</span><br>
-                                    </div>
-                                </div>
+    <button ng-click="vm.onCreate()"
+            class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--floating-action mdl-shadow--4dp">
+        <i class="material-icons">add</i>
+    </button>
+    <div class="mdl-cell mdl-cell--3-col">
 
-                                <div ng-if="vm.currentSchema.green">
-                                    <div class="col-md-3">
-                                        <div class="color-box" style="background-color: #c7fcbc; width: 40px; height: 20px"></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span ng-if="vm.currentSchema.green">{{vm.currentSchema.green}}</span><br>
-                                    </div>
-                                </div>
-                                <div ng-if="vm.currentSchema.red">
-                                    <div class="col-md-3">
-                                        <div class="color-box" style="background-color: #bcdffc; width: 40px; height: 20px"></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span ng-if="vm.currentSchema.red">{{vm.currentSchema.red}}</span><br>
-                                    </div>
-                                </div>
-                                <div ng-if="vm.currentSchema.aqua">
-                                    <div class="col-md-3">
-                                        <div class="color-box" style="background-color: #f8f89b; width: 40px; height: 20px"></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span ng-if="vm.currentSchema.aqua">{{vm.currentSchema.aqua}}</span><br>
-                                    </div>
-                                </div>
-                                <div ng-if="vm.currentSchema.pink">
-                                    <div class="col-md-3">
-                                        <div class="color-box" style="background-color: #fcbcfa; width: 40px; height: 20px"></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span ng-if="vm.currentSchema.pink">{{vm.currentSchema.pink}}</span><br>
-                                    </div>
-                                </div>
-                                <div ng-if="vm.currentSchema.yellow">
-                                    <div class="col-md-3">
-                                        <div class="color-box" style="background-color: #bcfcf7; width: 40px; height: 20px"></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span ng-if="vm.currentSchema.yellow">{{vm.currentSchema.yellow}}</span><br>
-                                    </div>
-                                </div>
-                                <div ng-if="vm.currentSchema.orange">
-                                    <div class="col-md-3">
-                                        <div class="color-box" style="background-color: darkblue; width: 40px; height: 20px"></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span ng-if="vm.currentSchema.orange">{{vm.currentSchema.orange}}</span><br>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-                        <div class="clear-fix"></div>
-
-                    </div>
-
-                </div>
-                <div class="widget-foot">
-                    <div class="clearfix"></div>
-                </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+                <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+                <input class="mdl-textfield__input" type="text" id="sample6" ng-model="vm.search.$">
+                <label class="mdl-textfield__label" for="sample-expandable">Search...</label>
             </div>
         </div>
+        <div class="demo-list-action mdl-list">
+            <a class="mdl-list__item"
+               ng-repeat="schema in vm.schemas | filter:vm.search"
+               ng-click="vm.selectSchema(schema)"
+               ng-class="{'mdl-color-text--white mdl-color--blue-grey-300': vm.currentSchema.id === schema.id}"
+               style="cursor: pointer;">
+                <span class="mdl-list__item-primary-content">
+                  <!--<i class="material-icons mdl-list__item-avatar">person</i>-->
+                  <span>{{schema.title}}</span>
+                </span>
+            </a>
         </div>
-    </section>
-</section>
+
+    </div>
+    <div class="mdl-card mdl-cell mdl-cell--9-col mdl-shadow--2dp" ng-if="vm.currentSchema" >
+        <div class="mdl-card__title mdl-color--orange-800">
+            <h2 class="mdl-card__title-text mdl-color-text--white">{{vm.currentSchema.title}}</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--3-col">
+                    <div class="attr-div">
+                        <label>Title:</label><br>
+                        <span>{{vm.currentSchema.title}}</span>
+                    </div>
+                    <div class="attr-div">
+                        <label>Color:</label><br>
+                        <div class="color-box" style="background-color: #bcdffc; width: 40px; height: 18px"></div>
+                        <div class="color-box" style="background-color: #c7fcbc; width: 40px; height: 18px"></div>
+                        <div class="color-box" style="background-color: #FF3300; width: 40px; height: 18px"></div>
+                        <div class="color-box" style="background-color: #bcfcf7; width: 40px; height: 18px"></div>
+                        <div class="color-box" style="background-color: #fcbcfa; width: 40px; height: 18px"></div>
+                        <div class="color-box" style="background-color: #f8f89b; width: 40px; height: 18px"></div>
+                        <div class="color-box" style="background-color: #FF9933; width: 40px; height: 18px"></div>
+                    </div>
+
+                </div>
+                <div class="mdl-cell mdl-cell--6-col">
+                    <div class="attr-div">
+                        <label>Description:</label><br>
+                        <span>{{vm.currentSchema.description || '-'}}</span>
+                    </div>
+                    <div class="attr-div">
+                        <label>Color description:</label><br>
+                        <div ng-if="vm.currentSchema.blue">{{vm.currentSchema.blue}}</div>
+                        <div ng-if="vm.currentSchema.green">{{vm.currentSchema.green}}</div>
+                        <div ng-if="vm.currentSchema.red">{{vm.currentSchema.red}}</div>
+                        <div ng-if="vm.currentSchema.aqua">{{vm.currentSchema.aqua}}</div>
+                        <div ng-if="vm.currentSchema.pink">{{vm.currentSchema.pink}}</div>
+                        <div ng-if="vm.currentSchema.yellow">{{vm.currentSchema.yellow}}</div>
+                        <div ng-if="vm.currentSchema.orange">{{vm.currentSchema.orange}}</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mdl-card__actions">
+                <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.editSchema()">
+                    <i class="material-icons">edit</i>
+                    Edit
+                </a>
+                <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.deleteSchema(vm.currentSchema)">
+                    <i class="material-icons">delete</i>
+                    Delete
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
