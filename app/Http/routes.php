@@ -32,6 +32,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource('picture_books.scenes', 'PictureBookSceneController');
     Route::resource('sessions.scene_transcripts', 'SessionsSceneTranscriptsController');
     Route::resource('kids.residences', 'KidResidenceController');
+    Route::resource('sessions.transcripts', 'SessionsTranscriptsController');
 
 });
 

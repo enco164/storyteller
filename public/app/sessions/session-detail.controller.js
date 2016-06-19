@@ -8,15 +8,16 @@
         .module('app.sessions')
         .controller('SessionDetailController', SessionDetailController);
 
-    SessionDetailController.$inject = ['$rootScope', '$state', '$stateParams', 'Session'];
+    SessionDetailController.$inject = ['$rootScope', '$state', '$stateParams', 'Session', '$uibModal'];
     /* @ngInject */
-    function SessionDetailController($rootScope, $state, $stateParams, Session) {
+    function SessionDetailController($rootScope, $state, $stateParams, Session, $uibModal) {
         var vm = this;
         $rootScope.pageTitle = 'Session';
 
         vm.addTranscript = addTranscript;
         vm.addSceneTranscripts = addSceneTranscripts;
         vm.addAudioRecording = addAudioRecording;
+
 
         activate();
 
@@ -42,6 +43,29 @@
         function addTranscript() {
             // ST TODO: prikazati dijalog za odabir sheme anotacije i upisati title za transkript > uvezati za sesiju
             // https://github.com/enco164/storyteller/issues/2
+            var $uibModal = instantiateModal(vm.session);
+
+            $uibModal.result.then(onOkCallback, onCancelCallback);
+
+            function onOkCallback(session) {
+                console.log(session);
+                vm.session = session;
+            }
+
+            function onCancelCallback() {
+
+            }
+        }
+
+        function instantiateModal(session) {
+            return $uibModal.open({
+                templateUrl: 'app/sessions/sessions-transcripts-modal.html',
+                controller: 'SessionsTranscriptsModalController',
+                controllerAs: 'vm',
+                resolve: {
+                    session : session
+                }
+            });
         }
     }
 })();

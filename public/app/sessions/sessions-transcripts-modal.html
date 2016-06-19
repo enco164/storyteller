@@ -1,0 +1,26 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">Add New Annotation</h3>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" ng-model="vm.newTranscript.title">
+                </div>
+                <div class="form-group">
+                    <label>Choose Annotation Schema</label><br>
+                    <select class="form-control" ng-model="vm.newTranscript.annotationSchemaId">
+                        <option ng-repeat="annotationSchema in vm.annotationSchemasList" value={{annotationSchema.id}}>{{annotationSchema.title}}</option>
+                    </select>
+                </div>
+            </div>
+            <div ng-if="vm.error" class="row alert alert-danger" role="alert">{{vm.error}}</div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+    </div>
+</div>
