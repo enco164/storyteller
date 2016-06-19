@@ -16,6 +16,7 @@
         vm.kidId = vm.pictureBookId = null;
 
         vm.ok = onOk;
+        vm.cancel = onCancel;
 
         activate();
 
@@ -40,6 +41,10 @@
             session.$save(function(sess) {
                 $uibModalInstance.close(sess);
             });
+        }
+
+        function onCancel(){
+            $uibModalInstance.dismiss('cancel');
         }
     }
 })();

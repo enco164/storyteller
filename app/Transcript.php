@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Transcript extends Model
 {
     use \Eloquence\Behaviours\CamelCasing;
+    protected $fillable = [
+        'sessionId', 'annotationSchemaId', 'title'
+    ];
 
     public function session()
     {
