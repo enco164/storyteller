@@ -1,7 +1,7 @@
 (function() {
-  'use strict';
+    'use strict';
 
-  angular.module('app', [
+    angular.module('app', [
         'app.core',
         'app.widgets',
         //'app.admin',
@@ -16,12 +16,15 @@
         'app.pictureBook',
         'app.upload',
         'app.layout'
-      ])
-      .run(function ($rootScope,$timeout) {
-        $rootScope.$on('$viewContentLoaded', function() {
-          $timeout(function() {
-            componentHandler.upgradeAllRegistered();
-          })
-        })
-      });
+    ])
+        .run(function ($rootScope,$timeout) {
+
+            console.log(jQuery.material);
+            $rootScope.$on('$viewContentLoaded', function() {
+                $timeout(function() {
+                    componentHandler.upgradeAllRegistered();
+                    // jQuery.material.init();
+                })
+            })
+        });
 })();

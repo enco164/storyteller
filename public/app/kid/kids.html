@@ -1,4 +1,3 @@
-
 <div class="demo-content mdl-grid">
 
     <button ng-click="vm.onCreate()"
@@ -108,14 +107,34 @@
                     </div>
                 </div>
             </div>
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--3-col" ng-if="vm.showForm">
-                    <br><br>
-                    <label>Residence:</label><br>
-                    <select class="form-control" ng-model="vm.newResidence">
-                        <option ng-repeat="residence in vm.residenceList" value={{residence}}>{{residence.state}} - {{residence.city}}</option>
-                    </select>
-                    <button class="btn btn-primary" type="button" ng-click="vm.addResidence()">Add</button>
+            <!--ST TODO: style obrisati kada se resi problem sa odsecanjem liste-->
+            <div class="mdl-grid" ng-show="vm.showForm" style="height: 250px">
+                <div class="mdl-cell mdl-cell--6-col">
+                    <div class="form-group">
+                        <input type="text"
+                               typeahead-no-results="vm.noResults"
+                               placeholder="Type city or state"
+                               ng-model="vm.newResidence"
+                               uib-typeahead="residence as residence.state+' - '+residence.city for residence  in vm.residenceList | filter:$viewValue | limitTo:8"
+                               class="mdl-textfield__input">
+                    </div>
+                    <div ng-if="vm.noResults">
+                        <a href="" ng-click="vm.showAddForm(); vm.showCreateForm = !vm.showCreateForm; vm.newResidence = {}">Residence not found. Create New.</a>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--6-col">
+                    <button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.addResidence()">Add</button>
+                </div>
+
+            </div>
+            <div class="mdl-grid" ng-if="vm.showCreateForm">
+                <div class="form-group">
+                    <h6>Create new Residence:</h6>
+                    <label>State:</label><br>
+                    <input type="text" class="mdl-textfield__input" ng-model="vm.newResidence.state"><br>
+                    <label>City:</label><br>
+                    <input type="text" class="mdl-textfield__input" ng-model="vm.newResidence.city"><br>
+                    <button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.addResidence()">Create and Add</button>
                 </div>
             </div>
         </div>
@@ -128,9 +147,14 @@
                 <i class="material-icons">delete</i>
                 Delete
             </a>
-            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.showAddForm()">
+
+            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.showAddForm()" ng-show="!vm.showForm && !vm.showCreateForm">
                 <i class="material-icons">add</i>
                 Add residence
+            </a>
+            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.hideAddForm()" ng-show="vm.showForm || vm.showCreateForm">
+                <i class="material-icons">keyboard_arrow_up</i>
+                Hide Residence form
             </a>
         </div>
     </div>

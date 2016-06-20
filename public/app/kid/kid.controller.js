@@ -20,6 +20,7 @@
         vm.onCreate = onCreate;
         vm.selectKid = selectKid;
         vm.showAddForm = showAddForm;
+        vm.hideAddForm = hideAddForm;
         vm.addResidence = addResidence;
 
         activate();
@@ -103,7 +104,14 @@
 
         function showAddForm() {
             vm.showForm = !vm.showForm;
-            vm.newResidence = {};
+            vm.showCreateForm = false;
+            vm.newResidence = undefined;
+        }
+
+        function hideAddForm() {
+            vm.showForm = false;
+            vm.showCreateForm = false;
+            vm.newResidence = undefined;
         }
 
         function addResidence() {
@@ -115,7 +123,7 @@
                 reloadKids();
                 vm.currentKid = newKid;
                 vm.showForm = false;
-                vm.newResidence = {};
+                vm.newResidence = undefined;
 
             }
         }
