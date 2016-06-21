@@ -14,7 +14,7 @@
         'app.residence',
         'app.language',
         'app.pictureBook',
-        'app.upload',
+        'app.media',
         'app.layout'
     ])
         .run(function ($rootScope,$timeout) {

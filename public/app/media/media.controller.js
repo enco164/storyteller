@@ -6,21 +6,21 @@
     'use strict';
 
     angular.
-        module('app.upload', ['ngFileUpload'])
-        .controller('UploadController', UploadController);
+        module('app.media', ['ngFileUpload'])
+        .controller('MediaController', MediaController);
 
-    UploadController.$inject = ['$rootScope','Upload', '$timeout'];
+    MediaController.$inject = ['$rootScope','Upload', '$timeout'];
     /* @ngInject */
-    function UploadController($rootScope, Upload, $timeout) {
+    function MediaController($rootScope, Upload, $timeout) {
         var vm = this;
-        $rootScope.pageTitle = 'Upload';
+        $rootScope.pageTitle = 'Media';
 
         vm.uploadFiles = function(file, errFiles) {
             vm.f = file;
             vm.errFile = errFiles && errFiles[0];
             if (file) {
                 file.upload = Upload.upload({
-                    url: 'api/uploads',
+                    url: 'api/media',
                     data: {file: file}
                 });
 
@@ -31,7 +31,7 @@
                     });
                 }, function (response) {
                     if (response.status > 0)
-                        vm.errorMsg = response.status + ': ' + response.data;s
+                        vm.errorMsg = response.status + ': ' + response.data;
                 });
             }
         }

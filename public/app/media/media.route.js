@@ -5,7 +5,7 @@
     'use strict';
 
     angular
-        .module('app.upload')
+        .module('app.media')
         .run(appRun);
 
     appRun.$inject = ['routerHelper'];
@@ -17,16 +17,16 @@
     function getStates() {
         return [
             {
-                state: 'uploads',
+                state: 'media',
                 config: {
-                    url: '/uploads?id',
-                    templateUrl: 'app/upload/uploads.html',
-                    controller: 'UploadController',
+                    url: '/media?id',
+                    templateUrl: 'app/media/media.html',
+                    controller: 'MediaController',
                     controllerAs: 'vm',
-                    title: 'Uploads',
+                    title: 'Media',
                     settings: {
                         nav: 7,
-                        content: '<i class="material-icons">backup</i> Uploads'
+                        content: '<i class="material-icons">backup</i> Media'
                     },
                     loginRequired: true
                 }

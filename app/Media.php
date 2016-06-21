@@ -8,7 +8,7 @@ class Media extends Model
 {
     use \Eloquence\Behaviours\CamelCasing;
 
-    protected $fillable =[
+    protected $fillable = [
         'fileName',
         'path'
     ];

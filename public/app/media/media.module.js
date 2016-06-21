@@ -4,7 +4,7 @@
 (function() {
     'use strict';
     
-    angular.module('app.upload', [
+    angular.module('app.media', [
         'app.core',
         'app.widgets'
     ]);

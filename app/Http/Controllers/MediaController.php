@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Media;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -11,11 +12,20 @@ use Illuminate\Support\Facades\Input;
  * Time: 10:27 AM
  */
 
-class UploadController extends ApiController {
+class MediaController extends ApiController {
 
     public function index()
     {
-        return "index";
+        return Media::all()->load('recording');
+    }
+
+    public function show($id)
+    {
+        $media = Media::find($id);
+        if (!$media) {
+            return $this->respondNotFound('Media does not exist.');
+        }
+        return $media->load('recording');
     }
 
     public function store() {
@@ -47,13 +57,23 @@ class UploadController extends ApiController {
                 break;
             }
         }
-        return $path."/".$fileName;
+
+        $fullPath = $path."/".$fileName;
+        $media = Media::create(['fileName' => $fileName, 'path' => $fullPath]);
+        $media->save();
+
+        return response()->json($media);
     }
 
-    public function create() {
-
-        echo "wrong route";
-
+    public function destroy($id)
+    {
+        $media = Media::find($id);
+        if (!$media) {
+            return $this->respondWithError("Media does not exist.");
+        }
+        if(file_exists($media->path))
+            unlink($media->path);
+        $media->delete();
+        return response()->json(["message" => 'Media successfully deleted.']);
     }
-
 }
