@@ -1,14 +1,57 @@
-<section class="mainbar">
-    <section class="matter">
-        <div class="container">
-            <div class="row">
-                <div class="widget wblue">
-                    <div ht-widget-header title="{{vm.title}}"></div>
-                    <div class="widget-content user">
+<div class="demo-content mdl-grid">
 
+    <!--<button ng-click="vm.onCreate()"-->
+    <!--class="mdl-button mdl-js-button mdl-button&#45;&#45;fab mdl-js-ripple-effect mdl-button&#45;&#45;colored mdl-button&#45;&#45;floating-action mdl-shadow&#45;&#45;4dp">-->
+    <!--<i class="material-icons">add</i>-->
+    <!--</button>-->
+    <div class="mdl-cell mdl-cell--3-col">
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+                <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+                <input class="mdl-textfield__input" type="text" id="sample6" ng-model="vm.search.$">
+                <label class="mdl-textfield__label" for="sample-expandable">Search...</label>
+            </div>
+        </div>
+        <div class="demo-list-action mdl-list">
+            <a class="mdl-list__item"
+               ng-repeat="recording in vm.recordings | filter:vm.search"
+               ng-click="vm.selectRecording(recording)"
+               ng-class="{'mdl-color-text--white mdl-color--blue-grey-300': vm.currentRecording.id === recording.id}"
+               style="cursor: pointer;">
+                <span class="mdl-list__item-primary-content">
+                  <span>{{recording.media.fileName + ' (' + recording.recordingDate + ')'}}</span>
+                </span>>
+            </a>
+        </div>
+    </div>
+
+    <div class="mdl-card mdl-cell mdl-cell--9-col mdl-shadow--2dp" ng-if="vm.currentRecording" >
+        <div class="mdl-card__title mdl-color--orange-800">
+            <h2 class="mdl-card__title-text mdl-color-text--white">{{vm.currentRecording.media.fileName + ' (' + vm.currentRecording.recordingDate + ')'}}</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--3-col">
+                    <div class="attr-div">
+                        <label>File Name:</label><br>
+                        <span>{{vm.currentRecording.media.fileName || '-'}}</span>
+                    </div>
+                    <div class="attr-div">
+                        <label>Recording date:</label><br>
+                        <span>{{vm.currentRecording.recordingDate || '-'}}</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-</section>
+
+        <div class="mdl-card__actions">
+            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">edit</i>
+                Ovde neke akcije
+            </a>
+        </div>
+    </div>
+</div>

@@ -9,7 +9,8 @@ class Session extends Model
     use \Eloquence\Behaviours\CamelCasing;
 
     protected $fillable = [
-        'sceneTranscripts'
+        'sceneTranscripts',
+        'audioRecordingId'
     ];
 
     public function kid()

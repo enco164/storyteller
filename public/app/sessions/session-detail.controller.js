@@ -29,6 +29,7 @@
                     session.kid.lastName + ', ' +
                     session.pictureBook.title + ']';
             });
+            
         }
 
         function addSceneTranscripts() {
@@ -38,12 +39,27 @@
         function addAudioRecording() {
             // ST TODO: prikazati galeriju u modalu > izabrati/uploadovati audio > modal vraca audio > uvezati za sesiju
             // https://github.com/enco164/storyteller/issues/1
+            // ST TODO: Ostalo je samo da se sredi izgled u modalu, odnosno da prikaze galeriju
+            var $uibModal = instantiateRecordingModal(vm.session);
+
+            $uibModal.result.then(onOkCallback, onCancelCallback);
+
+            function onOkCallback(recording) {
+                vm.session.audioRecording = recording;
+                vm.session.audioRecordingId = recording.id;
+            }
+
+            function onCancelCallback() {
+
+            }
+
+
         }
 
         function addTranscript() {
             // ST TODO: prikazati dijalog za odabir sheme anotacije i upisati title za transkript > uvezati za sesiju
             // https://github.com/enco164/storyteller/issues/2
-            var $uibModal = instantiateModal(vm.session);
+            var $uibModal = instantiateTranscriptModal(vm.session);
 
             $uibModal.result.then(onOkCallback, onCancelCallback);
 
@@ -57,10 +73,21 @@
             }
         }
 
-        function instantiateModal(session) {
+        function instantiateTranscriptModal(session) {
             return $uibModal.open({
                 templateUrl: 'app/sessions/sessions-transcripts-modal.html',
                 controller: 'SessionsTranscriptsModalController',
+                controllerAs: 'vm',
+                resolve: {
+                    session : session
+                }
+            });
+        }
+
+        function instantiateRecordingModal(session) {
+            return $uibModal.open({
+                templateUrl: 'app/sessions/sessions-recordings-modal.html',
+                controller: 'SessionsRecordingsModalController',
                 controllerAs: 'vm',
                 resolve: {
                     session : session

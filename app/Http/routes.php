@@ -33,6 +33,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource('sessions.scene_transcripts', 'SessionsSceneTranscriptsController');
     Route::resource('kids.residences', 'KidResidenceController');
     Route::resource('sessions.transcripts', 'SessionsTranscriptsController');
+    Route::resource('sessions.recordings', 'SessionsRecordingsController');
+    Route::resource('recordings', 'RecordingsController');
 
 });
 

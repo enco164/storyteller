@@ -9,6 +9,7 @@
         <div class="mdl-card__supporting-text">
             <span class="mdl-typography--font-bold">Book: </span> <span class="mdl-typography--font-regular">{{vm.session.pictureBook.title}}</span><br>
             <span class="mdl-typography--font-bold">Created: </span> <span class="mdl-typography--font-regular">{{vm.session.createdAt}}</span><br>
+            <span class="mdl-typography--font-bold">Audio Recording: </span> <span class="mdl-typography--font-regular">{{vm.session.audioRecording.media.fileName || '-'}}</span><br>
             <span class="mdl-typography--font-bold">Annotations: </span><br>
             <ul>
                 <li ng-repeat="transcript in vm.session.transcripts">{{transcript.title}} <small>{{transcript.annotationSchema.title}}</small></li>

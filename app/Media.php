@@ -13,5 +13,9 @@ class Media extends Model
         'path'
     ];
 
+    public function recording()
+    {
+        return $this->hasOne('App\AudioRecording');
+    }
     //
 }

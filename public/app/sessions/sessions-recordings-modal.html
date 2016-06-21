@@ -1,0 +1,23 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">Add Audio Recording</h3>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="form-group">
+                    <label>Choose Audio Recording</label><br>
+                    <span>privremeno/test resenje</span><br>
+                    <select class="form-control" ng-model="vm.recordingToAdd">
+                        <option ng-repeat="recording in vm.recordingsList" value={{recording}}>{{recording.media.fileName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div ng-if="vm.error" class="row alert alert-danger" role="alert">{{vm.error}}</div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+    </div>
+</div>

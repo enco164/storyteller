@@ -58,7 +58,7 @@ class SessionsController extends ApiController
         if (!$session) {
             $this->respondNotFound('Session not found');
         }
-        $session->load('kid', 'transcripts', 'sceneTranscripts.scene', 'audioRecording',
+        $session->load('kid', 'transcripts', 'sceneTranscripts.scene', 'audioRecording', 'audioRecording.media',
             'pictureBook.scenes');
         return $session;
     }
