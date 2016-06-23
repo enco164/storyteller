@@ -22,15 +22,7 @@
                ng-class="{'active': vm.currentPictureBook.id === pictureBook.id}"
                style="cursor: pointer; border-bottom: #c0c0c0 solid 1px;">
                 <span class="mdl-list__item-primary-content">
-                  <!--<i class="material-icons mdl-list__item-avatar">person</i>-->
                   <span>{{pictureBook.title}}</span>
-                </span>
-                <span class="mdl-list__item-secondary-action" href="#">
-                    <i ng-if="kid.gender === 'f'"
-                       class="fa fa-venus" aria-hidden="true"></i>
-                    <i ng-if="kid.gender === 'm'"
-                       class="fa fa-mars"
-                       aria-hidden="true"></i>
                 </span>
             </a>
         </div>
@@ -62,26 +54,31 @@
                         <span>{{vm.currentPictureBook.yearOfPublishing || '-'}}</span>
                     </div>
                 </div>
-
-                <div class="mdl-cell mdl-cell--4-col">
-                    <div ng-repeat="scene in vm.currentPictureBook.scenes">
-                        <label>Scene Title:</label>
-                        <span>{{scene.title}}</span> <br>
-                        <label>Scene Number:</label>
-                        <span>{{scene.sceneNumber}}</span> <br><br>
+            </div>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--4-col" ng-repeat="scene in vm.currentPictureBook.scenes">
+                    <label>{{scene.sceneNumber}}</label>
+                    <span ng-show="scene.title"> - {{scene.title}}</span>
+                    <br>
+                    <div style="height: 200px; background-size: contain; background-image: url({{scene.media.path}}); background-repeat: no-repeat;">
                     </div>
                 </div>
-
-                <div class="mdl-cell mdl-cell--4-col" ng-if="vm.showForm">
+                <!--</div>-->
+            </div>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--6-col" ng-show="vm.showForm">
                     <br><br>
                     <label>Title:</label>
-                    <input type="text" ng-model="vm.newScene.title">
+                    <input type="text" class="mdl-textfield__input" ng-model="vm.newScene.title"> <br>
                     <label>Scene Number:</label>
-                    <input type="text" ng-model="vm.newScene.sceneNumber">
-                    <button class="btn btn-primary" type="button" ng-click="vm.addScene()">Add</button>
+                    <input type="text" class="mdl-textfield__input" ng-model="vm.newScene.sceneNumber"><br>
+                    <label ng-show="vm.file.name">File:</label>
+                    <span ng-show="vm.file.name">{{vm.file.name}}</span>
+
+                    <button ng-show="!vm.file.name" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" ngf-select="vm.selectFile($file, $invalidFiles)">Select File</button><br>
+                    <button ng-show="vm.file.name" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" ngf-select="vm.selectFile($file, $invalidFiles)">Change File</button><br>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" ng-click="vm.uploadScene()">Add</button>
                 </div>
-
-
             </div>
         </div>
 

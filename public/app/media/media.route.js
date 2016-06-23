@@ -25,7 +25,7 @@
                     controllerAs: 'vm',
                     title: 'Media',
                     settings: {
-                        nav: 7,
+                        nav: 11,
                         content: '<i class="material-icons">backup</i> Media'
                     },
                     loginRequired: true

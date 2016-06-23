@@ -5,9 +5,9 @@
         .module('app.pictureBook')
         .controller('PictureBookController', PictureBookController);
 
-    PictureBookController.$inject = ['$rootScope','$state', '$stateParams','logger', 'PictureBook', 'PictureBookScene', '$uibModal'];
+    PictureBookController.$inject = ['$rootScope','$state', '$stateParams','logger', 'PictureBook', 'PictureBookScene', '$uibModal', 'Upload', '$timeout'];
     /* @ngInject */
-    function PictureBookController($rootScope, $state, $stateParams, logger, PictureBook, PictureBookScene, $uibModal) {
+    function PictureBookController($rootScope, $state, $stateParams, logger, PictureBook, PictureBookScene, $uibModal, Upload, $timeout) {
         var vm = this;
         $rootScope.pageTitle = 'Picture Books';
         vm.showForm = false;
@@ -18,10 +18,15 @@
         vm.selectPictureBook = selectPictureBook;
         vm.showAddForm = showAddForm;
         vm.addScene = addScene;
+        vm.selectFile = selectFile;
 
         activate();
 
         function activate() {
+
+            $timeout(function () {
+                componentHandler.upgradeAllRegistered();
+            });
 
             if ($stateParams.id) {
                 PictureBook.get({id: $stateParams.id}, onSuccess, onError);
@@ -115,10 +120,13 @@
         function showAddForm() {
             vm.showForm = !vm.showForm;
             vm.newScene = {};
+            vm.file = {};
         }
 
         function addScene() {
-            
+
+            vm.uploadFiles();
+            vm.newScene.mediaId = vm.uploadedFile.id;
             PictureBookScene.save({pictureBookId: vm.currentPictureBook.id}, vm.newScene, onSuccess);
 
             function onSuccess(newPictureBook){
@@ -128,6 +136,44 @@
             
         }
 
+        function selectFile(file, errFiles)
+        {
+            vm.file = file;
+            vm.errFile = errFiles && errFiles[0];
+        }
+
+        vm.uploadScene = function() {
+            if (vm.file) {
+                console.log(vm.file);
+                vm.file.upload = Upload.upload({
+                    url: 'api/media',
+                    data: {file: vm.file}
+                });
+
+                vm.file.upload.then(function (response) {
+                    $timeout(function () {
+                        vm.uploadedFile = response.data;
+                        vm.newScene.mediaId = vm.uploadedFile.id;
+                        PictureBookScene.save({pictureBookId: vm.currentPictureBook.id}, vm.newScene, onSuccess);
+
+                        function onSuccess(newPictureBook){
+                            logger.info('Added scene to picture Book ' + newPictureBook.title);
+                            vm.currentPictureBook = newPictureBook;
+                            showAddForm();
+                        }
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        vm.errorMsg = response.status + ': ' + response.data;
+                });
+
+                vm.file={};
+                vm.errFile={};
+            }
+            else {
+                logger.info('File not selected!')
+            }
+        }
 
     }
 })();

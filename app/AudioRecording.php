@@ -8,10 +8,13 @@ class AudioRecording extends Model
 {
     use \Eloquence\Behaviours\CamelCasing;
 
+    protected $fillable = [
+       'recordingDate', 'mediaId'
+    ];
 
     public function media()
     {
-        return $this->hasOne('App\Media', 'id');
+        return $this->belongsTo('App\Media');
     }
 
     public function session()

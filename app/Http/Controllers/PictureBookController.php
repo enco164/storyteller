@@ -23,7 +23,7 @@ class PictureBookController extends ApiController
 
     public function index()
     {
-        return PictureBook::all()->load('scenes');
+        return PictureBook::all()->load('scenes', 'scenes.media');
     }
 
     public function store(Request $request)
@@ -47,7 +47,7 @@ class PictureBookController extends ApiController
             return $this->respondNotFound('Picture book does not exist');
         }
 
-        return $picBook->load('scenes');
+        return $picBook->load('scenes', 'scenes.media');
     }
 
     public function update(Request $request, $id)

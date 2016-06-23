@@ -26,6 +26,6 @@ class PictureBookSceneController extends ApiController
         $pictureBook = PictureBook::find($picBookId);
         $pictureBook->scenes()->create($request->all());
         
-        return $pictureBook->load('scenes');
+        return $pictureBook->load('scenes', 'scenes.media');
     }
 }

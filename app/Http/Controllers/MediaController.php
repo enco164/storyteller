@@ -16,7 +16,7 @@ class MediaController extends ApiController {
 
     public function index()
     {
-        return Media::all()->load('recording');
+        return Media::all()->load('recording', 'scene');
     }
 
     public function show($id)
@@ -25,14 +25,16 @@ class MediaController extends ApiController {
         if (!$media) {
             return $this->respondNotFound('Media does not exist.');
         }
-        return $media->load('recording');
+        return $media->load('recording', 'scene');
     }
 
     public function store() {
         $input = Input::file('file');
 
         $currentDate = date("Y/m");
-        $path = public_path()."/media/".$currentDate;
+        $path = public_path()."/multi_media/".$currentDate;
+
+        $pathForDB = "/multi_media/".$currentDate;
 
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
@@ -58,8 +60,8 @@ class MediaController extends ApiController {
             }
         }
 
-        $fullPath = $path."/".$fileName;
-        $media = Media::create(['fileName' => $fileName, 'path' => $fullPath]);
+        $pathForDB = $pathForDB."/".$fileName;
+        $media = Media::create(['fileName' => $fileName, 'path' => $pathForDB]);
         $media->save();
 
         return response()->json($media);

@@ -6,33 +6,54 @@
     'use strict';
 
     angular.
-        module('app.media', ['ngFileUpload'])
+    module('app.media', ['ngFileUpload'])
         .controller('MediaController', MediaController);
 
-    MediaController.$inject = ['$rootScope','Upload', '$timeout'];
+    MediaController.$inject = ['$rootScope','Upload', '$timeout', 'logger', 'Media'];
     /* @ngInject */
-    function MediaController($rootScope, Upload, $timeout) {
+    function MediaController($rootScope, Upload, $timeout, logger, Media) {
         var vm = this;
         $rootScope.pageTitle = 'Media';
+        vm.selectFile = selectFile;
 
-        vm.uploadFiles = function(file, errFiles) {
-            vm.f = file;
+        activate();
+
+        function activate() {
+            Media.query(function(media){
+                vm.allMedia = media;
+            });
+            console.log(vm.allMedia);
+        }
+
+        function selectFile(file, errFiles)
+        {
+            vm.file = file;
             vm.errFile = errFiles && errFiles[0];
-            if (file) {
-                file.upload = Upload.upload({
+            // console.log(vm.file);
+        }
+
+        vm.uploadFiles = function() {
+            if (vm.file) {
+                vm.file.upload = Upload.upload({
                     url: 'api/media',
-                    data: {file: file}
+                    data: {file: vm.file}
                 });
 
-                file.upload.then(function (response) {
+                vm.file.upload.then(function (response) {
                     $timeout(function () {
-                        console.log(response.data);
-                        file.result = response.data;
+                        vm.file.result = response.data;
+                        logger.info('File successfully uploaded!');
                     });
                 }, function (response) {
                     if (response.status > 0)
                         vm.errorMsg = response.status + ': ' + response.data;
                 });
+
+                vm.file={};
+                vm.errFile={};
+            }
+            else {
+                logger.info('File not selected!')
             }
         }
     }

@@ -25,7 +25,7 @@
                     controllerAs: 'vm',
                     title: 'Languages',
                     settings: {
-                        nav: 6,
+                        nav: 9,
                         content: '<i class="material-icons">language</i> Languages'
                     },
                     loginRequired: true

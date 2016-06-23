@@ -1,17 +1,21 @@
-<div style="position:relative; left:50%; bottom:50%;">
-    <!--ST TODO mozda staviti da galerija bude u okviru ovog modala-->
-    <button ng-click="vm.onCreate()"
-            class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--floating-action mdl-shadow--4dp"
-            type="file"
-            ngf-select="vm.uploadFiles($file, $invalidFiles)"
-            accept="image/*">
-        <i class="material-icons">add</i>
-    </button>
-    <!--<div class="mdl-cell mdl-cell&#45;&#45;3-col">-->
-        <!--<br><br>-->
-        <!--File:-->
-        <!--<div style="font:smaller">{{vm.f.name}} {{vm.errFile.name}} {{vm.errFile.$error}} {{vm.errFile.$errorParam}}-->
-        <!--</div>-->
-        <!--{{errorMsg}}-->
-    <!--</div>-->
+<!--<div style="position:relative; left:50%; bottom:50%;">-->
+<!--ST TODO mozda staviti da galerija bude u okviru ovog modala-->
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--floating-action mdl-shadow--4dp"
+        type="file"
+        ngf-select="vm.selectFile($file, $invalidFiles)"
+        accept="image/*">
+    <i class="material-icons">add</i>
+</button>
+<div class="mdl-cell mdl-cell--3-col">
+    <br><br>
+    <label>File: </label>
+    <div>
+        <span>{{vm.file.name || 'not selected'}}</span>
+        {{vm.errFile.name || ''}} {{vm.errFile.$error || ''}} {{vm.errFile.$errorParam || ''}}
+        <br>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="vm.uploadFiles()">Send</button>
+    </div>
+
+    {{errorMsg}}
 </div>
+<!--</div>-->

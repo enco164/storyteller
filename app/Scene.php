@@ -9,7 +9,7 @@ class Scene extends Model
     use \Eloquence\Behaviours\CamelCasing;
 
     protected $fillable = [
-        'pictureBookId', 'sceneUrl', 'sceneNumber', 'title'
+        'pictureBookId', 'sceneUrl', 'sceneNumber', 'title', 'mediaId'
     ];
 
     public function pictureBook()
@@ -17,6 +17,10 @@ class Scene extends Model
         return $this->belongsTo('App\PictureBook');
     }
 
+    public function media()
+    {
+        return $this->belongsTo('App\Media');
+    }
 
     public function sceneTranscripts()
     {

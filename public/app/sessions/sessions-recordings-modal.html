@@ -4,20 +4,50 @@
     </div>
     <div class="modal-body">
         <div class="container-fluid">
-            <div class="row">
-                <div class="form-group">
-                    <label>Choose Audio Recording</label><br>
-                    <span>privremeno/test resenje</span><br>
-                    <select class="form-control" ng-model="vm.recordingToAdd">
-                        <option ng-repeat="recording in vm.recordingsList" value={{recording}}>{{recording.media.fileName}}</option>
-                    </select>
+            <div class="mdl-grid demo-content" ng-show="!vm.file.name">
+
+                <div class="mdl-cell mdl-cell--12-col">
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                        <label class="mdl-button mdl-js-button mdl-button--icon" for="expando1">
+                            <i class="material-icons">search</i>
+                        </label>
+                        <div class="mdl-textfield__expandable-holder">
+                            <input class="mdl-textfield__input" type="text" id="expando1" ng-model="vm.search.$">
+                            <label class="mdl-textfield__label" for="expando1">Search...</label>
+                        </div>
+                    </div>
+
+                    <div class="demo-list-action mdl-list">
+                        <a class="mdl-list__item"
+                           ng-repeat="recording in vm.recordingsList | filter:vm.search"
+                           ng-click="vm.selectRecording(recording)"
+                           ng-class="{'mdl-color-text--white mdl-color--blue-grey-300': vm.recordingToAdd.id === recording.id}"
+                           style="cursor: pointer;">
+                            <span class="mdl-list__item-primary-content">
+                                <span>{{recording.media.fileName}}</span>
+                            </span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div ng-show="vm.file.name" class="mdl-grid demo-content" ng-show="!vm.file.name">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <label>File:</label>
+                    <span>{{vm.file.name}}</span>
+                    <br>
+                    <label>Recording Date:</label>
+                    <input type="text" class="mdl-textfield__input" ng-model="vm.recordingToAdd.recordingDate"><br>
                 </div>
             </div>
             <div ng-if="vm.error" class="row alert alert-danger" role="alert">{{vm.error}}</div>
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
-        <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+        <button ng-show="!vm.file.name" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button" ngf-select="vm.selectFile($file, $invalidFiles)">Upload new recording</button>
+        <button ng-show="vm.file.name" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.uploadRecording()">OK</button>
+        <button ng-show="!vm.file.name"class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.ok()">OK</button>
+        <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.cancel()">Cancel</button>
     </div>
 </div>

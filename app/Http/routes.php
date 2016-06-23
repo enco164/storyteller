@@ -27,7 +27,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource('residences', 'ResidenceController');
     Route::resource('languages', 'LanguageController');
     Route::resource('picture_books', 'PictureBookController');
-    Route::resource('media', 'MediaController');
     Route::resource('scenes', 'ScenesController');
     Route::resource('picture_books.scenes', 'PictureBookSceneController');
     Route::resource('sessions.scene_transcripts', 'SessionsSceneTranscriptsController');
@@ -35,6 +34,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource('sessions.transcripts', 'SessionsTranscriptsController');
     Route::resource('sessions.recordings', 'SessionsRecordingsController');
     Route::resource('recordings', 'RecordingsController');
+    Route::resource('media', 'MediaController');
 
 });
 

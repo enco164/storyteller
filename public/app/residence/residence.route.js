@@ -25,7 +25,7 @@
                     controllerAs: 'vm',
                     title: 'Residences',
                     settings: {
-                        nav: 6,
+                        nav: 7,
                         content: '<i class="material-icons">home</i> Residences'
                     },
                     loginRequired: true

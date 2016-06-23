@@ -31,10 +31,17 @@ class SessionsRecordingsController extends ApiController
         if (!$session) {
             $this->respondNotFound('Session not found');
         }
-        $session->fill(array('audioRecordingId' => $request->get('id')));
-        $session->save();
+        if(! $request->get('id')){
+            $recording = AudioRecording::create($request->all());
+            $session->fill(array('audioRecordingId' => $recording->id));
+            $session->save();
+        }
+        else {
+            $session->fill(array('audioRecordingId' => $request->get('id')));
+            $session->save();
+            $recording = AudioRecording::find($request->get('id'));
+        }
 
-        $recording = AudioRecording::find(1);
         $recording->load('media');
         return $recording;
     }

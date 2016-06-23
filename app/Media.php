@@ -17,5 +17,11 @@ class Media extends Model
     {
         return $this->hasOne('App\AudioRecording');
     }
+
+    public function scene()
+    {
+        return $this->hasOne('App\Scene');
+    }
+
     //
 }
