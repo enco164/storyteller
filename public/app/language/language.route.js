@@ -19,15 +19,15 @@
             {
                 state: 'language',
                 config: {
-                    url: '/language?id',
+                    url: '/admin/language?id',
                     templateUrl: 'app/language/languages.html',
                     controller: 'LanguageController',
                     controllerAs: 'vm',
                     title: 'Languages',
-                    settings: {
-                        nav: 9,
-                        content: '<i class="material-icons">language</i> Languages'
-                    },
+                    // settings: {
+                    //     nav: 9,
+                    //     content: '<i class="material-icons">language</i> Languages'
+                    // },
                     loginRequired: true
                 }
             }

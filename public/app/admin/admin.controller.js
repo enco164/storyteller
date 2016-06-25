@@ -5,11 +5,11 @@
     .module('app.admin')
     .controller('AdminController', AdminController);
 
-  AdminController.$inject = ['logger'];
+  AdminController.$inject = ['$rootScope','logger'];
   /* @ngInject */
-  function AdminController(logger) {
+  function AdminController($rootScope, logger) {
     var vm = this;
-    vm.title = 'Admin';
+    $rootScope.pageTitle = 'Admin';
 
     activate();
 
