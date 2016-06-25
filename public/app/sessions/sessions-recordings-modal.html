@@ -38,7 +38,23 @@
                     <span>{{vm.file.name}}</span>
                     <br>
                     <label>Recording Date:</label>
-                    <input type="text" class="mdl-textfield__input" ng-model="vm.recordingToAdd.recordingDate"><br>
+                    <div class="mdl-grid mdl-grid--no-spacing">
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <input class="mdl-textfield__input"
+                                   type="text"
+                                   class="form-control"
+                                   uib-datepicker-popup="{{vm.format}}"
+                                   ng-model="vm.recordingToAdd.recordingDate"
+                                   is-open="vm.popup1"
+                                   datepicker-options="vm.dateOptions"
+                                   close-text="Close" />
+                        </div>
+                        <div class="mdl-cell mdl-cell--2-col">
+                            <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.openDatePicker()">
+                                <i class="material-icons">date_range</i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div ng-if="vm.error" class="row alert alert-danger" role="alert">{{vm.error}}</div>

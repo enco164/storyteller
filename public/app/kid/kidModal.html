@@ -34,22 +34,25 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group mdl-grid mdl-grid--no-spacing">
                     <label >Date Of Birth</label><br>
-                    <input class="mdl-textfield__input"
-                           type="text"
-                           class="form-control"
-                           uib-datepicker-popup="{{vm.format}}"
-                           ng-model="vm.kid.yearOfBirth"
-                           is-open="vm.popup1"
-                           datepicker-options="vm.dateOptions"
-                           close-text="Close" />
+                    <div class="mdl-cell mdl-cell--10-col">
+                        <input class="mdl-textfield__input"
+                               type="text"
+                               class="form-control"
+                               uib-datepicker-popup="{{vm.format}}"
+                               ng-model="vm.kid.yearOfBirth"
+                               is-open="vm.popup1"
+                               datepicker-options="vm.dateOptions"
+                               close-text="Close" />
+                    </div>
+                    <div class="mdl-cell mdl-cell--2-col">
                       <span class="input-group-btn">
                         <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.openDatePicker()">
                             <i class="material-icons">date_range</i>
                         </button>
                       </span>
-
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -131,12 +134,12 @@
                 </div>
                 <div ng-if="vm.kid.id">
                     <!--<div ng-if="vm.showForm">-->
-                        <!--<br><br>-->
-                        <!--<label>Residence:</label><br>-->
-                        <!--<select class="form-control" ng-model="vm.newResidence">-->
-                            <!--<option ng-repeat="residence in vm.residenceList" value={{residence}}>{{residence.state}} {{residence.city}}</option>-->
-                        <!--</select>-->
-                        <!--<button class="btn btn-primary" type="button" ng-click="vm.addResidence()">Add</button>-->
+                    <!--<br><br>-->
+                    <!--<label>Residence:</label><br>-->
+                    <!--<select class="form-control" ng-model="vm.newResidence">-->
+                    <!--<option ng-repeat="residence in vm.residenceList" value={{residence}}>{{residence.state}} {{residence.city}}</option>-->
+                    <!--</select>-->
+                    <!--<button class="btn btn-primary" type="button" ng-click="vm.addResidence()">Add</button>-->
                     <!--</div>-->
                     <!--ST TODO: style obrisati kada se resi problem sa odsecanjem liste-->
                     <div class="mdl-grid" ng-show="vm.showForm" style="height: 250px">

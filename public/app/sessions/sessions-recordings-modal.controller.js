@@ -96,5 +96,28 @@
             }
         }
 
+        function openDatePicker() {
+            vm.popup1 = true;
+        }
+
+        vm.openDatePicker = openDatePicker;
+
+        vm.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        vm.format = vm.formats[0];
+        vm.dateOptions = {
+            dateDisabled: disabled,
+            formatYear: 'yy',
+            maxDate: new Date(2100, 1, 1),
+            minDate: new Date(1990, 1, 1),
+            startingDay: 1
+        };
+        // Disable weekend selection
+        function disabled(data) {
+            return false;
+            var date = data.date,
+                mode = data.mode;
+            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+        }
+
     }
 })();

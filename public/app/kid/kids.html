@@ -108,14 +108,14 @@
                 </div>
             </div>
             <!--ST TODO: style obrisati kada se resi problem sa odsecanjem liste-->
-            <div class="mdl-grid" ng-show="vm.showForm" style="height: 250px">
+            <div class="mdl-grid" ng-show="vm.showForm" style="min-height: 200px">
                 <div class="mdl-cell mdl-cell--6-col">
-                    <div class="form-group">
+                    <div class="form-group" style="display: flex; flex-direction: column;">
                         <input type="text"
                                typeahead-no-results="vm.noResults"
                                placeholder="Type city or state"
                                ng-model="vm.newResidence"
-                               uib-typeahead="residence as residence.state+' - '+residence.city for residence  in vm.residenceList | filter:$viewValue | limitTo:8"
+                               uib-typeahead="residence as residence.state+' - '+residence.city for residence  in vm.residenceList | filter:$viewValue | limitTo:5"
                                class="mdl-textfield__input">
                     </div>
                     <div ng-if="vm.noResults">
@@ -125,9 +125,8 @@
                 <div class="mdl-cell mdl-cell--6-col">
                     <button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.addResidence()">Add</button>
                 </div>
-
             </div>
-            <div class="mdl-grid" ng-if="vm.showCreateForm">
+            <div class="mdl-grid" ng-show="vm.showCreateForm">
                 <div class="form-group">
                     <h6>Create new Residence:</h6>
                     <label>State:</label><br>
@@ -138,6 +137,7 @@
                 </div>
             </div>
         </div>
+
         <div class="mdl-card__actions">
             <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.editKid()">
                 <i class="material-icons">edit</i>
