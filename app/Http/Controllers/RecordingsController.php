@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 
 
 use App\AudioRecording;
+use App\Media;
 use Illuminate\Http\Request;
 use App\Transformers\AudioRecordingTransformer;
 
@@ -67,6 +68,8 @@ class RecordingsController extends ApiController
         if (!$recording) {
             return $this->respondWithError("Audio Recording does not exist.");
         }
+        if(file_exists(public_path()."/".$recording->media->path))
+            unlink(public_path()."/".$recording->media->path);
         $recording->delete();
         return response()->json(["message" => 'Audio Recording successfully deleted.']);
     }

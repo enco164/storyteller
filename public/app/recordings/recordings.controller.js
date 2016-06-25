@@ -90,6 +90,8 @@
 
             function onOkCallback(recording) {
                 vm.currentRecording = recording;
+                reloadRecordings();
+                console.log("reloadRecordings");
             }
 
             function onCancelCallback() {

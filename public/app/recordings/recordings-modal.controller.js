@@ -61,12 +61,6 @@
             vm.errFile = errFiles && errFiles[0];
         }
 
-        function reloadRecordings() {
-            AudioRecording.query(function(recordings){
-                vm.recordings = recordings;
-            });
-        }
-
         vm.uploadRecording = function() {
             if (vm.file) {
                 vm.file.upload = Upload.upload({
@@ -85,7 +79,6 @@
                         AudioRecording.save(vm.recordingToAdd, onSuccess, onError);
                         function onSuccess(recording){
                             $uibModalInstance.close(recording);
-                            reloadRecordings();
                             logger.info('File successfully uploaded!');
                         }
                         function onError(error) {

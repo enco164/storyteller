@@ -73,8 +73,8 @@ class MediaController extends ApiController {
         if (!$media) {
             return $this->respondWithError("Media does not exist.");
         }
-        if(file_exists($media->path))
-            unlink($media->path);
+        if(file_exists(public_path()."/".$media->path))
+            unlink(public_path()."/".$media->path);
         $media->delete();
         return response()->json(["message" => 'Media successfully deleted.']);
     }
