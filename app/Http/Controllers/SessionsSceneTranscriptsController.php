@@ -20,7 +20,7 @@ class SessionsSceneTranscriptsController extends ApiController
         if (!$session) {
             $this->respondNotFound('Session not found');
         }
-        return $session->sceneTranscripts()->get()->load('scene');
+        return $session->sceneTranscripts()->get()->load('scene', 'scene.media');
     }
 
     public function show(Request $request, $sessionId, $sceneTranscriptId)

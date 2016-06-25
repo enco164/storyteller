@@ -23,7 +23,7 @@
                style="cursor: pointer;">
                 <span class="mdl-list__item-primary-content">
                   <span>{{recording.media.fileName + ' (' + recording.recordingDate + ')'}}</span>
-                </span>>
+                </span>
             </a>
         </div>
     </div>
@@ -43,6 +43,15 @@
                         <label>Recording date:</label><br>
                         <span>{{vm.currentRecording.recordingDate || '-'}}</span>
                     </div>
+                    <div>
+                        <audio controls id="audio">
+                            <source ng-src="{{vm.currentRecording.media.path}}" type="audio/mpeg">
+                            <source ng-src="{{vm.currentRecording.media.path}}" type="audio/wav">
+                            <source ng-src="{{vm.currentRecording.media.path}}" type="audio/ogg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <a ng-href="{{vm.currentRecording.media.path}}" target="_self" download>Download</a>
                 </div>
             </div>
         </div>

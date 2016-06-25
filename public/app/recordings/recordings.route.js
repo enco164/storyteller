@@ -25,7 +25,7 @@
                     controllerAs: 'vm',
                     title: 'Recordings',
                     settings: {
-                        nav: 4,
+                        nav: 5,
                         content: '<i class="material-icons">mic</i> Recordings'
                     },
                     loginRequired: true

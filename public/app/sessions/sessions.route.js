@@ -33,7 +33,7 @@
                     controllerAs: 'vm',
                     title: 'Sessions',
                     settings: {
-                        nav: 5,
+                        nav: 2,
                         content: '<i class="material-icons">inbox</i> Sessions'
                     },
                     loginRequired: true

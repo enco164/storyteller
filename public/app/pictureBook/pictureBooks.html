@@ -94,9 +94,16 @@
                 Delete
             </a>
             <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect"
+               ng-show="!vm.showForm"
                ng-click="vm.showAddForm()">
                 <i class="material-icons">add</i>
                 Add scene
+            </a>
+            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect"
+               ng-show="vm.showForm"
+               ng-click="vm.showAddForm()">
+                <i class="material-icons">keyboard_arrow_up</i>
+                Hide scene form
             </a>
         </div>
     </div>

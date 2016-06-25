@@ -8,9 +8,9 @@
         .module('app.recordings')
         .controller('RecordingsController', RecordingsController);
 
-    RecordingsController.$inject = ['$rootScope', 'AudioRecording', '$state', '$stateParams'];
+    RecordingsController.$inject = ['$rootScope', 'AudioRecording', '$state', '$stateParams', '$timeout'];
     /* @ngInject */
-    function RecordingsController($rootScope, AudioRecording, $state, $stateParams) {
+    function RecordingsController($rootScope, AudioRecording, $state, $stateParams, $timeout) {
         var vm = this;
         $rootScope.pageTitle = 'Recordings';
         vm.selectRecording = selectRecording;
@@ -47,6 +47,12 @@
         function selectRecording(recording) {
             $state.go($state.current, {id: recording.id}, {notify: false});
             vm.currentRecording = recording;
+            $timeout(function () {
+                var audio = document.getElementById('audio');
+                if(!!audio)
+                    audio.load();
+            });
+
             console.log(vm.currentRecording);
         }
 

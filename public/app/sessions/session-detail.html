@@ -31,9 +31,14 @@
                 Add Transcript
             </a>
             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                    ng-if="!vm.audioRecording"
+                    ng-show="!vm.session.audioRecording"
                     ng-click="vm.addAudioRecording()">
                 Add Audio Recording
+            </a>
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+               ng-show="vm.session.audioRecording"
+               ng-click="vm.addAudioRecording()">
+                Change Audio Recording
             </a>
             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
                     ui-sref="sessions.sceneTranscripts({id: vm.session.id})">Scene Transcripts</a>

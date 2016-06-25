@@ -12,7 +12,7 @@
 
     function SessionsRecordingsModalController(SessionRecording, $timeout, $uibModalInstance, AudioRecording, session, Upload, logger) {
         var vm = this;
-        vm.recordingToAdd = {};
+        vm.recordingToAdd = undefined;
         vm.ok = onOk;
         vm.cancel = onCancel;
         vm.selectRecording = selectRecording;
@@ -34,6 +34,7 @@
                 },5000);
                 return;
             }
+            // console.log(vm.recordingToAdd);
             SessionRecording.save({sessionId: session.id}, vm.recordingToAdd, onSuccess, onError);
 
             function onSuccess(recording){

@@ -22,7 +22,7 @@
           controllerAs: 'vm',
           title: 'Picture Books',
           settings: {
-            nav: 10,
+            nav: 4,
             content: '<i class="material-icons">book</i> Picture Books'
           },
           loginRequired: true

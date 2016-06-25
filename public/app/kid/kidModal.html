@@ -119,10 +119,14 @@
                     <span>{{vm.kid.residences[vm.kid.residences.length - 1].state}} - {{vm.kid.residences[vm.kid.residences.length - 1].city}}</span><br>
                     <label>Residences:</label><br>
                     <div ng-repeat="residence in vm.kid.residences">
-                        <span>{{residence.state}} - {{residence.city}}</span>
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.removeResidence(residence.id)">
-                            <i class="material-icons">delete</i>
-                        </button>
+                        <div class="col-md-10">
+                            <span>{{residence.state}} - {{residence.city}}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.removeResidence(residence.id)">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div ng-if="vm.kid.id">
