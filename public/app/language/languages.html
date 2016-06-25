@@ -3,7 +3,6 @@
     <a ui-sref="language"><button class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button"><i class="material-icons">language</i>Language</button></a>
 </div>
 <div class="demo-content mdl-grid">
-
     <button ng-click="vm.onCreate()"
             class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--floating-action mdl-shadow--4dp">
         <i class="material-icons">add</i>
@@ -26,7 +25,6 @@
                ng-class="{'mdl-color-text--white mdl-color--blue-grey-300':  vm.currentLanguage.id === language.id}"
                style="cursor: pointer;">
                 <span class="mdl-list__item-primary-content">
-                  <!--<i class="material-icons mdl-list__item-avatar">person</i>-->
                   <span>{{language.languageName}}</span>
                 </span>
             </a>

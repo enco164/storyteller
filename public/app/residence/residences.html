@@ -25,7 +25,6 @@
                ng-class="{'mdl-color-text--white mdl-color--blue-grey-300': vm.currentResidence.id === residence.id}"
                style="cursor: pointer;">
                 <span class="mdl-list__item-primary-content">
-                  <!--<i class="material-icons mdl-list__item-avatar">person</i>-->
                   <span>{{residence.state + ' ' + residence.city}}</span>
                 </span>
             </a>
@@ -48,17 +47,17 @@
                         <span>{{vm.currentResidence.city || '-'}}</span>
                     </div>
                 </div>
-        </div>
-        <div class="mdl-card__actions">
-            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.editResidence()">
-                <i class="material-icons">edit</i>
-                Edit
-            </a>
-            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.deleteResidence(vm.currentResidence)">
-                <i class="material-icons">delete</i>
-                Delete
-            </a>
+            </div>
+            <div class="mdl-card__actions">
+                <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.editResidence()">
+                    <i class="material-icons">edit</i>
+                    Edit
+                </a>
+                <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.deleteResidence(vm.currentResidence)">
+                    <i class="material-icons">delete</i>
+                    Delete
+                </a>
+            </div>
         </div>
     </div>
-</div>
 </div>
