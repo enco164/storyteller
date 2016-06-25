@@ -22,8 +22,8 @@
           controllerAs: 'vm',
           title: 'Admin',
           settings: {
-            nav: 2,
-            content: '<i class="fa fa-lock"></i> Admin'
+            nav: 7,
+            content: '<i class="material-icons">lock_outline</i> Admin'
           },
           loginRequired: true
         }
