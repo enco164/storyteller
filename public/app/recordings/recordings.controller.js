@@ -8,14 +8,15 @@
         .module('app.recordings')
         .controller('RecordingsController', RecordingsController);
 
-    RecordingsController.$inject = ['$rootScope', 'AudioRecording', '$state', '$stateParams', '$timeout', 'logger', 'Upload'];
+    RecordingsController.$inject = ['$rootScope', 'AudioRecording', '$state', '$stateParams', '$timeout', 'logger', 'Upload', '$uibModal'];
     /* @ngInject */
-    function RecordingsController($rootScope, AudioRecording, $state, $stateParams, $timeout, logger, Upload) {
+    function RecordingsController($rootScope, AudioRecording, $state, $stateParams, $timeout, logger, Upload, $uibModal ) {
         var vm = this;
         $rootScope.pageTitle = 'Recordings';
         vm.selectRecording = selectRecording;
         vm.selectFile = selectFile;
         vm.deleteRecording = deleteRecording;
+        vm.addAudioRecording = addAudioRecording;
         vm.recordingToAdd = undefined;
 
         activate();
@@ -70,7 +71,7 @@
             recording.$delete(onSuccess, onError);
 
             function onSuccess() {
-                logger.info('Recording' + name + 'deleted!');
+                logger.info('Recording ' + name + ' deleted!');
                 vm.currentRecording = undefined;
                 reloadRecordings();
             }
@@ -80,42 +81,35 @@
             }
         }
 
-        vm.uploadRecording = function() {
-            if (vm.file) {
-                vm.file.upload = Upload.upload({
-                    url: 'api/media',
-                    data: {file: vm.file}
-                });
-                console.log("AAAAAAAAA");
-                vm.file.upload.then(function (response) {
-                    $timeout(function () {
-                        vm.recordingToAdd = {};
-                        vm.recordingToAdd.media = response.data;
-                        vm.recordingToAdd.mediaId = response.data.id;
-                        console.log("AAAAAAAAA");
-                        console.log(vm.recordingToAdd);
-                        AudioRecording.save(vm.recordingToAdd, onSuccess, onError);
-                        logger.info('File successfully uploaded!');
-                        function onSuccess(){
-                            reloadRecordings();
-                            logger.info('File successfully uploaded!');
-                        }
-                        function onError(error) {
-                            // logger.error(error.data.error.message);
-                        }
-                    });
-                }, function (response) {
-                    if (response.status > 0)
-                        vm.errorMsg = response.status + ': ' + response.data;
-                });
 
-                vm.file={};
-                vm.errFile={};
+        function addAudioRecording() {
+
+            var $uibModal = instantiateRecordingModal(vm.currentRecording);
+
+            $uibModal.result.then(onOkCallback, onCancelCallback);
+
+            function onOkCallback(recording) {
+                vm.currentRecording = recording;
             }
-            else {
-                logger.info('File not selected!')
+
+            function onCancelCallback() {
+
             }
+
+
         }
+
+        function instantiateRecordingModal(recording) {
+            return $uibModal.open({
+                templateUrl: 'app/recordings/recordings-modal.html',
+                controller: 'RecordingsModalController',
+                controllerAs: 'vm',
+                resolve: {
+                    recording : recording
+                }
+            });
+        }
+        
 
     }
 })();
