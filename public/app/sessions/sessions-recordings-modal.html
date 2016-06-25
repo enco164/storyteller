@@ -45,9 +45,9 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button ng-show="!vm.file.name" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button" ngf-select="vm.selectFile($file, $invalidFiles)">Upload new recording</button>
-        <button ng-show="vm.file.name" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.uploadRecording()">OK</button>
-        <button ng-show="!vm.file.name"class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.ok()">OK</button>
-        <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.cancel()">Cancel</button>
+        <button ng-show="!vm.file.name" class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ngf-select="vm.selectFile($file, $invalidFiles)"><i class="material-icons">file_upload</i>Upload new recording</button>
+        <button ng-show="vm.file.name" class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.uploadRecording()"><i class="material-icons">done</i>OK</button>
+        <button ng-show="!vm.file.name" class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.ok()"><i class="material-icons">done</i>OK</button>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.cancel()"><i class="material-icons">cancel</i>Cancel</button>
     </div>
 </div>

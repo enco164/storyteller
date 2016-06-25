@@ -13,7 +13,7 @@
         <span>{{vm.file.name || 'not selected'}}</span>
         {{vm.errFile.name || ''}} {{vm.errFile.$error || ''}} {{vm.errFile.$errorParam || ''}}
         <br>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="vm.uploadFiles()">Send</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="vm.uploadFiles()"><i class="material-icons">file_upload</i>Send</button>
     </div>
 
     {{errorMsg}}

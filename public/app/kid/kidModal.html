@@ -121,8 +121,8 @@
                     <label>Residences:</label><br>
                     <div ng-repeat="residence in vm.kid.residences">
                         <span>{{residence.state}} - {{residence.city}}</span>
-                        <button class="btn btn-danger" ng-click="vm.removeResidence(residence.id)">
-                            <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.removeResidence(residence.id)">
+                            <i class="material-icons">delete</i>
                         </button>
                     </div>
                 </div>
@@ -178,9 +178,9 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button ng-if="!vm.kid.id" class="btn btn-primary" type="button" ng-click="vm.addKidAndStayOpen()">Add Kid and add Residence</button>
-        <button ng-if="!vm.kid.id" class="btn btn-primary" type="button" ng-click="vm.addKid()">Just Add Kid</button>
-        <button ng-if="vm.kid.id" class="btn btn-primary" type="button" ng-click="vm.addKid()">Save</button>
-        <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+        <button ng-if="!vm.kid.id" class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.addKidAndStayOpen()"><i class="material-icons">add</i>Add Kid and add Residence</button>
+        <button ng-if="!vm.kid.id" class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.addKid()"><i class="material-icons">add</i>Just Add Kid</button>
+        <button ng-if="vm.kid.id" class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.addKid()"><i class="material-icons">save</i>Save</button>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.cancel()"><i class="material-icons">cancel</i>Cancel</button>
     </div>
 </div>
