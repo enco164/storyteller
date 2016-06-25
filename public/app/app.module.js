@@ -4,7 +4,7 @@
     angular.module('app', [
         'app.core',
         'app.widgets',
-        //'app.admin',
+        'app.admin',
         'app.kid',
         'app.auth',
         'app.dashboard',

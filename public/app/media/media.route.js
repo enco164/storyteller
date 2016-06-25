@@ -24,10 +24,10 @@
                     controller: 'MediaController',
                     controllerAs: 'vm',
                     title: 'Media',
-                    settings: {
-                        nav: 11,
-                        content: '<i class="material-icons">backup</i> Media'
-                    },
+                    // settings: {
+                    //     nav: 11,
+                    //     content: '<i class="material-icons">backup</i> Media'
+                    // },
                     loginRequired: true
                 }
             }

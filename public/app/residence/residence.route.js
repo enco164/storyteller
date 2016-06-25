@@ -19,15 +19,15 @@
             {
                 state: 'residence',
                 config: {
-                    url: '/residence?id',
+                    url: '/admin/residence?id',
                     templateUrl: 'app/residence/residences.html',
                     controller: 'ResidenceController',
                     controllerAs: 'vm',
                     title: 'Residences',
-                    settings: {
-                        nav: 7,
-                        content: '<i class="material-icons">home</i> Residences'
-                    },
+                    // settings: {
+                    //     nav: 7,
+                    //     content: '<i class="material-icons">home</i> Residences'
+                    // },
                     loginRequired: true
                 }
             }
