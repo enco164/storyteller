@@ -14,6 +14,8 @@
         var vm = this;
         $rootScope.pageTitle = 'Session';
 
+        console.log($stateParams);
+
         vm.addTranscript = addTranscript;
         vm.addSceneTranscripts = addSceneTranscripts;
         vm.addAudioRecording = addAudioRecording;
@@ -24,12 +26,13 @@
         function activate() {
             Session.get({id: $stateParams.id}, function(session) {
                 vm.session = session;
+                console.log(vm.session);
                 $rootScope.pageTitle += ' [' +
                     session.kid.firstName + ' ' +
                     session.kid.lastName + ', ' +
                     session.pictureBook.title + ']';
             });
-            
+
         }
 
         function addSceneTranscripts() {

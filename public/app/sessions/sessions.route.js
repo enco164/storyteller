@@ -51,6 +51,16 @@
                 }
             },
             {
+                state: 'sessions.detail.transcript',
+                config: {
+                    url: '/transcript/:transcriptId',
+                    templateUrl: 'app/sessions/session-transcript.html',
+                    controller: 'SessionTranscriptController',
+                    controllerAs: 'vm',
+                    loginRequired: true
+                }
+            },
+            {
                 state: 'sessions.new',
                 config: {
                     url: '/new',
@@ -64,7 +74,7 @@
                                 title: function() {return 'Sessions'}
                             }
                         }).result.then(function(session) {
-                            //$state.go('sessions.detail', {id: session.id});
+                            $state.go('sessions.detail', {id: session.id});
                         });
                     }]
                 }

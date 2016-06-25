@@ -8,18 +8,32 @@
         .module('app.sessions')
         .controller('SessionsController', SessionsController);
 
-    SessionsController.$inject = ['$rootScope','Session'];
+    SessionsController.$inject = ['$rootScope','Session', 'logger'];
     /* @ngInject */
-    function SessionsController($rootScope, Session) {
+    function SessionsController($rootScope, Session, logger) {
         var vm = this;
         $rootScope.pageTitle = 'Sessions';
+
+        vm.deleteSession = deleteSession;
 
         activate();
 
         function activate() {
+            getSessions();
+        }
+
+        function getSessions() {
             Session.query(function(sessions) {
+                vm.sessions = null;
                 vm.sessions = sessions;
                 console.log(sessions);
+            });
+        }
+
+        function deleteSession(sessionId) {
+            Session.delete({id: sessionId}, function() {
+                logger.info('Session deleted');
+                getSessions();
             });
         }
     }

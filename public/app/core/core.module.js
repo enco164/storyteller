@@ -6,6 +6,6 @@
             'ngAnimate', 'ngSanitize',
             'blocks.exception', 'blocks.logger', 'blocks.router',
             'ui.router', 'ngplus', 'satellizer', 'ngResource',
-            'ui.bootstrap', 'summernote'
+            'ui.bootstrap', 'summernote', 'ngAnnotateText'
         ]);
 })();

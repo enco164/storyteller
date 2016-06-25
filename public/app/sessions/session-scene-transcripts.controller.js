@@ -8,11 +8,13 @@
         .module('app.sessions')
         .controller('SessionSceneTranscriptsController', SessionSceneTranscriptsController);
 
-    SessionSceneTranscriptsController.$inject = ['$stateParams', 'SessionSceneTranscript', '$log'];
+    SessionSceneTranscriptsController.$inject = ['$stateParams', 'SessionSceneTranscript', 'logger'];
     /* @ngInject */
-    function SessionSceneTranscriptsController($stateParams, SessionSceneTranscript, $log) {
+    function SessionSceneTranscriptsController($stateParams, SessionSceneTranscript, logger) {
         var vm = this;
-        vm.sceneTranscripts = SessionSceneTranscript.query({sessionId: $stateParams.id});
+        SessionSceneTranscript.query({sessionId: $stateParams.id}, function(transcripts) {
+            vm.sceneTranscripts = transcripts;
+        });
         vm.save = save;
 
         activate();
@@ -35,12 +37,11 @@
 
         function save() {
             var i = 0;
-            angular.forEach(vm.sceneTranscripts, function(sceneTranscript){
-
-                sceneTranscript.$update(function(){
+            angular.forEach(vm.sceneTranscripts, function(sceneTranscript) {
+                sceneTranscript.$update(function() {
                     i++;
                     if (i === vm.sceneTranscripts.length) {
-                        $log.info('Saved');
+                        logger.info('Transcript saved');
                     }
                 });
             });

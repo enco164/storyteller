@@ -19,7 +19,12 @@
                 <td class="mdl-data-table__cell--non-numeric">{{session.kid.firstName + ' ' + session.kid.lastName}}</td>
                 <td class="mdl-data-table__cell--non-numeric">{{session.pictureBook.title}}</td>
                 <td class="mdl-data-table__cell--non-numeric">{{session.createdAt}}</td>
-                <td class="mdl-data-table__cell--non-numeric"><button class="mdl-button mdl-js-button mdl-js-ripple-effect"><i class="material-icons">delete</i>Delete</button></td>
+                <td class="mdl-data-table__cell--non-numeric">
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect"
+                            ng-click="vm.deleteSession(session.id); $event.stopPropagation()">
+                        Delete
+                    </button>
+                </td>
             </tr>
             </tbody>
         </table>

@@ -56,10 +56,11 @@ class SessionsController extends ApiController
     {
         $session = Session::find($id);
         if (!$session) {
-            $this->respondNotFound('Session not found');
+            return $this->respondNotFound('Session not found');
         }
-        $session->load('kid', 'transcripts', 'sceneTranscripts.scene', 'audioRecording', 'audioRecording.media',
+        $session->load('kid', 'transcripts.annotationSchema', 'sceneTranscripts.scene', 'sceneTranscripts.annotations', 'audioRecording', 'audioRecording.media',
             'pictureBook.scenes');
+
         return $session;
     }
 
@@ -68,8 +69,13 @@ class SessionsController extends ApiController
 //        return PictureBook::all();
     }
 
-    public function destroy() {
-
+    public function destroy($id) {
+        $session = Session::find($id);
+        if (!$session) {
+            return $this->respondNotFound('Session not found');
+        }
+        $session->delete();
+        return response()->json(["message" => 'Session successfully deleted.']);
     }
 
 }
