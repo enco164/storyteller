@@ -1,9 +1,10 @@
 <div class="demo-content mdl-grid">
 
-    <!--<button ng-click="vm.onCreate()"-->
-    <!--class="mdl-button mdl-js-button mdl-button&#45;&#45;fab mdl-js-ripple-effect mdl-button&#45;&#45;colored mdl-button&#45;&#45;floating-action mdl-shadow&#45;&#45;4dp">-->
-    <!--<i class="material-icons">add</i>-->
-    <!--</button>-->
+    <button ng-click="vm.onCreate()"
+            ngf-select="vm.selectFile($file, $invalidFiles)"
+            class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--floating-action mdl-shadow--4dp">
+        <i class="material-icons">add</i>
+    </button>
     <div class="mdl-cell mdl-cell--3-col">
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
@@ -61,9 +62,9 @@
         </div>
 
         <div class="mdl-card__actions">
-            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                <i class="material-icons">edit</i>
-                Ovde neke akcije
+            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.deleteRecording(vm.currentRecording)">
+                <i class="material-icons">delete</i>
+                Delete
             </a>
         </div>
         <div class="mdl-card__menu">
@@ -73,4 +74,14 @@
             </a>
         </div>
     </div>
+
+
+    <div ng-show="vm.file.name" class="mdl-grid demo-content" ng-show="!vm.file.name">
+        <div class="mdl-cell mdl-cell--12-col">
+            <label>File:</label>
+            <span>{{vm.file.name}}</span>
+            <button ng-show="vm.file.name" class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.uploadRecording()"><i class="material-icons">done</i>Upload Recording</button>
+        </div>
+    </div>
+
 </div>
