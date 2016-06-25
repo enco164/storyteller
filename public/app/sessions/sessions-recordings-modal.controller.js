@@ -70,6 +70,7 @@
 
                 vm.file.upload.then(function (response) {
                     $timeout(function () {
+                        vm.recordingToAdd = {};
                         vm.recordingToAdd.media = response.data;
                         vm.recordingToAdd.mediaId = response.data.id;
                         console.log(vm.recordingToAdd);

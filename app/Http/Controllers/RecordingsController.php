@@ -27,7 +27,7 @@ class RecordingsController extends ApiController
 
     public function index()
     {
-        return AudioRecording::all()->load('media');
+        return AudioRecording::all()->load('media', 'session');
     }
 
     public function store(Request $request)
@@ -44,7 +44,7 @@ class RecordingsController extends ApiController
         if(!$recording) {
             return $this->respondNotFound('Audio Recording does not exist');
         }
-        $recording->load('media');
+        $recording->load('media', 'session');
         return response()->json($recording);
     }
 

@@ -34,7 +34,7 @@
         </div>
         <div class="mdl-card__supporting-text">
             <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--3-col">
+                <div class="mdl-cell mdl-cell--6-col">
                     <div class="attr-div">
                         <label>File Name:</label><br>
                         <span>{{vm.currentRecording.media.fileName || '-'}}</span>
@@ -43,7 +43,12 @@
                         <label>Recording date:</label><br>
                         <span>{{vm.currentRecording.recordingDate || '-'}}</span>
                     </div>
+                    <div ng-show="vm.currentRecording.session.id" class="attr-div">
+                        <br>
+                        <a href="/sessions/{{vm.currentRecording.session.id}}">More info? See session.</a>
+                    </div>
                     <div>
+                        <br>
                         <audio controls id="audio">
                             <source ng-src="{{vm.currentRecording.media.path}}" type="audio/mpeg">
                             <source ng-src="{{vm.currentRecording.media.path}}" type="audio/wav">
@@ -51,7 +56,6 @@
                             Your browser does not support the audio element.
                         </audio>
                     </div>
-                    <a ng-href="{{vm.currentRecording.media.path}}" target="_self" download>Download</a>
                 </div>
             </div>
         </div>
@@ -60,6 +64,12 @@
             <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect">
                 <i class="material-icons">edit</i>
                 Ovde neke akcije
+            </a>
+        </div>
+        <div class="mdl-card__menu">
+            <!--ST TODO: style je privremeno resenje, obrisati kad se srede boje-->
+            <a style="color: white" ng-href="{{vm.currentRecording.media.path}}" target="_self" download>
+                <i class="material-icons">file_download</i>
             </a>
         </div>
     </div>

@@ -8,9 +8,9 @@
         .module('app.recordings')
         .controller('RecordingsController', RecordingsController);
 
-    RecordingsController.$inject = ['$rootScope', 'AudioRecording', '$state', '$stateParams', '$timeout'];
+    RecordingsController.$inject = ['$rootScope', 'AudioRecording', '$state', '$stateParams', '$timeout', 'logger'];
     /* @ngInject */
-    function RecordingsController($rootScope, AudioRecording, $state, $stateParams, $timeout) {
+    function RecordingsController($rootScope, AudioRecording, $state, $stateParams, $timeout, logger) {
         var vm = this;
         $rootScope.pageTitle = 'Recordings';
         vm.selectRecording = selectRecording;

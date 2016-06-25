@@ -19,6 +19,6 @@ class AudioRecording extends Model
 
     public function session()
     {
-        return $this->hasOne('App\Session', 'id');
+        return $this->hasOne('App\Session');
     }
 }
