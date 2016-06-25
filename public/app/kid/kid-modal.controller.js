@@ -120,8 +120,8 @@
         vm.dateOptions = {
             dateDisabled: disabled,
             formatYear: 'yy',
-            maxDate: new Date(2020, 5, 22),
-            minDate: new Date(),
+            maxDate: new Date(2100, 1, 1),
+            minDate: new Date(1990, 1, 1),
             startingDay: 1
         };
         // Disable weekend selection
