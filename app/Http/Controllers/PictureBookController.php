@@ -69,6 +69,11 @@ class PictureBookController extends ApiController
         if (!$picBook) {
             return $this->respondWithError("Picture book does not exist.");
         }
+        foreach($picBook->scenes as $scene)
+        {
+            if(file_exists(public_path()."/".$scene->media->path))
+                unlink(public_path()."/".$scene->media->path);
+        }
         $picBook->delete();
         return response()->json(["message" => 'Picture book successfully deleted.']);
     }
