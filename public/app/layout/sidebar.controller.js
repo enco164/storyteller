@@ -29,7 +29,17 @@
         return '';
       }
       var menuName = route.title;
-      return $state.current.title.substr(0, menuName.length) === menuName ? 'active' : '';
+
+      var active = $state.current.title.substr(0, menuName.length) === menuName ? 'active ' : false;
+      if (!active) {
+        return '';
+      }
+
+      active += $state.current.title === 'Recordings' ? 'mdl-color--red-700':
+                $state.current.title === 'Picture Books' ? '':
+                    '';
+
+      return active;
     }
   }
 })();

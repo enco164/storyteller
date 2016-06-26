@@ -59,14 +59,21 @@ html, body {
   align-items: center;
   color: rgba(255, 255, 255, 0.56);
   font-weight: 500;
-  transition: all 0.4s ease-out;
+  cursor: pointer;
 }
 .demo-layout .demo-navigation .mdl-navigation__link:hover,
 .demo-layout .demo-navigation .mdl-navigation__link.active {
-  background-color: #00BCD4;
-  color: #37474F;
+  color: white;
   text-decoration: none;
   transition: all 0.4s ease-in;
+}
+
+.demo-layout .demo-navigation .mdl-navigation__link:hover {
+  background-color: #263238;
+}
+
+.demo-layout .demo-navigation .mdl-navigation__link.active>i {
+  color: white;
 }
 
 .demo-navigation .mdl-navigation__link .material-icons {

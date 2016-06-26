@@ -8,14 +8,14 @@
         .module('app.sessions')
         .controller('SessionTranscriptController', SessionTranscriptController);
 
-    SessionTranscriptController.$inject = ['$rootScope', '$state', '$stateParams', 'Session', '$uibModal', 'SessionSceneTranscript', 'NGAnnotation'];
+    SessionTranscriptController.$inject = ['$rootScope', '$state', '$stateParams', 'Session', '$uibModal', 'SessionTranscript', 'NGAnnotation'];
     /* @ngInject */
-    function SessionTranscriptController($rootScope, $state, $stateParams, Session, $uibModal, SessionSceneTranscript, NGAnnotation) {
+    function SessionTranscriptController($rootScope, $state, $stateParams, Session, $uibModal, SessionTranscript, NGAnnotation) {
         var vm = this;
         $rootScope.pageTitle = 'Session';
 
-        Session.get({id: $stateParams.id}, function(session) {
-            vm.session = session;
+        SessionTranscript.get({sessionId: $stateParams.id, transcriptId: $stateParams.transcriptId}, function(session) {
+            vm.session = new Session(session.toJSON());
             console.log(vm.session);
         });
 
@@ -25,7 +25,8 @@
 
         function save() {
             console.log('save');
-            vm.session.$update(function(session) {
+            var s = new Session(vm.session);
+            s.$update(function(session) {
                 $state.go($state.current, {}, {reload: true});
             });
         }

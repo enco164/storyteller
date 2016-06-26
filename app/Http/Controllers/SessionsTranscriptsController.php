@@ -43,7 +43,19 @@ class SessionsTranscriptsController extends ApiController
 
     public function show(Request $request, $sessionId, $transcriptId)
     {
-        return $transcriptId;
+        $session = Session::find($sessionId);
+        if (!$session) {
+            return $this->respondNotFound('Session not found');
+        }
+        $session->load(['transcripts' => function($query) use(&$transcriptId) {
+            $query->where('id', '=', $transcriptId)->get();
+        }]);
+        $session->load(['sceneTranscripts.annotations' => function($query) use(&$transcriptId) {
+            $query->where('annotations.transcript_id', '=', $transcriptId);
+        }]);
+        $session['sceneTranscripts']->load('scene.media');
+        $session->load('kid', 'audioRecording.media', 'pictureBook.scenes');
+        return $session;
     }
 
 }

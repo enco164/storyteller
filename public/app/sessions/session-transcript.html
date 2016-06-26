@@ -10,7 +10,7 @@
                  ng-repeat="sceneTranscript in vm.session.sceneTranscripts "
                  style="margin-bottom: 16px;">
             <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
-                <img ng-src="sceneTranscript.scene.sceneURL">
+                <img ng-src="{{sceneTranscript.scene.media.path}}">
             </header>
             <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                 <div class="mdl-card__supporting-text">

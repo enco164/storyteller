@@ -24,7 +24,6 @@
             $rootScope.$on('$viewContentLoaded', function() {
                 $timeout(function() {
                     componentHandler.upgradeAllRegistered();
-                    // jQuery.material.init();
                 })
             })
         });

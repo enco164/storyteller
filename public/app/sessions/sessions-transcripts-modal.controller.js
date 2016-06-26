@@ -8,9 +8,9 @@
         .module('app.sessions')
         .controller('SessionsTranscriptsModalController', SessionsTranscriptsModalController);
 
-    SessionsTranscriptsModalController.$inject = ['Session', '$timeout', '$uibModalInstance', 'AnnotationSchemas','SessionTranscript', 'session'];
+    SessionsTranscriptsModalController.$inject = ['Session', '$timeout', '$uibModalInstance', 'AnnotationSchemas','SessionTranscript', 'session', 'logger'];
 
-    function SessionsTranscriptsModalController(Session, $timeout, $uibModalInstance, AnnotationSchemas, SessionTranscript, session) {
+    function SessionsTranscriptsModalController(Session, $timeout, $uibModalInstance, AnnotationSchemas, SessionTranscript, session, logger) {
         var vm = this;
         vm.newTranscript = {};
         vm.ok = onOk;
@@ -21,14 +21,15 @@
         });
 
         function onOk() {
-            if (!vm.newTranscript.title || !vm.newTranscript.annotationSchemaId) {
-                vm.error = 'All fields are required!';
-                $timeout(function(){
-                    vm.error = null;
-                },5000);
+            console.log(vm.newTranscript);
+            if (!vm.newTranscript.title || !vm.newTranscript.annotationSchema) {
+                logger.error('All fields are required!');
                 return;
             }
-            SessionTranscript.save({sessionId: session.id}, vm.newTranscript, onSuccess, onError);
+
+            var obj = {title: vm.newTranscript.title, annotationSchemaId: vm.newTranscript.annotationSchema.id};
+
+            SessionTranscript.save({sessionId: session.id}, obj, onSuccess, onError);
 
             function onSuccess(session){
                 $uibModalInstance.close(session);

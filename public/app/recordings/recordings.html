@@ -29,10 +29,10 @@
     </div>
 
     <div class="mdl-card mdl-cell mdl-cell--9-col mdl-shadow--2dp" ng-if="vm.currentRecording" >
-        <div class="mdl-card__title mdl-color--orange-800">
+        <div class="mdl-card__title mdl-color--red-600">
             <h2 class="mdl-card__title-text mdl-color-text--white">{{vm.currentRecording.media.fileName}} ({{vm.currentRecording.recordingDate | date: "dd.MM.yyyy"}})</h2>
         </div>
-        <div class="mdl-card__supporting-text">
+        <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
             <div class="mdl-grid">
                 <div class="mdl-cell mdl-cell--6-col">
                     <div class="attr-div">
@@ -41,33 +41,37 @@
                     </div>
                     <div class="attr-div">
                         <label>Recording date:</label><br>
-                        <span>{{vm.currentRecording.recordingDate | date: "dd.MM.yyyy" || '-'}}</span>
+                        <span>{{(vm.currentRecording.recordingDate | date: "dd.MM.yyyy") || '-'}}</span>
                     </div>
-                    <div ng-show="vm.currentRecording.session.id" class="attr-div">
-                        <br>
-                        <a href="/sessions/{{vm.currentRecording.session.id}}">More info? See session.</a>
-                    </div>
-                    <div>
-                        <br>
-                        <audio controls id="audio">
-                            <source ng-src="{{vm.currentRecording.media.path}}" type="audio/mpeg">
-                            <source ng-src="{{vm.currentRecording.media.path}}" type="audio/wav">
-                            <source ng-src="{{vm.currentRecording.media.path}}" type="audio/ogg">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </div>
+
+                </div>
+            </div>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <audio controls id="audio" style="width: 100%">
+                        <source ng-src="{{vm.currentRecording.media.path}}" type="audio/mpeg">
+                        <source ng-src="{{vm.currentRecording.media.path}}" type="audio/wav">
+                        <source ng-src="{{vm.currentRecording.media.path}}" type="audio/ogg">
+                        Your browser does not support the audio element.
+                    </audio>
                 </div>
             </div>
         </div>
 
         <div class="mdl-card__actions">
-            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.deleteRecording(vm.currentRecording)">
+            <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect"
+               ng-click="vm.deleteRecording(vm.currentRecording)">
                 <i class="material-icons">delete</i>
                 Delete
             </a>
+            <a ng-show="vm.currentRecording.session.id"
+               class="mdl-button mdl-js-button mdl-js-ripple-effect"
+               ui-sref="sessions.detail({id: vm.currentRecording.session.id})">
+                <i class="material-icons">inbox</i>
+                Go to Session
+            </a>
         </div>
         <div class="mdl-card__menu">
-            <!--ST TODO: style je privremeno resenje, obrisati kad se srede boje-->
             <a style="color: white" ng-href="{{vm.currentRecording.media.path}}" target="_self" download>
                 <i class="material-icons">file_download</i>
             </a>
