@@ -8,10 +8,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Annotation;
 use App\Kid;
 use App\PictureBook;
 use App\SceneTranscript;
 use App\Session;
+use App\Transcript;
 use Illuminate\Http\Request;
 
 class SessionsController extends ApiController
@@ -58,14 +60,37 @@ class SessionsController extends ApiController
         if (!$session) {
             return $this->respondNotFound('Session not found');
         }
-        $session->load('kid', 'transcripts.annotationSchema', 'sceneTranscripts.scene', 'sceneTranscripts.annotations', 'audioRecording', 'audioRecording.media',
-            'pictureBook.scenes');
+        $session->load('kid', 'transcripts.annotationSchema', 'sceneTranscripts.scene', 'sceneTranscripts.annotations',
+            'audioRecording', 'audioRecording.media', 'pictureBook.scenes');
 
         return $session;
     }
 
-    public function update(Request $request) {
+    public function update(Request $request, $id) {
+        $session = Session::find($id);
+        if (!$session) {
+            return $this->respondNotFound('Session not found');
+        }
+        $sceneTranscripts = $request->get('sceneTranscripts');
+        foreach ($sceneTranscripts as $sceneTranscript) {
+            foreach ($sceneTranscript['annotations'] as $annotation) {
+//                return $annotation;
+                if (array_key_exists('id', $annotation)) {
+                    $ann = Annotation::find($annotation['id']);
+                    $ann->fill($annotation);
+                    $ann->save();
+                } else {
+                    $ann = new Annotation($annotation);
+                    $transcript = Transcript::find($annotation['transcriptId']);
+                    $transcript->annotations()->save($ann);
+                    $st = SceneTranscript::find($sceneTranscript['id']);
+                    $st->annotations()->save($ann);
+                }
+            }
+        }
 
+        return $session->load('kid', 'transcripts.annotationSchema', 'sceneTranscripts.scene', 'sceneTranscripts.annotations',
+            'audioRecording', 'audioRecording.media', 'pictureBook.scenes');
 //        return PictureBook::all();
     }
 

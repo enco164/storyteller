@@ -20,4 +20,9 @@ class Transcript extends Model
     {
         return $this->belongsTo('App\AnnotationSchemas', 'annotationSchema_id');
     }
+
+    public function annotations()
+    {
+        return $this->hasMany('App\Annotation');
+    }
 }

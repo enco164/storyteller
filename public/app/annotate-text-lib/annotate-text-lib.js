@@ -38,7 +38,7 @@
         for (i = j = ref = annotations.length - 1; j >= 0; i = j += -1) {
             annotation = annotations[i];
             text = insertAt(text, annotation.endIndex + indexOffset, "</span>");
-            if (annotation.children.length) {
+            if (annotation.children && annotation.children.length) {
                 text = parseAnnotations(text, annotation.children, annotation.startIndex + indexOffset);
             }
             text = insertAt(text, annotation.startIndex + indexOffset, "<span class=\"ng-annotate-text-annotation ng-annotate-text-" + annotation.id + " ng-annotate-text-type-" + annotation.type + "\" data-annotation-id=\"" + annotation.id + "\">");

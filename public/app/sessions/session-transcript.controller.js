@@ -21,10 +21,18 @@
 
         console.log($stateParams);
 
+        vm.save = save;
 
-        vm.annotations = [[],[],[],[]];
+        function save() {
+            console.log('save');
+            vm.session.$update(function(session) {
+                $state.go($state.current, {}, {reload: true});
+            });
+        }
 
         vm.onAnnotate = function($annotation) {
+            $annotation.comment = $annotation.data.comment;
+            $annotation.data.transcriptId = $stateParams.transcriptId;
             console && console.log($annotation);
         };
         vm.onAnnotateError = function($ex) {
