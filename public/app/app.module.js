@@ -20,7 +20,6 @@
     ])
         .run(function ($rootScope,$timeout) {
 
-            console.log(jQuery.material);
             $rootScope.$on('$viewContentLoaded', function() {
                 $timeout(function() {
                     componentHandler.upgradeAllRegistered();

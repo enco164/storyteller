@@ -34,13 +34,13 @@
       if (!active) {
         return '';
       }
-      console.log($state);
+
       active += $state.current.title === 'Recordings' ? 'mdl-color--red-700':
                 $state.current.title === 'Sessions' ? 'mdl-color--amber-700':
-                $state.current.title === 'Kids'? 'mdl-color--blue-700':
-                $state.current.title === 'Picture Books'? 'mdl-color--green-700':
-                $state.current.title === 'Annotation Schemas'? 'mdl-color--deep-orange-700':
-                $state.current.title === 'Admin'? 'mdl-color--purple-700':
+                $state.current.title === 'Kids' ? 'mdl-color--blue-700':
+                $state.current.title === 'Picture Books' ? 'mdl-color--green-700':
+                $state.current.title === 'Annotation Schemas' ? 'mdl-color--deep-orange-700':
+                $state.current.title === 'Admin' ? 'mdl-color--purple-700':
                     '';
 
       return active;

@@ -8,6 +8,7 @@
                 <div class="form-group">
                     <label>Choose kid</label><br>
                     <select name="kid"
+                            class="mdl-textfield__input"
                             ng-model="vm.kidId"
                             ng-options="kid.id as (kid.firstName + ' ' + kid.lastName) for kid in vm.kids"
                     >
@@ -16,6 +17,7 @@
                 <div class="form-group">
                     <label>Choose Picture Book</label><br>
                     <select name="pictureBook"
+                            class="mdl-textfield__input"
                             ng-model="vm.pictureBookId"
                             ng-options="pb.id as pb.title for pb in vm.pictureBooks"
                     ></select>

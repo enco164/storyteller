@@ -56,11 +56,15 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group">
-                    <label >Gender</label><br>
-                    <input type="radio" ng-model="vm.kid.gender" value="m">Male
-                    <input type="radio" ng-model="vm.kid.gender" value="f">Female
-                </div>
+                <label >Gender</label><br>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-male">
+                    <input type="radio" id="option-male" class="mdl-radio__button" name="options" ng-model="vm.kid.gender" value="m">
+                    <span class="mdl-radio__label">Male</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-female">
+                    <input type="radio" id="option-female" class="mdl-radio__button" name="options" ng-model="vm.kid.gender" value="f">
+                    <span class="mdl-radio__label">Female</span>
+                </label>
             </div>
         </div>
         <div class="row">
@@ -82,7 +86,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Father's Language:</label><br>
-                    <select class="form-control" ng-model="vm.kid.languageFatherId">
+                    <select class="mdl-textfield__input" ng-model="vm.kid.languageFatherId">
                         <option ng-repeat="language in vm.languageList" value={{language.id}}>{{language.languageName}}</option>
                     </select>
                 </div>
@@ -90,7 +94,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Mother's Language:</label><br>
-                    <select class="form-control" ng-model="vm.kid.languageMotherId">
+                    <select class="mdl-textfield__input" ng-model="vm.kid.languageMotherId">
                         <option ng-repeat="language in vm.languageList" value={{language.id}}>{{language.languageName}}</option>
                     </select>
                 </div>
@@ -100,7 +104,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>School Language:</label><br>
-                    <select class="form-control" ng-model="vm.kid.languageSchoolId">
+                    <select class="mdl-textfield__input" ng-model="vm.kid.languageSchoolId">
                         <option ng-repeat="language in vm.languageList" value={{language.id}}>{{language.languageName}}</option>
                     </select>
                 </div>
@@ -108,7 +112,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Additional School Language:</label><br>
-                    <select class="form-control" ng-model="vm.kid.languageAdditionalSchoolId">
+                    <select class="mdl-textfield__input" ng-model="vm.kid.languageAdditionalSchoolId">
                         <option ng-repeat="language in vm.languageList" value={{language.id}}>{{language.languageName}}</option>
                     </select>
                 </div>
