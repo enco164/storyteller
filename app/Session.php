@@ -36,4 +36,9 @@ class Session extends Model
     {
         return $this->belongsTo('App\AudioRecording');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

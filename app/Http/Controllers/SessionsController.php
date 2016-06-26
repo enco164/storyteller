@@ -14,7 +14,10 @@ use App\PictureBook;
 use App\SceneTranscript;
 use App\Session;
 use App\Transcript;
+use App\User;
+use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
+use Config;
 
 class SessionsController extends ApiController
 {
@@ -25,6 +28,14 @@ class SessionsController extends ApiController
     }
 
     public function store(Request $request) {
+        $jwt = explode(' ', $request->header('Authorization'))[1];
+
+        $decoded = JWT::decode($jwt, Config::get('app.token_secret'), array('HS256'));
+        $userId = $decoded->sub;
+
+
+        $user = User::find($userId);
+
         $kidId = $request->get('kidId');
         $pictureBookId = $request->get('pictureBookId');
         if (!$kidId || !$pictureBookId) {
@@ -41,6 +52,7 @@ class SessionsController extends ApiController
         $session = Session::create();
         $session->kid()->associate($kid);
         $session->pictureBook()->associate($pictureBook);
+        $session->user()->associate($user);
         $session->save();
 
         //Creating sceneTranscript for every scene
@@ -51,7 +63,7 @@ class SessionsController extends ApiController
             $sceneTranscript = $session->sceneTranscripts()->save($sceneTranscript);
         }
 
-        return $session->load('pictureBook', 'kid');
+        return $session->load('pictureBook', 'kid', 'user');
     }
 
     public function show($id)
@@ -61,7 +73,7 @@ class SessionsController extends ApiController
             return $this->respondNotFound('Session not found');
         }
         $session->load('kid', 'transcripts.annotationSchema', 'sceneTranscripts.scene', 'sceneTranscripts.annotations',
-            'audioRecording', 'audioRecording.media', 'pictureBook.scenes');
+            'audioRecording', 'audioRecording.media', 'pictureBook.scenes', 'user');
 
         return $session;
     }

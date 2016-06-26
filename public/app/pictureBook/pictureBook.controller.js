@@ -148,7 +148,6 @@
 
         vm.uploadScene = function() {
             if (vm.file) {
-                console.log(vm.file);
                 vm.file.upload = Upload.upload({
                     url: 'api/media',
                     data: {file: vm.file}

@@ -23,7 +23,7 @@
                     templateUrl: 'app/residence/residences.html',
                     controller: 'ResidenceController',
                     controllerAs: 'vm',
-                    title: 'Residences',
+                    title: 'Admin',
                     // settings: {
                     //     nav: 7,
                     //     content: '<i class="material-icons">home</i> Residences'

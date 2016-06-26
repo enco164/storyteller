@@ -21,7 +21,7 @@
                 vm.pictureBook.$update(onSuccess, onError);
             } else {
                 var pictureBook = new PictureBook(vm.pictureBook);
-                console.log(pictureBook);
+                //console.log(pictureBook);
                 pictureBook.$save(onSuccess, onError);
             }
 

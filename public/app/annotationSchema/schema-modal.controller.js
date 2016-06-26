@@ -21,7 +21,7 @@
                 vm.annotSch.$update(onSuccess, onError);
             } else {
                 var annotSch = new AnnotationSchemas(vm.annotSch);
-                console.log(annotSch);
+                //console.log(annotSch);
                 annotSch.$save(onSuccess, onError);
             }
 

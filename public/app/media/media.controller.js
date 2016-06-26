@@ -22,7 +22,7 @@
             Media.query(function(media){
                 vm.allMedia = media;
             });
-            console.log(vm.allMedia);
+            //console.log(vm.allMedia);
         }
 
         function selectFile(file, errFiles)

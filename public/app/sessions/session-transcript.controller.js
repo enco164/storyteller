@@ -16,15 +16,12 @@
 
         SessionTranscript.get({sessionId: $stateParams.id, transcriptId: $stateParams.transcriptId}, function(session) {
             vm.session = new Session(session.toJSON());
-            console.log(vm.session);
         });
-
-        console.log($stateParams);
 
         vm.save = save;
 
         function save() {
-            console.log('save');
+            //console.log('save');
             var s = new Session(vm.session);
             s.$update(function(session) {
                 $state.go($state.current, {}, {reload: true});

@@ -21,7 +21,7 @@
         });
 
         function onOk() {
-            console.log(vm.newTranscript);
+            //console.log(vm.newTranscript);
             if (!vm.newTranscript.title || !vm.newTranscript.annotationSchemaId) {
                 logger.error('All fields are required!');
                 return;

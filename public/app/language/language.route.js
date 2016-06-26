@@ -23,7 +23,7 @@
                     templateUrl: 'app/language/languages.html',
                     controller: 'LanguageController',
                     controllerAs: 'vm',
-                    title: 'Languages',
+                    title: 'Admin',
                     // settings: {
                     //     nav: 9,
                     //     content: '<i class="material-icons">language</i> Languages'

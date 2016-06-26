@@ -12,36 +12,56 @@
     AnnotationController.$inject = ['$scope', '$timeout', '$stateParams', 'Session'];
     function AnnotationController($scope, $timeout, $stateParams, Session) {
         Session.get({id: $stateParams.id}, function(session) {
-            console.log(session);
+            //console.log(session);
             $scope.transcript = session.transcripts.find(function(transcript) {
-                console.log(transcript);
+                //console.log(transcript);
                 return transcript.id == $stateParams.transcriptId;
             });
+            $scope.annotationColours = [];
 
-            $scope.annotationColours = [
-                {
-                    name: $scope.transcript.annotationSchema.red,
-                    value: "red"
-                }, {
-                    name: $scope.transcript.annotationSchema.green,
-                    value: "green"
-                }, {
-                    name: $scope.transcript.annotationSchema.blue,
-                    value: "blue"
-                }, {
-                    name: $scope.transcript.annotationSchema.aqua,
-                    value: "aqua"
-                }, {
-                    name: $scope.transcript.annotationSchema.pink,
-                    value: "pink"
-                }, {
-                    name: $scope.transcript.annotationSchema.yellow,
-                    value: "yellow"
-                }, {
-                    name: $scope.transcript.annotationSchema.orange,
-                    value: "orange"
-                }
-            ];
+
+            if (!!$scope.transcript.annotationSchema.red) {
+                $scope.annotationColours.push({
+                    name:$scope.transcript.annotationSchema.red,
+                    value: 'red'
+                });
+            }
+            if (!!$scope.transcript.annotationSchema.green) {
+                $scope.annotationColours.push({
+                    name:$scope.transcript.annotationSchema.green,
+                    value: 'green'
+                });
+            }
+            if (!!$scope.transcript.annotationSchema.blue) {
+                $scope.annotationColours.push({
+                    name:$scope.transcript.annotationSchema.blue,
+                    value: 'blue'
+                });
+            }
+            if (!!$scope.transcript.annotationSchema.aqua) {
+                $scope.annotationColours.push({
+                    name:$scope.transcript.annotationSchema.aqua,
+                    value: 'aqua'
+                });
+            }
+            if (!!$scope.transcript.annotationSchema.pink) {
+                $scope.annotationColours.push({
+                    name:$scope.transcript.annotationSchema.pink,
+                    value: 'pink'
+                });
+            }
+            if (!!$scope.transcript.annotationSchema.yellow) {
+                $scope.annotationColours.push({
+                    name:$scope.transcript.annotationSchema.yellow,
+                    value: 'yellow'
+                });
+            }
+            if (!!$scope.transcript.annotationSchema.orange) {
+                $scope.annotationColours.push({
+                    name:$scope.transcript.annotationSchema.orange,
+                    value: 'orange'
+                });
+            }
         });
 
         $scope.useTemplate = function(template) {
@@ -62,7 +82,7 @@
             return color && color.value === $scope.$annotation.type;
         };
         $scope.close = function() {
-            console.log('close');
+            //console.log('close');
             return $scope.$close();
         };
         $scope.reject = function() {

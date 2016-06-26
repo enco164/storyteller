@@ -26,7 +26,6 @@
             Session.query(function(sessions) {
                 vm.sessions = null;
                 vm.sessions = sessions;
-                console.log(sessions);
             });
         }
 

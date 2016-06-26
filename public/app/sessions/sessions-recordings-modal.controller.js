@@ -55,7 +55,7 @@
 
         function selectRecording(recording) {
             vm.recordingToAdd = recording;
-            console.log(vm.recordingToAdd);
+            //console.log(vm.recordingToAdd);
         }
 
         function selectFile(file, errFiles)
@@ -79,7 +79,7 @@
                         vm.recordingToAdd = vm.recordingToAdd || {};
                         vm.recordingToAdd.media = response.data;
                         vm.recordingToAdd.mediaId = response.data.id;
-                        console.log(vm.recordingToAdd);
+                        //console.log(vm.recordingToAdd);
                         SessionRecording.save({sessionId: session.id}, vm.recordingToAdd, onSuccess, onError);
                         logger.info('File successfully uploaded!');
                         function onSuccess(recording){

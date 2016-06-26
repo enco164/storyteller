@@ -40,7 +40,7 @@
             var dataToSend = angular.copy(data);
             angular.forEach(dataToSend.sceneTranscripts, function(st) {
                 angular.forEach(st.annotations, function(ann, key, anns) {
-                    console.log(ann);
+                    //console.log(ann);
                     var plain = {
                         id: ann.data.id,
                         comment: ann.data.comment,
