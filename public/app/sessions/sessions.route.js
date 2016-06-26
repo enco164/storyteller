@@ -46,7 +46,7 @@
                     templateUrl: 'app/sessions/session-detail.html',
                     controller: 'SessionDetailController',
                     controllerAs: 'vm',
-                    title: 'Session Detail',
+                    title: 'Sessions',
                     loginRequired: true
                 }
             },
@@ -57,6 +57,7 @@
                     templateUrl: 'app/sessions/session-transcript.html',
                     controller: 'SessionTranscriptController',
                     controllerAs: 'vm',
+                    title: 'Sessions',
                     loginRequired: true
                 }
             },
@@ -65,6 +66,7 @@
                 config: {
                     url: '/new',
                     loginRequired: true,
+                    title: 'Sessions',
                     onEnter: ['$uibModal', '$state', function($uibModal, $state) {
                         $uibModal.open({
                             templateUrl: 'app/sessions/sessions-modal.html',
@@ -85,7 +87,8 @@
                     loginRequired: true,
                     templateUrl: 'app/sessions/session-scene-transcripts.html',
                     controller: 'SessionSceneTranscriptsController',
-                    controllerAs: 'vm'
+                    controllerAs: 'vm',
+                    title: 'Sessions'
                 }
             }
         ];

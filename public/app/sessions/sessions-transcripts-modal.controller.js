@@ -22,14 +22,12 @@
 
         function onOk() {
             console.log(vm.newTranscript);
-            if (!vm.newTranscript.title || !vm.newTranscript.annotationSchema) {
+            if (!vm.newTranscript.title || !vm.newTranscript.annotationSchemaId) {
                 logger.error('All fields are required!');
                 return;
             }
 
-            var obj = {title: vm.newTranscript.title, annotationSchemaId: vm.newTranscript.annotationSchema.id};
-
-            SessionTranscript.save({sessionId: session.id}, obj, onSuccess, onError);
+            SessionTranscript.save({sessionId: session.id}, vm.newTranscript, onSuccess, onError);
 
             function onSuccess(session){
                 $uibModalInstance.close(session);

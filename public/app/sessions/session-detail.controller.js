@@ -17,7 +17,6 @@
         console.log($stateParams);
 
         vm.addTranscript = addTranscript;
-        vm.addSceneTranscripts = addSceneTranscripts;
         vm.addAudioRecording = addAudioRecording;
 
 
@@ -33,10 +32,6 @@
                     session.pictureBook.title + ']';
             });
 
-        }
-
-        function addSceneTranscripts() {
-            $state.go('sessions.sceneTranscripts', {id: vm.session.id});
         }
 
         function addAudioRecording() {
