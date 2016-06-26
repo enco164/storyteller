@@ -34,7 +34,8 @@ class RecordingsController extends ApiController
     public function store(Request $request)
     {
         $recording = AudioRecording::create($request->all());
-
+        $recording->load('media', 'session');
+        
         return response()->json($recording);
     }
 

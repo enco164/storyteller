@@ -4,8 +4,59 @@
     </div>
     <div class="modal-body">
         <div class="container-fluid">
+            <div ng-show="vm.showRec">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <div>
+                        <ng-audio-recorder id='audioInput' audio-model='vm.file' on-record-complete="rewriteName()">
+                            <!-- Start controls, exposed via recorder-->
+                            <div ng-if="recorder.isAvailable">
+                                <button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"
+                                        ng-click="recorder.startRecord()" type="button" ng-disabled="recorder.status.isRecording">
+                                    <i class="material-icons">fiber_manual_record</i>
+                                    Record
+                                </button>
+                                <button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"
+                                        ng-click="recorder.stopRecord()" type="button" ng-disabled="recorder.status.isRecording === false">
+                                    <i class="material-icons">stop</i>
+                                    Stop
+                                </button>
+                                <button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect"
+                                        ng-click="recorder.playbackRecording()" type="button"
+                                        ng-disabled="recorder.status.isRecording || !recorder.audioModel">
+                                    <i class="material-icons">play_arrow</i>
+                                    Play Back
+                                </button>
+                            </div>
 
-            <div ng-show="vm.file.name" class="mdl-grid demo-content" ng-show="!vm.file.name">
+                            <div ng-if="!recorder.isAvailable">
+                                Message for users when recording is not possible.
+                            </div>
+                            <!-- End controls-->
+                        </ng-audio-recorder>
+                        <label>File name:</label><br>
+                        <input type="text" mdl-textfield__input ng-model="vm.tmpName"><br>
+                        <label>Recording Date:</label>
+                        <div class="mdl-grid mdl-grid--no-spacing">
+                            <div class="mdl-cell mdl-cell--6-col">
+                                <input class="mdl-textfield__input"
+                                       type="text"
+                                       class="form-control"
+                                       uib-datepicker-popup="{{vm.format}}"
+                                       ng-model="vm.recordingToAdd.recordingDate"
+                                       is-open="vm.popup1"
+                                       datepicker-options="vm.dateOptions"
+                                       close-text="Close" />
+                            </div>
+                            <div class="mdl-cell mdl-cell--2-col">
+                                <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="vm.openDatePicker()">
+                                    <i class="material-icons">date_range</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="!vm.showRec" class="mdl-grid demo-content" ng-show="!vm.file.name">
                 <div class="mdl-cell mdl-cell--12-col">
                     <label>File:</label>
                     <span>{{vm.file.name}}</span>
@@ -34,9 +85,9 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button ng-show="!vm.file.name" class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ngf-select="vm.selectFile($file, $invalidFiles)"><i class="material-icons">file_upload</i>Upload new recording</button>
-        <button ng-show="vm.file.name" class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.uploadRecording()"><i class="material-icons">done</i>OK</button>
-        <button ng-show="!vm.file.name" class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.ok()"><i class="material-icons">done</i>OK</button>
+        <button ng-click="vm.showRec = true" class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button"><i class="material-icons">mic</i>Record</button>
+        <button ng-click="vm.showRec = false" class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ngf-select="vm.selectFile($file, $invalidFiles)"><i class="material-icons">file_upload</i>Upload</button>
+        <button ng-show="vm.file != undefined" class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.uploadRecording()"><i class="material-icons">done</i>OK</button>
         <button class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" ng-click="vm.cancel()"><i class="material-icons">cancel</i>Cancel</button>
     </div>
 </div>

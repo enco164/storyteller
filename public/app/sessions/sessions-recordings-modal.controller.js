@@ -17,7 +17,10 @@
         vm.cancel = onCancel;
         vm.selectRecording = selectRecording;
         vm.selectFile = selectFile;
-
+        vm.tmpName = "";
+        vm.showRec = false;
+        vm.showHome = true;
+        
         AudioRecording.query(function(recordings){
             vm.recordingsList = recordings;
             //Ovo ispod se koristi samo za update mdl komponenti
@@ -59,10 +62,13 @@
         {
             vm.file = file;
             vm.errFile = errFiles && errFiles[0];
+            vm.showHome = false;
         }
 
         vm.uploadRecording = function() {
             if (vm.file) {
+                if(vm.file.name == undefined)
+                    vm.file.name = vm.tmpName;
                 vm.file.upload = Upload.upload({
                     url: 'api/media',
                     data: {file: vm.file}
@@ -70,7 +76,7 @@
 
                 vm.file.upload.then(function (response) {
                     $timeout(function () {
-                        vm.recordingToAdd = {};
+                        vm.recordingToAdd = vm.recordingToAdd || {};
                         vm.recordingToAdd.media = response.data;
                         vm.recordingToAdd.mediaId = response.data.id;
                         console.log(vm.recordingToAdd);
