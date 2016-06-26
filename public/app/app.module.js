@@ -15,7 +15,8 @@
         'app.language',
         'app.pictureBook',
         'app.media',
-        'app.layout'
+        'app.layout',
+        'angularAudioRecorder'
     ])
         .run(function ($rootScope,$timeout) {
 

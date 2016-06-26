@@ -8,9 +8,9 @@
         .module('app.recordings')
         .controller('RecordingsController', RecordingsController);
 
-    RecordingsController.$inject = ['$rootScope', 'AudioRecording', '$state', '$stateParams', '$timeout', 'logger', 'Upload', '$uibModal'];
+    RecordingsController.$inject = ['$rootScope', 'AudioRecording', '$state', '$stateParams', '$timeout', 'logger', '$uibModal'];
     /* @ngInject */
-    function RecordingsController($rootScope, AudioRecording, $state, $stateParams, $timeout, logger, Upload, $uibModal ) {
+    function RecordingsController($rootScope, AudioRecording, $state, $stateParams, $timeout, logger, $uibModal ) {
         var vm = this;
         $rootScope.pageTitle = 'Recordings';
         vm.selectRecording = selectRecording;
@@ -18,6 +18,7 @@
         vm.deleteRecording = deleteRecording;
         vm.addAudioRecording = addAudioRecording;
         vm.recordingToAdd = undefined;
+        vm.file = {};
 
         activate();
 
@@ -91,7 +92,6 @@
             function onOkCallback(recording) {
                 vm.currentRecording = recording;
                 reloadRecordings();
-                console.log("reloadRecordings");
             }
 
             function onCancelCallback() {
