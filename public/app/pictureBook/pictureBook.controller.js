@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('app.pictureBook')
+        .module('app.pictureBook', ['bootstrapLightbox'])
         .controller('PictureBookController', PictureBookController);
 
-    PictureBookController.$inject = ['$rootScope','$state', '$stateParams','logger', 'PictureBook', 'PictureBookScene', '$uibModal', 'Upload', '$timeout'];
+    PictureBookController.$inject = ['$rootScope','$state', '$stateParams','logger', 'PictureBook', 'PictureBookScene', '$uibModal', 'Upload', '$timeout', 'Lightbox'];
     /* @ngInject */
-    function PictureBookController($rootScope, $state, $stateParams, logger, PictureBook, PictureBookScene, $uibModal, Upload, $timeout) {
+    function PictureBookController($rootScope, $state, $stateParams, logger, PictureBook, PictureBookScene, $uibModal, Upload, $timeout, Lightbox) {
         var vm = this;
         $rootScope.pageTitle = 'Picture Books';
         vm.showForm = false;
@@ -19,11 +19,28 @@
         vm.showAddForm = showAddForm;
         vm.addScene = addScene;
         vm.selectFile = selectFile;
+        vm.openLightboxModal = openLightBoxModal;
+        vm.images;
 
         activate();
 
-        function activate() {
+        function openLightBoxModal (index) {
+            if(vm.images == undefined)
+                reloadImageCollection();
+            Lightbox.openModal(vm.images, index);
+        };
 
+        function reloadImageCollection()
+        {
+            vm.images = [];
+            for(var i = 0; i < vm.currentPictureBook.scenes.length; i++)
+            {
+                var tempObj = {url: vm.currentPictureBook.scenes[i].media.path};
+                vm.images.push(tempObj);
+            }
+        }
+
+        function activate() {
             $timeout(function () {
                 componentHandler.upgradeAllRegistered();
             });
@@ -41,6 +58,7 @@
                 vm.currentPictureBook = pictureBook;
             }
 
+
             function onError(error) {
                 vm.currentPictureBook = null;
                 logger.error(error.data.error.message);
@@ -49,9 +67,9 @@
         }
 
         function selectPictureBook(pictureBook) {
-            //notify:false je da ne reloaduje stranu
             $state.go($state.current, {id: pictureBook.id}, {notify: false});
             vm.currentPictureBook = pictureBook;
+            reloadImageCollection();
         }
 
         function reloadPictureBooks() {
@@ -80,7 +98,7 @@
 
             modalInstance.result.then(onOkCallback, onCancelCallback);
 
-            function onOkCallback(pictureBook) {
+            function onOkCallback() {
                 reloadPictureBooks();
             }
 
@@ -94,7 +112,7 @@
             
             modalInstance.result.then(onOkCallback, onCancelCallback);
 
-            function onOkCallback(pictureBook) {
+            function onOkCallback() {
                 reloadPictureBooks();
             }
 
@@ -130,7 +148,7 @@
             PictureBookScene.save({pictureBookId: vm.currentPictureBook.id}, vm.newScene, onSuccess);
 
             function onSuccess(newPictureBook){
-                logger.info('Added scene to picture Book ' + newPictureBook.title);
+                logger.info('Added scene to picture book ' + newPictureBook.title);
                 vm.currentPictureBook = newPictureBook;
             }
             
@@ -157,8 +175,9 @@
                         PictureBookScene.save({pictureBookId: vm.currentPictureBook.id}, vm.newScene, onSuccess);
 
                         function onSuccess(newPictureBook){
-                            logger.info('Added scene to picture Book ' + newPictureBook.title);
+                            logger.info('Added scene to picture book ' + newPictureBook.title);
                             vm.currentPictureBook = newPictureBook;
+                            reloadImageCollection();
                             showAddForm();
                         }
                     });
