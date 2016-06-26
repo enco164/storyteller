@@ -5,16 +5,18 @@
     .module('app.layout')
     .controller('SidebarController', SidebarController);
 
-  SidebarController.$inject = ['$state', 'routerHelper'];
+  SidebarController.$inject = ['$scope', '$state', '$auth', 'routerHelper'];
   /* @ngInject */
-  function SidebarController($state, routerHelper) {
+  function SidebarController($scope, $state, $auth, routerHelper) {
     var vm = this;
     var states = routerHelper.getStates();
     vm.isCurrent = isCurrent;
 
     activate();
 
-    function activate() { getNavRoutes(); }
+    function activate() {
+      getNavRoutes();
+    }
 
     function getNavRoutes() {
       vm.navRoutes = states.filter(function(r) {
