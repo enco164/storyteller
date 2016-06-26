@@ -17,7 +17,6 @@
         vm.onCreate = onCreate;
         vm.selectPictureBook = selectPictureBook;
         vm.showAddForm = showAddForm;
-        vm.addScene = addScene;
         vm.selectFile = selectFile;
         vm.openLightboxModal = openLightBoxModal;
         vm.images;
@@ -141,19 +140,6 @@
             vm.file = {};
         }
 
-        function addScene() {
-
-            vm.uploadFiles();
-            vm.newScene.mediaId = vm.uploadedFile.id;
-            PictureBookScene.save({pictureBookId: vm.currentPictureBook.id}, vm.newScene, onSuccess);
-
-            function onSuccess(newPictureBook){
-                logger.info('Added scene to picture book ' + newPictureBook.title);
-                vm.currentPictureBook = newPictureBook;
-            }
-            
-        }
-
         function selectFile(file, errFiles)
         {
             vm.file = file;
@@ -178,6 +164,7 @@
                             logger.info('Added scene to picture book ' + newPictureBook.title);
                             vm.currentPictureBook = newPictureBook;
                             reloadImageCollection();
+                            reloadPictureBooks();
                             showAddForm();
                         }
                     });

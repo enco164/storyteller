@@ -10,7 +10,7 @@
 
     RecordingsController.$inject = ['$rootScope', 'AudioRecording', '$state', '$stateParams', '$timeout', 'logger', '$uibModal'];
     /* @ngInject */
-    function RecordingsController($rootScope, AudioRecording, $state, $stateParams, $timeout, logger, $uibModal ) {
+    function RecordingsController($rootScope, AudioRecording, $state, $stateParams, $timeout, logger, $uibModal) {
         var vm = this;
         $rootScope.pageTitle = 'Recordings';
         vm.selectRecording = selectRecording;
@@ -63,8 +63,6 @@
                 if(!!audio)
                     audio.load();
             });
-
-            console.log(vm.currentRecording);
         }
 
         function deleteRecording(recording) {

@@ -62,7 +62,7 @@ class PictureBookController extends ApiController
         
         return response()->json($picBook);
     }
-
+    
     public function destroy($id)
     {
         $picBook = PictureBook::find($id);

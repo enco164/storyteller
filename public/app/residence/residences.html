@@ -25,7 +25,7 @@
                ng-class="{'mdl-color-text--white mdl-color--blue-grey-300': vm.currentResidence.id === residence.id}"
                style="cursor: pointer;">
                 <span class="mdl-list__item-primary-content">
-                  <span>{{residence.state + ' ' + residence.city}}</span>
+                  <span>{{residence.state}} - {{residence.city}}</span>
                 </span>
             </a>
         </div>
@@ -33,7 +33,7 @@
     </div>
     <div class="mdl-card mdl-cell mdl-cell--9-col mdl-shadow--2dp" ng-if="vm.currentResidence" >
         <div class="mdl-card__title mdl-color--orange-800">
-            <h2 class="mdl-card__title-text mdl-color-text--white">{{vm.currentResidence.state + ' ' + vm.currentResidence.city }}</h2>
+            <h2 class="mdl-card__title-text mdl-color-text--white">{{vm.currentResidence.state}} - {{vm.currentResidence.city}}</h2>
         </div>
         <div class="mdl-card__supporting-text">
             <div class="mdl-grid">
