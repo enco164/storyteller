@@ -9,7 +9,7 @@ namespace App\Http\Controllers;
 
 
 use App\AudioRecording;
-use App\Media;
+use App\Session;
 use Illuminate\Http\Request;
 use App\Transformers\AudioRecordingTransformer;
 
@@ -66,11 +66,22 @@ class RecordingsController extends ApiController
     public function destroy($id)
     {
         $recording = AudioRecording::find($id);
+
+        $session = Session::where('audio_recording_id', '=', $recording->id)->first();
+
+        if($session != null)
+        {
+            $session->audioRecordingId = null;
+            $session->save();
+        }
+
         if (!$recording) {
             return $this->respondWithError("Audio Recording does not exist.");
         }
+
         if(file_exists(public_path()."/".$recording->media->path))
             unlink(public_path()."/".$recording->media->path);
+        
         $recording->delete();
         return response()->json(["message" => 'Audio Recording successfully deleted.']);
     }
