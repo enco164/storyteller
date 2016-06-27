@@ -38,7 +38,15 @@ class SessionsTranscriptsController extends ApiController
         /*Uvezati ovde*/
         $session->transcripts()->create($request->all());
 
-        return $session->load('transcripts');
+        $session->load(['transcripts' => function($query) use(&$transcriptId) {
+            $query->where('id', '=', $transcriptId)->get();
+        }]);
+        $session->load(['sceneTranscripts.annotations' => function($query) use(&$transcriptId) {
+            $query->where('annotations.transcript_id', '=', $transcriptId);
+        }]);
+        $session['sceneTranscripts']->load('scene.media');
+        $session->load('kid', 'audioRecording.media', 'pictureBook.scenes.media');
+        return $session;
     }
 
     public function show(Request $request, $sessionId, $transcriptId)

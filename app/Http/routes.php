@@ -19,7 +19,7 @@ Route::get('api/me', ['middleware' => 'auth', 'uses' => 'UserController@getUser'
 Route::put('api/me', ['middleware' => 'auth', 'uses' => 'UserController@updateUser']);
 
 
-Route::group(['prefix' => 'api'], function () {
+Route::group(['prefix' => 'api', 'middleware' => 'auth'], function () {
     Route::resource('kids', 'KidsController');
     Route::resource('sessions', 'SessionsController');
     Route::resource('scene_transcripts', 'SceneTranscriptsController');

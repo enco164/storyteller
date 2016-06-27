@@ -17,7 +17,7 @@
                 <li ng-repeat="transcript in vm.session.transcripts">
                     <a ui-sref="sessions.detail.transcript({transcriptId: transcript.id})">
                         {{transcript.title}}
-                        <small>{{transcript.annotationSchema.title}}</small>
+                        <small>[{{transcript.annotationSchema.title}}]</small>
                     </a>
                 </li>
             </ul>

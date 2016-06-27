@@ -8,9 +8,9 @@
         .module('app.sessions')
         .controller('SessionSceneTranscriptsController', SessionSceneTranscriptsController);
 
-    SessionSceneTranscriptsController.$inject = ['$stateParams', 'SessionSceneTranscript', 'logger'];
+    SessionSceneTranscriptsController.$inject = ['$stateParams', 'SessionSceneTranscript', 'logger', 'Session', '$timeout', '$state'];
     /* @ngInject */
-    function SessionSceneTranscriptsController($stateParams, SessionSceneTranscript, logger) {
+    function SessionSceneTranscriptsController($stateParams, SessionSceneTranscript, logger, Session, $timeout, $state) {
         var vm = this;
         SessionSceneTranscript.query({sessionId: $stateParams.id}, function(transcripts) {
             vm.sceneTranscripts = transcripts;
@@ -20,6 +20,12 @@
         activate();
 
         function activate() {
+            $timeout(function () {
+                var audio = document.getElementById('audio');
+                if(!!audio) {
+                    audio.load();
+                }
+            });
             vm.editorOptions = [
                 ['edit',['undo','redo']],
                 ['headline', ['style']],
@@ -33,6 +39,9 @@
                 ['insert', ['link','picture','video','hr']],
                 ['help', ['help']]
             ];
+            Session.get({id: $stateParams.id}, function (session) {
+                vm.session = session;
+            })
         }
 
         function save() {
@@ -42,6 +51,7 @@
                     i++;
                     if (i === vm.sceneTranscripts.length) {
                         logger.info('Transcript saved');
+                        $state.go($state.current, {}, {reload: true});
                     }
                 });
             });
