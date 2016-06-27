@@ -503,7 +503,9 @@
                     popup.scope.$readonly = $scope.readonly;
                     popup.scope.$reject = function() {
                         removeAnnotation(annotation.id, $scope.annotations);
+                        console.log('***********************');
                         if ($scope.onAnnotateDelete != null) {
+                            console.log('***********************');
                             $scope.onAnnotateDelete(annotation);
                         }
                         clearPopup();

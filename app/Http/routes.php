@@ -35,7 +35,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource('sessions.recordings', 'SessionsRecordingsController');
     Route::resource('recordings', 'RecordingsController');
     Route::resource('media', 'MediaController');
-
+    Route::resource('annotations', 'AnnotationController');
 });
 
 // If there is not requested route return index.html and let Angular display 404 page

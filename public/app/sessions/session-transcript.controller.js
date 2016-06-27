@@ -8,9 +8,9 @@
         .module('app.sessions')
         .controller('SessionTranscriptController', SessionTranscriptController);
 
-    SessionTranscriptController.$inject = ['$rootScope', '$state', '$stateParams', 'Session', '$uibModal', 'SessionTranscript', 'NGAnnotation'];
+    SessionTranscriptController.$inject = ['$rootScope', '$state', '$stateParams', 'Session', '$uibModal', 'SessionTranscript', 'NGAnnotation', 'Annotation'];
     /* @ngInject */
-    function SessionTranscriptController($rootScope, $state, $stateParams, Session, $uibModal, SessionTranscript, NGAnnotation) {
+    function SessionTranscriptController($rootScope, $state, $stateParams, Session, $uibModal, SessionTranscript, NGAnnotation, Annotation) {
         var vm = this;
         $rootScope.pageTitle = 'Session';
 
@@ -27,6 +27,11 @@
                 $state.go($state.current, {}, {reload: true});
             });
         }
+
+        vm.onAnnotateDelete = function(annotation) {
+            console.log('-----------');
+            Annotation.delete({id: annotation.data.id});
+        };
 
         vm.onAnnotate = function($annotation) {
             $annotation.comment = $annotation.data.comment;

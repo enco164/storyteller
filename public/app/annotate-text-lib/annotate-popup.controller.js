@@ -4,10 +4,7 @@
 (function() {
     angular
         .module("app")
-        .controller("AnnotationController",AnnotationController);
-
-
-
+        .controller("AnnotationController", AnnotationController);
 
     AnnotationController.$inject = ['$scope', '$timeout', '$stateParams', 'Session'];
     function AnnotationController($scope, $timeout, $stateParams, Session) {
@@ -82,7 +79,6 @@
             return color && color.value === $scope.$annotation.type;
         };
         $scope.close = function() {
-            //console.log('close');
             return $scope.$close();
         };
         $scope.reject = function() {
