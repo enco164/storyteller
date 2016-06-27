@@ -8,9 +8,9 @@
         .module('app.sessions')
         .controller('SessionDetailController', SessionDetailController);
 
-    SessionDetailController.$inject = ['$rootScope', '$state', '$stateParams', 'Session', '$uibModal'];
+    SessionDetailController.$inject = ['$rootScope', '$state', '$stateParams', 'Session', '$uibModal', '$timeout'];
     /* @ngInject */
-    function SessionDetailController($rootScope, $state, $stateParams, Session, $uibModal) {
+    function SessionDetailController($rootScope, $state, $stateParams, Session, $uibModal, $timeout) {
         var vm = this;
         $rootScope.pageTitle = 'Session';
 
@@ -23,6 +23,12 @@
         function activate() {
             Session.get({id: $stateParams.id}, function(session) {
                 vm.session = session;
+                $timeout(function () {
+                    var audio = document.getElementById('audio');
+                    if(!!audio) {
+                        audio.load();
+                    }
+                });
                 $rootScope.pageTitle += ' [' +
                     session.kid.firstName + ' ' +
                     session.kid.lastName + ', ' +

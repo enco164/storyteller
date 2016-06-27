@@ -6,12 +6,21 @@
     </button>
 
     <div class="section--center mdl-cell mdl-cell--9-col-desktop ">
-        <audio controls id="audio" style="width: 100%">
-            <source ng-src="{{vm.session.audioRecording.media.path}}" type="audio/mpeg">
-            <source ng-src="{{vm.session.audioRecording.media.path}}" type="audio/wav">
-            <source ng-src="{{vm.session.audioRecording.media.path}}" type="audio/ogg">
-            Your browser does not support the audio element.
-        </audio>
+        <!--<audio controls id="audio" style="width: 100%">-->
+            <!--<source ng-src="{{vm.session.audioRecording.media.path}}" type="audio/mpeg">-->
+            <!--<source ng-src="{{vm.session.audioRecording.media.path}}" type="audio/wav">-->
+            <!--<source ng-src="{{vm.session.audioRecording.media.path}}" type="audio/ogg">-->
+            <!--Your browser does not support the audio element.-->
+        <!--</audio>-->
+        <!--style="background-color:white; position:fixed; top:64px; width: 350px; z-index: 1999"-->
+        <div class="mdl-button--floating-action" style="width: 350px; right: 128px">
+                <audio controls id="audio" style="width: 100%" class="mdl-shadow--4dp">
+                    <source ng-src="{{vm.session.audioRecording.media.path}}" type="audio/mpeg">
+                    <source ng-src="{{vm.session.audioRecording.media.path}}" type="audio/wav">
+                    <source ng-src="{{vm.session.audioRecording.media.path}}" type="audio/ogg">
+                    Your browser does not support the audio element.
+                </audio>
+        </div>
         <section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp"
                  ng-repeat="sceneTranscript in vm.sceneTranscripts | orderBy:'scene.sceneNumber'"
                  style="margin-bottom: 16px;">

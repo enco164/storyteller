@@ -5,7 +5,14 @@
     </button>
 
     <div class="section--center mdl-cell mdl-cell--9-col-desktop ">
-
+        <div class="mdl-button--floating-action" style="width: 350px; right: 128px">
+            <audio controls id="audio" style="width: 100%" class="mdl-shadow--4dp">
+                <source ng-src="{{vm.session.audioRecording.media.path}}" type="audio/mpeg">
+                <source ng-src="{{vm.session.audioRecording.media.path}}" type="audio/wav">
+                <source ng-src="{{vm.session.audioRecording.media.path}}" type="audio/ogg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
         <section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp"
                  ng-repeat="sceneTranscript in vm.session.sceneTranscripts "
                  style="margin-bottom: 16px;">

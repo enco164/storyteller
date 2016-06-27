@@ -20,12 +20,7 @@
         activate();
 
         function activate() {
-            $timeout(function () {
-                var audio = document.getElementById('audio');
-                if(!!audio) {
-                    audio.load();
-                }
-            });
+
             vm.editorOptions = [
                 ['edit',['undo','redo']],
                 ['headline', ['style']],
@@ -41,6 +36,12 @@
             ];
             Session.get({id: $stateParams.id}, function (session) {
                 vm.session = session;
+                $timeout(function () {
+                    var audio = document.getElementById('audio');
+                    if(!!audio) {
+                        audio.load();
+                    }
+                });
             })
         }
 
