@@ -67,12 +67,15 @@ class RecordingsController extends ApiController
     {
         $recording = AudioRecording::find($id);
 
-        $session = Session::where('audio_recording_id', '=', $recording->id)->first();
+        $sessions = Session::where('audio_recording_id', '=', $recording->id)->get();
 
-        if($session != null)
+        if($sessions != null)
         {
-            $session->audioRecordingId = null;
-            $session->save();
+            foreach($sessions as $session)
+            {
+                $session->audioRecordingId = null;
+                $session->save();
+            }
         }
 
         if (!$recording) {
