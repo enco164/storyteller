@@ -46,15 +46,15 @@
                     <div class="attr-div">
                         <label>First Name:</label><br>
                         <span>{{vm.currentKid.firstName || '-'}}</span>
-                    </div>
+                    </div><br>
                     <div class="attr-div">
                         <label>Last Name:</label><br>
                         <span>{{vm.currentKid.lastName || '-'}}</span>
-                    </div>
+                    </div><br>
                     <div class="attr-div">
                         <label>Gender:</label><br>
                         <span>{{vm.currentKid.gender || '-'}}</span>
-                    </div>
+                    </div><br>
                 </div>
 
 
@@ -62,50 +62,50 @@
                     <div class="attr-div">
                         <label>Date of Birth:</label><br>
                         <span>{{(vm.currentKid.yearOfBirth | date:'dd.MM.yyyy')|| '-'}}</span>
-                    </div>
+                    </div><br>
                     <div class="attr-div">
                         <label>City of Birth:</label><br>
                         <span>{{vm.currentKid.cityOfBirth || '-'}}</span>
-                    </div>
+                    </div><br>
                     <div class="attr-div">
                         <label>State of Birth:</label><br>
                         <span>{{vm.currentKid.stateOfBirth || '-'}}</span>
-                    </div>
+                    </div><br>
                 </div>
                 <div class="mdl-cell mdl-cell--3-col">
                     <div class="attr-div">
                         <label>Mother's Education:</label><br>
                         <span>{{vm.currentKid.educationMother || '-'}}</span>
-                    </div>
+                    </div><br>
                     <div class="attr-div">
                         <label>Father's Education:</label><br>
                         <span>{{vm.currentKid.educationFather || '-'}}</span>
-                    </div>
+                    </div><br>
                     <div class="attr-div">
                         <label>Mother's Language:</label><br>
                         <span>{{vm.currentKid.languageMother.languageName || '-'}}</span>
-                    </div>
+                    </div><br>
                     <div class="attr-div">
                         <label>Father's Language:</label><br>
                         <span>{{vm.currentKid.languageFather.languageName || '-'}}</span>
-                    </div>
+                    </div><br>
                     <div class="attr-div">
                         <label>School Language:</label><br>
                         <span>{{vm.currentKid.languageSchool.languageName || '-'}}</span>
-                    </div>
+                    </div><br>
                     <div class="attr-div">
                         <label>Additional School Language:</label><br>
                         <span>{{vm.currentKid.languageAdditionalSchool.languageName || '-'}}</span>
-                    </div>
+                    </div><br>
                 </div>
                 <div class="mdl-cell mdl-cell--3-col">
                     <label>Last known Residence:</label><br>
-                    <span>{{vm.currentKid.residences[vm.currentKid.residences.length - 1].state}} - {{vm.currentKid.residences[vm.currentKid.residences.length - 1].city}}</span><br>
+                    <span>{{vm.currentKid.residences[vm.currentKid.residences.length - 1].state}} - {{vm.currentKid.residences[vm.currentKid.residences.length - 1].city}}</span><br><br>
                     <label>Residences:</label><br>
                     <div ng-repeat="residence in vm.currentKid.residences">
                         <span>{{residence.state}} - {{residence.city}}</span>
-                    </div>
-                </div>
+                    </div><br>
+                </div><br>
             </div>
             <!--ST TODO: style obrisati kada se resi problem sa odsecanjem liste-->
             <div class="mdl-grid" ng-show="vm.showForm" style="min-height: 200px">
